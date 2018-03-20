@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="models.Patient" project="RoboDoc" file="/RoboDoc/src/models/Patient.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="515" width="171" x="167" y="482"/>    
+    <position height="515" width="171" x="483" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="models.Doctor" project="RoboDoc" file="/RoboDoc/src/models/Doctor.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="461" width="195" x="378" y="482"/>    
+    <position height="461" width="195" x="694" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,25 +21,25 @@
   </class>  
   <class id="3" language="java" name="models.Person" project="RoboDoc" file="/RoboDoc/src/models/Person.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="623" width="175" x="272" y="-181"/>    
+    <position height="623" width="175" x="588" y="-91"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="4" language="java" name="models.DBActions" project="RoboDoc" file="/RoboDoc/src/models/DBActions.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="137" width="151" x="81" y="-181"/>    
+  <class id="4" language="java" name="models.DBOperations" project="RoboDoc" 
+    file="/RoboDoc/src/models/DBOperations.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="151" x="1042" y="-91"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </interface>  
+  </class>  
   <class id="5" language="java" name="models.Symptom" project="RoboDoc" file="/RoboDoc/src/models/Symptom.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="119" width="97" x="487" y="-181"/>    
+    <position height="119" width="97" x="181" y="-91"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="models.Medicine" project="RoboDoc" file="/RoboDoc/src/models/Medicine.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="407" width="230" x="624" y="-181"/>    
+    <position height="407" width="230" x="318" y="-91"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,27 +57,31 @@
   </class>  
   <class id="7" language="java" name="models.Disease" project="RoboDoc" file="/RoboDoc/src/models/Disease.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="623" width="199" x="894" y="-181"/>    
+    <position height="623" width="199" x="803" y="-91"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="models.DBOperations" project="RoboDoc" 
-    file="/RoboDoc/src/models/DBOperations.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="158" y="63"/>    
+  <interface id="8" language="java" name="models.DBActions" project="RoboDoc" file="/RoboDoc/src/models/DBActions.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="151" x="1042" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </class>  
-  <generalization id="9">    
+  </interface>  
+  <realization id="9">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <generalization id="10">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <generalization id="10">    
+  <generalization id="11">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
