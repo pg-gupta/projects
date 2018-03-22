@@ -1,5 +1,17 @@
 package models;
 
+/**
+ * Class defines a disease and contains has all the attributes
+ * relevant to it
+ */
+/**
+ * 
+ * @author pooja gupta & yeshwanthi durairaj
+ * Date: 03/21/2018
+ * File: Disease.java
+ * Final Project
+ *
+ */
 public class Disease {
 	int id;
 	String name;

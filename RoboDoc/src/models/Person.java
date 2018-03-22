@@ -1,5 +1,17 @@
 package models;
 
+/**
+ * Class containing all the attributes for a person.
+ * This is used as a base class for Doctor and Pateint in this Project.
+ */
+/**
+ * 
+ * @author pooja gupta & yeshwanthi durairaj
+ * Date: 03/21/2018
+ * File: Person.java
+ * Final Project
+ *
+ */
 import java.util.*;
 
 public class Person {

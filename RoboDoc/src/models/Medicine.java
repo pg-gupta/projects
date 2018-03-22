@@ -1,5 +1,16 @@
 package models;
 
+/**
+ * Class defines medicine
+ */
+/**
+ * 
+ * @author pooja gupta & yeshwanthi durairaj
+ * Date: 03/21/2018
+ * File: Medicine.java
+ * Final Project
+ *
+ */
 public class Medicine {
 
 	int id;

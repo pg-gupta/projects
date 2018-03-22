@@ -1,5 +1,17 @@
 package models;
 
+/**
+ * Class is derived from Person class and has all the attributes
+ * relevant for a Doctor
+ */
+/**
+ * 
+ * @author pooja gupta & yeshwanthi durairaj
+ * Date: 03/21/2018
+ * File: Doctor.java
+ * Final Project
+ *
+ */
 public class Doctor extends Person {
 	int id;
 	String category;

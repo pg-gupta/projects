@@ -1,5 +1,17 @@
 package models;
 
+/**
+ * Class is derived from Person class and has all the attributes
+ * relevant for a Patient
+ */
+/**
+ * 
+ * @author pooja gupta & yeshwanthi durairaj
+ * Date: 03/21/2018
+ * File: Patient.java
+ * Final Project
+ *
+ */
 public class Patient extends Person {
 
 	int id;
