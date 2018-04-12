@@ -16,6 +16,8 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +46,7 @@ public class Chat extends AppCompatActivity {
         reference1 = new Firebase("https://chatapppoc-b9a57.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith);
         reference2 = new Firebase("https://chatapppoc-b9a57.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username);
 
+        
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
