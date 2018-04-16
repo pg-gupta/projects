@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ChatAppPoc</string>
+    <string name="firebase_database">https://chatapppoc-b9a57.firebaseio.com</string>
+    <string name="friends_list">friendsList</string>
+    <string name="request_list">requestList</string>
+    <string name="users">users</string>
+    <string name="skill_name">name</string>
+    <string name="skill_proficiency">proficiency</string>
 </resources>

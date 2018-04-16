@@ -46,7 +46,7 @@ public class Chat extends AppCompatActivity {
         reference1 = new Firebase("https://chatapppoc-b9a57.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith);
         reference2 = new Firebase("https://chatapppoc-b9a57.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username);
 
-        
+
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

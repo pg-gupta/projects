@@ -20,8 +20,10 @@
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".Chat" />
-        <activity android:name=".Users" />
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".Friends" />
+        <activity android:name=".Profile" />
+        <activity android:name=".SearchFriend" />
+        <activity android:name=".Requests" />
     </application>
 
 </manifest>

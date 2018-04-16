@@ -1,9 +1,9 @@
 package com.chatapppoc.android.chatapppoc;
 
-import android.support.constraint.solver.widgets.Snapshot;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,6 +34,9 @@ public class Profile extends AppCompatActivity {
     TextView name;
     String skills = "";
     Map<String, String> map;
+    Button searchFriendBtn;
+    Button showRequestBtn;
+    Button showFriendsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +48,17 @@ public class Profile extends AppCompatActivity {
         skill = (TextView) findViewById(R.id.addSkillText);
         skillList = (TextView) findViewById(R.id.skillsList);
         name = (TextView) findViewById(R.id.nametxt);
+        searchFriendBtn = (Button) findViewById(R.id.searchFriendBtn);
+        showRequestBtn = (Button) findViewById(R.id.showReqBtn);
+        showFriendsBtn = (Button) findViewById(R.id.showFriendsBtn);
+        final Activity activity = this;
 
         // get reference of the firebase database
-        reference = new Firebase("https://chatapppoc-b9a57.firebaseio.com/users/" + UserDetails.username + "/skills");
+        reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users) + "/"
+                + UserDetails.username + "/skills");
         // set username on profile
         name.setText(UserDetails.username);
+
         // add skill on click of button if skill not already present
         addSkill.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,16 +66,16 @@ public class Profile extends AppCompatActivity {
                 if (skill != null && skill.getText() != "") {
                     map = new HashMap<String, String>();
                     // add skill with its proficiency
-                    map.put("name", skill.getText().toString());
-                    map.put("proficiency", "1");
+                    map.put(getString(R.string.users), skill.getText().toString());
+                    map.put(getString(R.string.skill_proficiency), "1");
 
                     // check if the skill already added
-                    Query query = reference.orderByChild("name").equalTo(skill.getText().toString());
+                    Query query = reference.orderByChild(getString(R.string.skill_name)).equalTo(skill.getText().toString());
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
-                                Toast.makeText(getApplicationContext(), "Skill exist already", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Skill exists already", Toast.LENGTH_SHORT).show();
 
                             } else // add skill if not added
                                 reference.push().setValue(map);
@@ -85,11 +94,11 @@ public class Profile extends AppCompatActivity {
 
 
         // get all the skills from the database and display on the profile
-        reference.orderByChild("name").addChildEventListener(new ChildEventListener() {
+        reference.orderByChild(getString(R.string.skill_name)).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map map = dataSnapshot.getValue(Map.class);
-                skills += map.get("name").toString() + ",";
+                skills += map.get(getString(R.string.skill_name)).toString() + ",";
                 skillList.setText(skills);
                 skill.setText("");
             }
@@ -116,24 +125,29 @@ public class Profile extends AppCompatActivity {
 
         });
 
-
-        /*PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-
-        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+        searchFriendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
-                Log.i("GoogleAPi", "Place: " + place.getName());
-            }
-
-            @Override
-            public void onError(Status status) {
-                // TODO: Handle the error.
-                Log.i("GoogleAPi", "An error occurred: " + status);
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SearchFriend.class);
+                startActivity(intent);
             }
         });
-*/
+
+        showRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Requests.class);
+                startActivity(intent);
+            }
+        });
+
+        showFriendsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Friends.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
