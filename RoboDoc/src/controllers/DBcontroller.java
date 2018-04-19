@@ -70,7 +70,7 @@ public class DBcontroller
 		Doctordao docdao  =new Doctordao();
 	
 		doc.setDoctor_Id(1);
-		doc.setFname("poojag");
+		doc.setFname("poojagt");
 		doc.setLname("gupta");
 		doc.setVisiting_Hours("10 a.m to 6 p.m");
 		doc.setSpecialization("Genral");
