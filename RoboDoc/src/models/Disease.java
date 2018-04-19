@@ -1,64 +1,41 @@
 package models;
 
-/**
- * Class defines a disease and contains has all the attributes
- * relevant to it
- */
-/**
- * 
- * @author pooja gupta & yeshwanthi durairaj
- * Date: 03/21/2018
- * File: Disease.java
- * Final Project
- *
- */
-public class Disease {
-	int id;
-	String name;
-	String[] symptoms;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@ Entity(name="dim_disease")
+public class Disease 
+{   @Id
+	int disease_id;
+	String disease_name;
 	String treatment;
 	String prevention;
-	String facts;
-	String transmission;
-	Boolean isContiguous;
-	String preferredDiet;
-	String[] testsSuggested;
-	
+	boolean is_contagious;
+	String preffered_diet;
+	String test_suggested;
 	/**
-	 * @return the id
+	 * @return the disease_id
 	 */
-	public int getId() {
-		return id;
+	public int getDisease_id() {
+		return disease_id;
 	}
 	/**
-	 * @param id the id to set
+	 * @param disease_id the disease_id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setDisease_id(int disease_id) {
+		this.disease_id = disease_id;
 	}
 	/**
-	 * @return the name
+	 * @return the disease_name
 	 */
-	public String getName() {
-		return name;
+	public String getDisease_name() {
+		return disease_name;
 	}
 	/**
-	 * @param name the name to set
+	 * @param disease_name the disease_name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	/**
-	 * @return the symptoms
-	 */
-	public String[] getSymptoms() {
-		return symptoms;
-	}
-	/**
-	 * @param symptoms the symptoms to set
-	 */
-	public void setSymptoms(String[] symptoms) {
-		this.symptoms = symptoms;
+	public void setDisease_name(String disease_name) {
+		this.disease_name = disease_name;
 	}
 	/**
 	 * @return the treatment
@@ -85,64 +62,42 @@ public class Disease {
 		this.prevention = prevention;
 	}
 	/**
-	 * @return the facts
+	 * @return the is_contagious
 	 */
-	public String getFacts() {
-		return facts;
+	public boolean isIs_contagious() {
+		return is_contagious;
 	}
 	/**
-	 * @param facts the facts to set
+	 * @param is_conagious the is_conagious to set
 	 */
-	public void setFacts(String facts) {
-		this.facts = facts;
+	public void setIs_contagious(boolean is_contagious) {
+		this.is_contagious = is_contagious;
 	}
 	/**
-	 * @return the transmission
+	 * @return the preffered_diet
 	 */
-	public String getTransmission() {
-		return transmission;
+	public String getPreffered_diet() {
+		return preffered_diet;
 	}
 	/**
-	 * @param transmission the transmission to set
+	 * @param preffered_diet the preffered_diet to set
 	 */
-	public void setTransmission(String transmission) {
-		this.transmission = transmission;
+	public void setPreffered_diet(String preffered_diet) {
+		this.preffered_diet = preffered_diet;
 	}
 	/**
-	 * @return the isContiguous
+	 * @return the test_suggested
 	 */
-	public Boolean getIsContiguous() {
-		return isContiguous;
+	public String getTest_suggested() {
+		return test_suggested;
 	}
 	/**
-	 * @param isContiguous the isContiguous to set
+	 * @param test_suggested the test_suggested to set
 	 */
-	public void setIsContiguous(Boolean isContiguous) {
-		this.isContiguous = isContiguous;
+	public void setTest_suggested(String test_suggested) {
+		this.test_suggested = test_suggested;
 	}
-	/**
-	 * @return the preferredDiet
-	 */
-	public String getPreferredDiet() {
-		return preferredDiet;
-	}
-	/**
-	 * @param preferredDiet the preferredDiet to set
-	 */
-	public void setPreferredDiet(String preferredDiet) {
-		this.preferredDiet = preferredDiet;
-	}
-	/**
-	 * @return the testsSuggested
-	 */
-	public String[] getTestsSuggested() {
-		return testsSuggested;
-	}
-	/**
-	 * @param testsSuggested the testsSuggested to set
-	 */
-	public void setTestsSuggested(String[] testsSuggested) {
-		this.testsSuggested = testsSuggested;
-	}
+	
+	
 
 }

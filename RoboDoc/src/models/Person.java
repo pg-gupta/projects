@@ -1,149 +1,88 @@
 package models;
 
-/**
- * Class containing all the attributes for a person.
- * This is used as a base class for Doctor and Pateint in this Project.
- */
-/**
- * 
- * @author pooja gupta & yeshwanthi durairaj
- * Date: 03/21/2018
- * File: Person.java
- * Final Project
- *
- */
-import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@ Entity(name="patient_tracking_details")
 public class Person {
-
-	int id;
-	String firstName;
-	String middleName;
-	String lastName;
-	Date dob;
-	String address;
-	String sex;
-	String city;
-	String country;
-	String email;
+    @Id
+	int tracking_id;
+	int patient_id;
+	int doctor_id;
+	String symptoms;
+	String treatment_advised;
+	String rating;
 	/**
-	 * @return the id
+	 * @return the tracking_id
 	 */
-	public int getId() {
-		return id;
+	public int getTracking_id() {
+		return tracking_id;
 	}
 	/**
-	 * @param id the id to set
+	 * @param tracking_id the tracking_id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setTracking_id(int tracking_id) {
+		this.tracking_id = tracking_id;
 	}
 	/**
-	 * @return the firstName
+	 * @return the patient_id
 	 */
-	public String getFirstName() {
-		return firstName;
+	public int getPatient_id() {
+		return patient_id;
 	}
 	/**
-	 * @param firstName the firstName to set
+	 * @param patient_id the patient_id to set
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setPatient_id(int patient_id) {
+		this.patient_id = patient_id;
 	}
 	/**
-	 * @return the middleName
+	 * @return the doctor_id
 	 */
-	public String getMiddleName() {
-		return middleName;
+	public int getDoctor_id() {
+		return doctor_id;
 	}
 	/**
-	 * @param middleName the middleName to set
+	 * @param doctor_id the doctor_id to set
 	 */
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
+	public void setDoctor_id(int doctor_id) {
+		this.doctor_id = doctor_id;
 	}
 	/**
-	 * @return the lastName
+	 * @return the symptoms
 	 */
-	public String getLastName() {
-		return lastName;
+	public String getSymptoms() {
+		return symptoms;
 	}
 	/**
-	 * @param lastName the lastName to set
+	 * @param symptoms the symptoms to set
 	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setSymptoms(String symptoms) {
+		this.symptoms = symptoms;
 	}
 	/**
-	 * @return the dob
+	 * @return the treatment_advised
 	 */
-	public Date getDob() {
-		return dob;
+	public String getTreatment_advised() {
+		return treatment_advised;
 	}
 	/**
-	 * @param dob the dob to set
+	 * @param treatment_advised the treatment_advised to set
 	 */
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setTreatment_advised(String treatment_advised) {
+		this.treatment_advised = treatment_advised;
 	}
 	/**
-	 * @return the address
+	 * @return the rating
 	 */
-	public String getAddress() {
-		return address;
+	public String getRating() {
+		return rating;
 	}
 	/**
-	 * @param address the address to set
+	 * @param rating the rating to set
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
-	/**
-	 * @return the sex
-	 */
-	public String getSex() {
-		return sex;
-	}
-	/**
-	 * @param sex the sex to set
-	 */
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	/**
-	 * @return the city
-	 */
-	public String getCity() {
-		return city;
-	}
-	/**
-	 * @param city the city to set
-	 */
-	public void setCity(String city) {
-		this.city = city;
-	}
-	/**
-	 * @return the country
-	 */
-	public String getCountry() {
-		return country;
-	}
-	/**
-	 * @param country the country to set
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 }

@@ -1,129 +1,131 @@
 package models;
 
-/**
- * Class is derived from Person class and has all the attributes
- * relevant for a Doctor
- */
-/**
- * 
- * @author pooja gupta & yeshwanthi durairaj
- * Date: 03/21/2018
- * File: Doctor.java
- * Final Project
- *
- */
-public class Doctor extends Person {
-	int id;
-	String category;
-	String degree;
-	String visitingHours;
-	String experience;
-	String fax;
-	String consultationFee;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+
+@ Entity(name="doctor_details")
+public class Doctor
+
+{   
+
+
+	@Id
+	int doctor_Id;
+	String fname;
+	String lname;
+	String visiting_Hours;
+	String Specialization;
+	String Degree;
+	String phone_Number;
+	String Address;
 	/**
-	 * @return the id
+	 * @return the doctor_Id
 	 */
-	public int getId() {
-		return id;
+	public int getDoctor_Id() {
+		return doctor_Id;
 	}
-
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param doctor_Id the doctor_Id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setDoctor_Id(int doctor_Id) {
+		this.doctor_Id = doctor_Id;
 	}
-
 	/**
-	 * @return the category
+	 * @return the fname
 	 */
-	public String getCategory() {
-		return category;
+	public String getFname() {
+		return fname;
 	}
-
 	/**
-	 * @param category
-	 *            the category to set
+	 * @param fname the fname to set
 	 */
-	public void setCategory(String category) {
-		this.category = category;
+	public void setFname(String fname) {
+		this.fname = fname;
 	}
-
+	/**
+	 * @return the lname
+	 */
+	public String getLname() {
+		return lname;
+	}
+	/**
+	 * @param lname the lname to set
+	 */
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+	/**
+	 * @return the visiting_Hours
+	 */
+	public String getVisiting_Hours() {
+		return visiting_Hours;
+	}
+	/**
+	 * @param visiting_Hours the visiting_Hours to set
+	 */
+	public void setVisiting_Hours(String visiting_Hours) {
+		this.visiting_Hours = visiting_Hours;
+	}
+	/**
+	 * @return the specialization
+	 */
+	public String getSpecialization() {
+		return Specialization;
+	}
+	/**
+	 * @param specialization the specialization to set
+	 */
+	public void setSpecialization(String specialization) {
+		Specialization = specialization;
+	}
 	/**
 	 * @return the degree
 	 */
 	public String getDegree() {
-		return degree;
+		return Degree;
 	}
-
 	/**
-	 * @param degree
-	 *            the degree to set
+	 * @param degree the degree to set
 	 */
 	public void setDegree(String degree) {
-		this.degree = degree;
+		Degree = degree;
 	}
-
 	/**
-	 * @return the visitingHours
+	 * @return the phone_Number
 	 */
-	public String getVisitingHours() {
-		return visitingHours;
+	public String getPhone_Number() {
+		return phone_Number;
 	}
-
 	/**
-	 * @param visitingHours
-	 *            the visitingHours to set
+	 * @param phone_Number the phone_Number to set
 	 */
-	public void setVisitingHours(String visitingHours) {
-		this.visitingHours = visitingHours;
+	public void setPhone_Number(String phone_Number) {
+		this.phone_Number = phone_Number;
 	}
-
 	/**
-	 * @return the experience
+	 * @return the address
 	 */
-	public String getExperience() {
-		return experience;
+	public String getAddress() {
+		return Address;
 	}
-
 	/**
-	 * @param experience
-	 *            the experience to set
+	 * @param address the address to set
 	 */
-	public void setExperience(String experience) {
-		this.experience = experience;
+	public void setAddress(String address) {
+		Address = address;
 	}
-
 	/**
-	 * @return the fax
+	 * @return the serialversionuid
 	 */
-	public String getFax() {
-		return fax;
-	}
-
-	/**
-	 * @param fax
-	 *            the fax to set
-	 */
-	public void setFax(String fax) {
-		this.fax = fax;
-	}
-
-	/**
-	 * @return the consultationFee
-	 */
-	public String getConsultationFee() {
-		return consultationFee;
-	}
-
-	/**
-	 * @param consultationFee
-	 *            the consultationFee to set
-	 */
-	public void setConsultationFee(String consultationFee) {
-		this.consultationFee = consultationFee;
-	}
-
+	
+	
+	
 }

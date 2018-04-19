@@ -1,94 +1,89 @@
 package models;
 
-/**
- * Class defines medicine
- */
-/**
- * 
- * @author pooja gupta & yeshwanthi durairaj
- * Date: 03/21/2018
- * File: Medicine.java
- * Final Project
- *
- */
-public class Medicine {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-	int id;
-	String name;
-	String[] drugs;
-	String description;
-	String dosage;
-	boolean requiresPrescription;
+@ Entity(name="dim_medicine")
+public class Medicine
+{
+	@Id
+	int medicine_id;
+	String medicine_name;
+	String drugs;
+	String Description;
+	String Dosage;
+	int disease_id;
 	/**
-	 * @return the id
+	 * @return the medicine_id
 	 */
-	public int getId() {
-		return id;
+	public int getMedicine_id() {
+		return medicine_id;
 	}
 	/**
-	 * @param id the id to set
+	 * @param medicine_id the medicine_id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setMedicine_id(int medicine_id) {
+		this.medicine_id = medicine_id;
 	}
 	/**
-	 * @return the name
+	 * @return the medicine_name
 	 */
-	public String getName() {
-		return name;
+	public String getMedicine_name() {
+		return medicine_name;
 	}
 	/**
-	 * @param name the name to set
+	 * @param medicine_name the medicine_name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setMedicine_name(String medicine_name) {
+		this.medicine_name = medicine_name;
 	}
 	/**
 	 * @return the drugs
 	 */
-	public String[] getDrugs() {
+	public String getDrugs() {
 		return drugs;
 	}
 	/**
 	 * @param drugs the drugs to set
 	 */
-	public void setDrugs(String[] drugs) {
+	public void setDrugs(String drugs) {
 		this.drugs = drugs;
 	}
 	/**
 	 * @return the description
 	 */
 	public String getDescription() {
-		return description;
+		return Description;
 	}
 	/**
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
-		this.description = description;
+		Description = description;
 	}
 	/**
 	 * @return the dosage
 	 */
 	public String getDosage() {
-		return dosage;
+		return Dosage;
 	}
 	/**
 	 * @param dosage the dosage to set
 	 */
 	public void setDosage(String dosage) {
-		this.dosage = dosage;
+		Dosage = dosage;
 	}
 	/**
-	 * @return the requiresPrescription
+	 * @return the disease_id
 	 */
-	public boolean isRequiresPrescription() {
-		return requiresPrescription;
+	public int getDisease_id() {
+		return disease_id;
 	}
 	/**
-	 * @param requiresPrescription the requiresPrescription to set
+	 * @param disease_id the disease_id to set
 	 */
-	public void setRequiresPrescription(boolean requiresPrescription) {
-		this.requiresPrescription = requiresPrescription;
+	public void setDisease_id(int disease_id) {
+		this.disease_id = disease_id;
 	}
+
 }

@@ -1,50 +1,71 @@
 package models;
 
-/**
- * Class is derived from Person class and has all the attributes
- * relevant for a Patient
- */
-/**
- * 
- * @author pooja gupta & yeshwanthi durairaj
- * Date: 03/21/2018
- * File: Patient.java
- * Final Project
- *
- */
-public class Patient extends Person {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-	int id;
-	String[] symptoms;
+@ Entity(name="patient_details")
+public class Patient 
+{ 
+	@Id
+	int patient_Id;
+	String fname;
+	String lname;
+	String sex;
 	double height;
 	double weight;
-	String bloodgroup;
-	Boolean diabetic;
-	String others;
-	double BMI;
+	boolean is_diabetic;
+	String street;
+	String city;
+	String country;
+	String email;
+	String phone_Number;
 	/**
-	 * @return the id
+	 * @return the patient_Id
 	 */
-	public int getId() {
-		return id;
+	public int getPatient_Id() {
+		return patient_Id;
 	}
 	/**
-	 * @param id the id to set
+	 * @param patient_Id the patient_Id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setPatient_Id(int patient_Id) {
+		this.patient_Id = patient_Id;
 	}
 	/**
-	 * @return the symptoms
+	 * @return the fname
 	 */
-	public String[] getSymptoms() {
-		return symptoms;
+	public String getFname() {
+		return fname;
 	}
 	/**
-	 * @param symptoms the symptoms to set
+	 * @param fname the fname to set
 	 */
-	public void setSymptoms(String[] symptoms) {
-		this.symptoms = symptoms;
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	/**
+	 * @return the lname
+	 */
+	public String getLname() {
+		return lname;
+	}
+	/**
+	 * @param lname the lname to set
+	 */
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+	/**
+	 * @return the sex
+	 */
+	public String getSex() {
+		return sex;
+	}
+	/**
+	 * @param sex the sex to set
+	 */
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	/**
 	 * @return the height
@@ -71,52 +92,76 @@ public class Patient extends Person {
 		this.weight = weight;
 	}
 	/**
-	 * @return the bloodgroup
+	 * @return the is_diabetic
 	 */
-	public String getBloodgroup() {
-		return bloodgroup;
+	public boolean isIs_diabetic() {
+		return is_diabetic;
 	}
 	/**
-	 * @param bloodgroup the bloodgroup to set
+	 * @param is_diabetic the is_diabetic to set
 	 */
-	public void setBloodgroup(String bloodgroup) {
-		this.bloodgroup = bloodgroup;
+	public void setIs_diabetic(boolean is_diabetic) {
+		this.is_diabetic = is_diabetic;
 	}
 	/**
-	 * @return the diabetic
+	 * @return the street
 	 */
-	public Boolean getDiabetic() {
-		return diabetic;
+	public String getStreet() {
+		return street;
 	}
 	/**
-	 * @param diabetic the diabetic to set
+	 * @param street the street to set
 	 */
-	public void setDiabetic(Boolean diabetic) {
-		this.diabetic = diabetic;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 	/**
-	 * @return the others
+	 * @return the city
 	 */
-	public String getOthers() {
-		return others;
+	public String getCity() {
+		return city;
 	}
 	/**
-	 * @param others the others to set
+	 * @param city the city to set
 	 */
-	public void setOthers(String others) {
-		this.others = others;
+	public void setCity(String city) {
+		this.city = city;
 	}
 	/**
-	 * @return the bMI
+	 * @return the country
 	 */
-	public double getBMI() {
-		return BMI;
+	public String getCountry() {
+		return country;
 	}
 	/**
-	 * @param bMI the bMI to set
+	 * @param country the country to set
 	 */
-	public void setBMI(double bMI) {
-		BMI = bMI;
+	public void setCountry(String country) {
+		this.country = country;
 	}
-
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	/**
+	 * @return the phone_Number
+	 */
+	public String getPhone_Number() {
+		return phone_Number;
+	}
+	/**
+	 * @param phone_Number the phone_Number to set
+	 */
+	public void setPhone_Number(String phone_Number) {
+		this.phone_Number = phone_Number;
+	}
+	
 }
