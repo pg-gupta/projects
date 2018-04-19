@@ -8,13 +8,13 @@
 <!-- <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.layout.FlowPane?>
 
-<FlowPane fx:id="main" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXDoctorController1">
+<FlowPane fx:id="main" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewDoctorController1">
    <children>
       <JFXTreeTableView fx:id="doctorTable" prefHeight="400.0" prefWidth="534.0" stylesheets="@main.css" />
    </children>
 </FlowPane> -->
 
-<AnchorPane fx:id="main" prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXDoctorController">
+<AnchorPane fx:id="main" prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewDoctorController">
    <children>
       <TableView fx:id="doctorTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
