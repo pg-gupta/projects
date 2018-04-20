@@ -66,7 +66,7 @@ public class Profile extends AppCompatActivity {
                 if (skill != null && skill.getText() != "") {
                     map = new HashMap<String, String>();
                     // add skill with its proficiency
-                    map.put(getString(R.string.users), skill.getText().toString());
+                    map.put(getString(R.string.skill_name), skill.getText().toString());
                     map.put(getString(R.string.skill_proficiency), "1");
 
                     // check if the skill already added
@@ -97,10 +97,12 @@ public class Profile extends AppCompatActivity {
         reference.orderByChild(getString(R.string.skill_name)).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Map map = dataSnapshot.getValue(Map.class);
-                skills += map.get(getString(R.string.skill_name)).toString() + ",";
-                skillList.setText(skills);
-                skill.setText("");
+                if(dataSnapshot.exists()) {
+                    Map map = dataSnapshot.getValue(Map.class);
+                    skills += map.get(getString(R.string.skill_name)).toString() + ",";
+                    skillList.setText(skills);
+                    skill.setText("");
+                }
             }
 
             @Override

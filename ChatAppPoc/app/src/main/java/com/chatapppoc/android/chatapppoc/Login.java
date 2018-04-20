@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
                 } else if (pass.equals("")) {
                     password.setError("can't be blank");
                 } else {
-                    String url = "https://chatapppoc-b9a57.firebaseio.com/users.json";
+                    String url = getString(R.string.firebase_database) + "/users.json";
                     final ProgressDialog pd = new ProgressDialog(Login.this);
                     pd.setMessage("Loading...");
                     pd.show();
