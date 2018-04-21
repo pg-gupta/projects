@@ -1,6 +1,8 @@
 package com.chatapppoc.android.chatapppoc;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.firebase.geofire.GeoLocation;
+import com.firebase.ui.auth.data.model.User;
 
 import java.util.Map;
 
@@ -9,6 +11,15 @@ public class UserDetails {
     static String username = "";
     static String password = "";
     static String chatWith = "";
+    static GeoLocation userLocation;
+    public static GeoLocation getUserLocation() {
+        return userLocation;
+    }
+
+    public static void setUserLocation(GeoLocation userLocation) {
+        UserDetails.userLocation = userLocation;
+    }
+
 
     public static Map<String, String>[] getSkills() {
         return skills;
@@ -29,6 +40,9 @@ public class UserDetails {
 
     public static String getChatWith() {
         return chatWith;
+    }
+    public UserDetails(){
+
     }
 
     @Override

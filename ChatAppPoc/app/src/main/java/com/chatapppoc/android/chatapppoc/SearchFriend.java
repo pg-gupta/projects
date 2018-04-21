@@ -1,24 +1,26 @@
 package com.chatapppoc.android.chatapppoc;
 
 import android.app.Activity;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.chatapppoc.android.chatapppoc.AddFriendList;
-import com.chatapppoc.android.chatapppoc.R;
-import com.chatapppoc.android.chatapppoc.UserDetails;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
+import com.firebase.geofire.GeoQuery;
+import com.firebase.geofire.GeoQueryEventListener;
 import com.firebase.ui.auth.data.model.User;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,11 @@ public class SearchFriend extends AppCompatActivity {
     TextView searchSkillText;
     ImageButton searchBtn;
     String searchTxt;
+    public static final GeoLocation CURRENT_LOCATION = UserDetails.getUserLocation();//new GeoLocation(37.7789, -122.4056973);
+    private DatabaseReference database;
+    private GeoFire geofire;
+    Boolean usersFetchedByDistance = false;
+    private List<String> peopleNearby = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,11 @@ public class SearchFriend extends AppCompatActivity {
         searchSkillText = (TextView) findViewById(R.id.searchTxt);
         searchBtn = (ImageButton) findViewById(R.id.searchBtn);
         reference = new Firebase(getString(R.string.firebase_database));
+
+        setupFirebase();
+
+        fetchUsers();
+
         // Search button click event
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +71,53 @@ public class SearchFriend extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    private void setupFirebase() {
+        database = FirebaseDatabase.getInstance().getReference();
+        geofire = new GeoFire(database.child(getString(R.string.geolocation)));
+    }
+
+    private void fetchUsers() {
+        GeoQuery geoQuery = geofire.queryAtLocation(CURRENT_LOCATION, 0.4);
+
+        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
+            @Override
+            public void onKeyEntered(String key, GeoLocation location) {
+                Location to = new Location("to");
+                to.setLatitude(location.latitude);
+                to.setLongitude(location.longitude);
+                if (!usersFetchedByDistance) {
+                    peopleNearby.add(key);
+                }
+            }
+
+            @Override
+            public void onKeyExited(String key) {
+                Log.d("Map", "onKeyExited: ");
+
+            }
+
+            @Override
+            public void onKeyMoved(String key, GeoLocation location) {
+                Log.d("Map", "onKeyMoved: ");
+            }
+
+            @Override
+            public void onGeoQueryReady() {
+                Log.d("Map", "onGeoQueryReady: ");
+                usersFetchedByDistance = true;
+            }
+
+
+            @Override
+            public void onGeoQueryError(DatabaseError error) {
+                Log.e("Map", "onGeoQueryError: ", error.toException());
+            }
+        });
+
     }
 
     private void searchPeopleWithSkill() {
@@ -100,7 +159,7 @@ public class SearchFriend extends AppCompatActivity {
                         friends.add(entry.getKey());
                     }
                 }
-                getUsers();
+                getPeopleWithSkill();
             }
 
             @Override
@@ -110,14 +169,15 @@ public class SearchFriend extends AppCompatActivity {
         });
     }
 
-    private void getUsers() {
+    private void getPeopleWithSkill() {
         users = new ArrayList<>();
         reference.child(getString(R.string.users)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     try {
-                        if (!ds.getKey().equals(UserDetails.username) && !friends.contains(ds.getKey()) && !requestList.contains(ds.getKey())) {
+                        if (!ds.getKey().equals(UserDetails.username) && !friends.contains(ds.getKey()) && !requestList.contains(ds.getKey())
+                                && peopleNearby.contains(ds.getKey())) {
                             name = ds.getKey();
                             users.add(name);
                         }

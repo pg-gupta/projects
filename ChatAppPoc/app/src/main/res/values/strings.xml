@@ -7,4 +7,6 @@
     <string name="skills">skills</string>
     <string name="skill_name">name</string>
     <string name="skill_proficiency">proficiency</string>
+    <string name="geolocation">geolocation</string>
+    <string name="messages">messages</string>
 </resources>

@@ -19,7 +19,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
+import com.firebase.geofire.LocationCallback;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -81,6 +90,7 @@ public class Login extends AppCompatActivity {
                                     } else if (obj.getJSONObject(user).getString("password").equals(pass)) {
                                         UserDetails.username = user;
                                         UserDetails.password = pass;
+                                        getUserLocation();
                                         //startActivity(new Intent(Login.this, Users.class));
                                         startActivity(new Intent(Login.this, Profile.class));
                                     } else {
@@ -107,5 +117,35 @@ public class Login extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getUserLocation() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.geolocation));
+        GeoFire geofire = new GeoFire(reference);
+        geofire.getLocation(UserDetails.username, new LocationCallback() {
+            @Override
+            public void onLocationResult(String key, GeoLocation location) {
+                UserDetails.setUserLocation(location);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+//Firebase reference=new Firebase(getString(R.string.firebase_database)+"/"+getString(R.string.geolocation)+"/"+UserDetails.username);
+/*reference.addListenerForSingleValueEvent(new ValueEventListener() {
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+
+        GeoLocation loc=dataSnapshot.getValue(GeoLocation.class);
+        UserDetails.setUserLocation(loc);
+    }
+
+    @Override
+    public void onCancelled(FirebaseError firebaseError) {
+
+    }
+});*/
     }
 }
