@@ -42,6 +42,9 @@ public class Requests extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to get all pending requests
+     */
     private void getAllRequests() {
 
         final List<String> requests = new ArrayList<>();

@@ -14,6 +14,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.firebase.ui.auth.data.model.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,6 @@ import java.util.Map;
 public class AcceptFriendRequestCustomList extends ArrayAdapter {
 
     // variables
-
     Activity context;
     List<String> users;
     Firebase reference;
@@ -53,6 +53,7 @@ public class AcceptFriendRequestCustomList extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
+        // Inflate view with the list of the user's request along with an Accept and Reject request
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.activity_accept_friend_request_custom_list, null, true);
         TextView requestFrom = (TextView) rowView.findViewById(R.id.requestFromtext);
@@ -86,10 +87,11 @@ public class AcceptFriendRequestCustomList extends ArrayAdapter {
     /**
      * deletes entry from the list
      *
-     * @param name person name which needs to be deleted
+     * @param requesterName person name which needs to be deleted
      */
-    private void deleteRequest(String name) {
-        users.remove(name);
+    private void deleteRequest(String requesterName) {
+        reference.child(usersDBKey).child(UserDetails.username).child(requestListDBKey).child(requesterName).setValue(true);
+        users.remove(requesterName);
         notifyDataSetChanged();
     }
 

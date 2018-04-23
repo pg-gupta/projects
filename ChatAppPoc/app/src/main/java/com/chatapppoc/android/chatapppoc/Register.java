@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity {
+    // variables declared
     EditText username, password;
     Button registerButton;
     String user, pass;
@@ -35,11 +36,11 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        username = (EditText)findViewById(R.id.username);
-        password = (EditText)findViewById(R.id.password);
-        registerButton = (Button)findViewById(R.id.registerButton);
-        login = (TextView)findViewById(R.id.login);
+        // variables defined
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        registerButton = (Button) findViewById(R.id.registerButton);
+        login = (TextView) findViewById(R.id.login);
 
         Firebase.setAndroidContext(this);
 
@@ -56,69 +57,40 @@ public class Register extends AppCompatActivity {
                 user = username.getText().toString();
                 pass = password.getText().toString();
 
-                if(user.equals("")){
-                    username.setError("can't be blank");
-                }
-                else if(pass.equals("")){
-                    password.setError("can't be blank");
-                }
-                else if(!user.matches("[A-Za-z0-9]+")){
-                    username.setError("only alphabet or number allowed");
-                }
-                else if(user.length()<5){
-                    username.setError("at least 5 characters long");
-                }
-                else if(pass.length()<5){
-                    password.setError("at least 5 characters long");
-                }
-                else {
+                if (user.equals("")) {
+                    username.setError(getString(R.string.no_text));
+                } else if (pass.equals("")) {
+                    password.setError(getString(R.string.no_text));
+                } else if (!user.matches("[A-Za-z0-9]+")) {
+                    username.setError(getString(R.string.alpha_numeric));
+                } else if (user.length() < 5) {
+                    username.setError(getString(R.string.atleast_five_char));
+                } else if (pass.length() < 5) {
+                    password.setError(getString(R.string.atleast_five_char));
+                } else {
                     final ProgressDialog pd = new ProgressDialog(Register.this);
                     pd.setMessage("Loading...");
                     pd.show();
 
-                   /* Firebase myFirebaseRef = new Firebase("https://chatapppoc-b9a57.firebaseio.com/");
-                   // myFirebaseRef.authAnonymously();
+                    String url = getString(R.string.firebase_database) + "/users.json";
 
-                    myFirebaseRef.createUser("bobtony@firebase.com", "correcthorsebatterystaple", new Firebase.ValueResultHandler<Map<String, Object>>() {
-                        @Override
-                        public void onSuccess(Map<String, Object> result) {
-                            Toast.makeText(getApplicationContext(),"succesfull",Toast.LENGTH_LONG).show();
-                            //System.out.println("Successfully created user account with uid: " + result.get("uid"));
-                        }
-                        @Override
-                        public void onError(FirebaseError firebaseError) {
-                            Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
-
-                        }
-                    });*/
-
-                   /* Firebase usersRef = new Firebase("https://chatapppoc-b9a57.firebaseio.com/users");
-                    usersRef.child("username").setValue(user);
-                    usersRef.child("password").setValue(pass);
-*/
-
-
-
-                    String url = "https://chatapppoc-b9a57.firebaseio.com/users.json";
-
-                    StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
+                    StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String s) {
-                            Firebase reference = new Firebase("https://chatapppoc-b9a57.firebaseio.com/users");
+                            Firebase reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users));
 
-                            if(s.equals("null")) {
-                                reference.child(user).child("password").setValue(pass);
-                                Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
-                            }
-                            else {
+                            if (s.equals("null")) {
+                                reference.child(user).child(getString(R.string.password)).setValue(pass);
+                                Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
+                            } else {
                                 try {
                                     JSONObject obj = new JSONObject(s);
 
                                     if (!obj.has(user)) {
-                                        reference.child(user).child("password").setValue(pass);
-                                        Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
+                                        reference.child(user).child(getString(R.string.password)).setValue(pass);
+                                        Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
                                     } else {
-                                        Toast.makeText(Register.this, "username already exists", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register.this, R.string.user_exists, Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (JSONException e) {
@@ -129,10 +101,10 @@ public class Register extends AppCompatActivity {
                             pd.dismiss();
                         }
 
-                    },new Response.ErrorListener(){
+                    }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
-                            System.out.println("" + volleyError );
+                            System.out.println("" + volleyError);
                             pd.dismiss();
                         }
                     });

@@ -13,6 +13,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.maps.model.Marker;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.Map;
 
 public class AddFriendList extends ArrayAdapter {
 
+    // variables declared
     List<String> users;
     Activity context;
     Firebase reference;
@@ -45,7 +47,11 @@ public class AddFriendList extends ArrayAdapter {
         this.requestListDBKey = requestListDBKey;
     }
 
-
+    /**
+     * Method to add person in the friend list of both the sender and accepter of friend request
+     * @param requestFrom Person from whom request os coming from
+     * @param requestTo Person who is accepting the friend request
+     */
     private void addFriend(final String requestFrom, final String requestTo) {
         reference.child(usersDBKey).child(requestFrom).child(requestListDBKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -73,15 +79,15 @@ public class AddFriendList extends ArrayAdapter {
         });
     }
 
-    // method populating values in the view of add_friend_list
+  @Override
     public View getView(final int position, View view, ViewGroup parent) {
+        // Inflating a view with list of friend requests
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.activity_add_friend_list, null, true);
 
         // getting reference of the views
         TextView nameTxt = (TextView) rowView.findViewById(R.id.nametxtView);
         Button addBtn = (Button) rowView.findViewById(R.id.addbtn);
-
 
         nameTxt.setText(users.get(position));
         addBtn.setOnClickListener(new View.OnClickListener() {
