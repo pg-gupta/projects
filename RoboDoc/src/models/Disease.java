@@ -10,7 +10,7 @@ public class Disease
 	String disease_name;
 	String treatment;
 	String prevention;
-	boolean is_contagious;
+    String is_contagious;
 	String preffered_diet;
 	String test_suggested;
 	/**
@@ -64,14 +64,20 @@ public class Disease
 	/**
 	 * @return the is_contagious
 	 */
-	public boolean isIs_contagious() {
+	public String Is_contagious() {
 		return is_contagious;
 	}
 	/**
 	 * @param is_conagious the is_conagious to set
 	 */
-	public void setIs_contagious(boolean is_contagious) {
+	public void setIs_contagious(String is_contagious) {
 		this.is_contagious = is_contagious;
+	}
+	/**
+	 * @return the is_contagious
+	 */
+	public String getIs_contagious() {
+		return is_contagious;
 	}
 	/**
 	 * @return the preffered_diet

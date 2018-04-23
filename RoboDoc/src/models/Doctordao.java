@@ -7,7 +7,6 @@ import org.hibernate.cfg.Configuration;
 import models.Doctor;
 
 
-
 public  class Doctordao extends DBOperations
 {   
     public void insertData(Doctor doc) 

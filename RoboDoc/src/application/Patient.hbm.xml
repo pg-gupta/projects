@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 20, 2018, 1:07:21 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <joined-subclass name="models.Patient" extends="models.Person" table="PATIENT" lazy="false">
+        <key>
+            <column name="PERSONID" />
+        </key>
+        <property name="patient_Id" type="int">
+            <column name="PATIENT_ID" />
+        </property>
+        <property name="weight" type="int">
+            <column name="WEIGHT" />
+        </property>
+        <property name="height" type="int">
+            <column name="HEIGHT" />
+        </property>
+        <property name="isDiabetic" type="java.lang.String">
+            <column name="ISDIABETIC" />
+        </property>
+        <property name="person_Id" type="int">
+            <column name="PERSON_ID" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>

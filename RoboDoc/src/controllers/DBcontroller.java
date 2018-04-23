@@ -24,12 +24,109 @@ public class DBcontroller
 	public static void main(String[] args)
 	{   
 		@SuppressWarnings("unchecked")
-
-	  
 	    org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("org.hibernate");
-	    java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.WARNING);
+	    java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.OFF);
+	    
+	    /*Symptom sym =new Symptom();
+		Symptomdao symdao=new Symptomdao();
+		
+		sym.setSymptom_id(29);
+		sym.setDescription("Shvering and headache");
+		sym.setDisease_id(1);
+		symdao.insertData(sym);*/
+        
+	    Persondao dao =new Persondao();
+	    Person person= new Person();
+		Patient pt =new Patient();
+		Patientdao ptdao =new Patientdao();
+		Doctor doc =new Doctor();
+		Doctordao docdao =new Doctordao();
+		person.setId(28);
+		/*person.setFname("aish");
+		person.setLname("srini");
+		person.setAge(27);
+		person.setSex("F");
+		person.setEmail("jdyesh@gmail.com");*/
+	/*	pt.setId(person.getId());
+		pt.setFname("aish");
+		pt.setLname("srini");
+		pt.setAge(15);
+		pt.setSex("F");
+		pt.setEmail("jdyesh@gmail.com");
+		pt.setHeight(155);
+		pt.setWeight(34);
+		pt.setIsDiabetic("yes");*/
+		doc.setId(person.getId());
+		doc.setFname("aish");
+		doc.setLname("srini");
+		doc.setAge(27);
+		doc.setSex("F");
+		doc.setEmail("jdyesh@gmail.com");
+		doc.setSpecialization("genral");
+		doc.setVisithours("9-3");
+		doc.setDegree("M.D");
+		
+		//dao.insertData(pt);
+		//dao.deleteData(person);
+		//ptdao.deleteData(pt);
+		//dao.insertData(person);
+	  //ptdao.updateData(pt);
+	   //ptdao.deleteData(pt);
+		docdao.insertData(doc);
+		
+		List<?> rec = dao.getRecords(person);
+        Iterator it = rec.iterator();
 
-		String entity = null;
+        while(it.hasNext())
+        {
+            Object obj = (Object)it.next();
+            Person per = (Person) obj   ;
+    		System.out.println(per.getId()+"\t"+per.getFname()+"\t"+per.getLname());
+          
+        }
+
+		
+	/*	Doctor doc =new Doctor();
+		Doctordao docdao=new Doctordao();
+		doc.setVisitinghours("10 a.m to 6 p.m");
+		doc.setSpecialization("Genral");
+		doc.setDegree("M.B.B.S");
+		//dao.insertData(person);
+		//doc.setId(14);
+		docdao.delete(doc);*/
+		
+		/*List<?> rec = dao.getRecords(person);
+        Iterator it = rec.iterator();
+
+        while(it.hasNext())
+        {
+            Object obj = (Object)it.next();
+            Person med1 = (Person) obj   ;
+    		System.out.println(med1.getFname());
+          
+        }*/
+
+		
+		
+		
+	    
+	    /*Doctor doc =new Doctor();
+		   Doctordao docdao=new Doctordao();
+		  doc.setPersonId(29);;
+			doc.setFname("fff");
+			doc.setLname("ada");
+			doc.setAge(23);
+			doc.setSex("Fever medications");
+			doc.setEmail("good");
+			doc.setVisitinghours("10 a.m to 6 p.m");
+			doc.setSpecialization("Genral");
+			doc.setDegree("M.B.B.S");
+					docdao.insert(doc);*/
+	    
+	    
+
+
+	/*	String entity = null;
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println("Enter the table name");
 	    
@@ -39,13 +136,13 @@ public class DBcontroller
 		switch(entity)
 		{
 		case "doctor_details" :
-			 doctorcrud();
+			// doctorcrud();
 			  break;
 		case "patient_details" :
-			 patientcrud();
+			 //patientcrud();
 			  break;
 		case "patient_tracking_details" :
-			 patienttrackingcrud();
+			 //patienttrackingcrud();
 			  break;
 		case "dim_medicine" :
 			 medicinecrud();
@@ -58,111 +155,12 @@ public class DBcontroller
 			  break;
 		
 		
-		}
+		}*/
 		
 	}
 	
 	
-	public static void doctorcrud()
-	{
 		
-		Doctor doc =new Doctor();
-		Doctordao docdao  =new Doctordao();
-	
-		doc.setDoctor_Id(1);
-		doc.setFname("poojagt");
-		doc.setLname("gupta");
-		doc.setVisiting_Hours("10 a.m to 6 p.m");
-		doc.setSpecialization("Genral");
-		doc.setDegree("M.B.B.S");
-		doc.setPhone_Number("7893456789");
-		doc.setAddress("Wacker drive,Chicago");
-        //docdao.insertData(doc);
-        //docdao.updateData(doc);
-        //docdao.deleteData(doc);
-        List<?> rec = docdao.getRecords(doc);
-        Iterator it = rec.iterator();
-
-        while(it.hasNext())
-        {
-            Object obj = (Object)it.next();
-            Doctor doc1 = (Doctor) obj   ;
-            System.out.println(doc1.getDoctor_Id() +"\t"+ doc1.getFname()+ "\t"+doc1.getLname() + "\t"+ doc1.getVisiting_Hours()+"\t"+doc1.getSpecialization()+"\t"+doc1.getDegree());
-          
-        }
-        //Doctor doc2= (Doctor) docdao.getById(1);
-       // System.out.println(doc2.getDoctor_Id() +"\t"+ doc2.getFname()+ "\t"+doc2.getLname() + "\t"+ doc2.getVisiting_Hours()+"\t"+doc2.getSpecialization()+"\t"+doc2.getDegree());
-	}
-	
-	
-	public static void patientcrud()
-	{	
-		Patient pt =new Patient();
-		Patientdao ptdao =new Patientdao();
-		
-		pt.setPatient_Id(1);
-		pt.setFname("James");
-		pt.setLname("smith");
-		pt.setSex("Male");
-		pt.setHeight(155.0);
-		pt.setWeight(60.0);
-		pt.setStreet("cross street");
-		pt.setCity("Chicago");
-		pt.setCountry("USA");
-		pt.setEmail("jdyeah@gmail.com");
-		pt.setPhone_Number("3459802345");
-		//ptdao.insertData(pt);
-        //ptdao.updateData(pt);
-         //ptdao.deleteData(pt);
-        List<?> rec = ptdao.getRecords(pt);
-        System.out.println(rec.size());
-        Iterator it = rec.iterator();
-
-        while(it.hasNext())
-        {
-            Object obj = (Object)it.next();
-            Patient pt1 = (Patient) obj   ;
-            System.out.println(pt1.getPatient_Id() +"\t"+ pt1.getFname() +"\t"+ pt1.getLname() +"\t"+ pt1.getSex());
-          
-        }
-
-        //Patient pt2= (Patient) ptdao.getById((1));
-        //System.out.println(pt2.getPatient_Id() +"\t"+ pt2.getFname() +"\t"+ pt2.getLname() +"\t"+ pt2.getSex());
-		
-	}
-	
-	
-	public static void patienttrackingcrud()
-	{
-		Person person =new Person();
-		Persondao persondao=new Persondao();
-		
-		person.setTracking_id(1);
-		person.setPatient_id(1);
-		person.setDoctor_id(1);
-		person.setSymptoms("Headache");
-		person.setTreatment_advised("Fever medications");
-		person.setRating("good");
-		persondao.insertData(person);
-        //persondao.updateData(person);
-        //persondao.deleteData(person);
-        List<?> rec = persondao.getRecords(person);
-        //System.out.println(rec);
-        Iterator it = rec.iterator();
-
-        while(it.hasNext())
-        {
-            Object obj = (Object)it.next();
-            Person person1 = (Person) obj   ;
-            System.out.println(person1.getTracking_id()+"\t"+person1.getPatient_id()+"\t"+person1.getDoctor_id());
-          
-        }
-
-        //Person person2= (Person) persondao.getById(1);
-        //System.out.println(person2.getTracking_id()+"\t"+person2.getPatient_id()+"\t"+person2.getDoctor_id());
-
-	}
-	
 	public static void medicinecrud()
 	
 	{
@@ -207,7 +205,7 @@ public class DBcontroller
 		disease.setDisease_name("Pneumonia");
 		disease.setTreatment("Medication for fever");
 		disease.setPrevention("Flu shots");
-		disease.setIs_contagious(false);
+		//disease.setIs_contagious(false);
 		disease.setPreffered_diet("Mild food");
 		disease.setTest_suggested("Viral test");
 		
@@ -235,13 +233,13 @@ public class DBcontroller
 		Symptom sym =new Symptom();
 		Symptomdao symdao=new Symptomdao();
 		
-		sym.setSymptom_id(1);
+		sym.setSymptom_id(24);
 		sym.setDescription("Shvering and headache");
-		sym.setDisease_id(1);
-		//symdao.insertData(sym);
+		//sym.setDisease_id(1);
+		symdao.insertData(sym);
         //symdao.updateData(sym);
         //symdao.deleteData(sym);
-        List<?> rec = symdao.getRecords(sym);
+        /*List<?> rec = symdao.getRecords(sym);
         Iterator it = rec.iterator();
 
         while(it.hasNext())
@@ -250,7 +248,7 @@ public class DBcontroller
             Symptom sym1 = (Symptom) obj   ;
 
 		System.out.println(sym1.getSymptom_id()+"\t"+sym1.getdescription()+"\t"+sym1.getDisease_id());
-        }
+        }*/
         //Symptom sym2= (Symptom) symdao.getById(1);
         //System.out.println(sym2.getSymptom_id()+"\t"+sym2.getdescription()+"\t"+sym2.getDisease_id());
 

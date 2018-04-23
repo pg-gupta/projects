@@ -1,88 +1,129 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.InheritanceType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 
-@ Entity(name="patient_tracking_details")
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Person {
-    @Id
-	int tracking_id;
-	int patient_id;
-	int doctor_id;
-	String symptoms;
-	String treatment_advised;
-	String rating;
-	/**
-	 * @return the tracking_id
-	 */
-	public int getTracking_id() {
-		return tracking_id;
+	@Id
+	//@GenericGenerator(name="system-uuid" , strategy="increment")
+	@GeneratedValue
+
+  
+public	int id;
+	private String fname;
+	private String lname;
+	private int age;
+	private String sex;
+	private String email;
+	private String phonenumber;
+	private String address;
+	
+	
+	
+	
+	public int getId() {
+		return id;
 	}
 	/**
-	 * @param tracking_id the tracking_id to set
+	 * @param personId the personId to set
 	 */
-	public void setTracking_id(int tracking_id) {
-		this.tracking_id = tracking_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 	/**
-	 * @return the patient_id
+	 * @return the fname
 	 */
-	public int getPatient_id() {
-		return patient_id;
+	public String getFname() {
+		return fname;
 	}
 	/**
-	 * @param patient_id the patient_id to set
+	 * @param fname the fname to set
 	 */
-	public void setPatient_id(int patient_id) {
-		this.patient_id = patient_id;
+	public void setFname(String fname) {
+		this.fname = fname;
 	}
 	/**
-	 * @return the doctor_id
+	 * @return the lname
 	 */
-	public int getDoctor_id() {
-		return doctor_id;
+	public String getLname() {
+		return lname;
 	}
 	/**
-	 * @param doctor_id the doctor_id to set
+	 * @param lname the lname to set
 	 */
-	public void setDoctor_id(int doctor_id) {
-		this.doctor_id = doctor_id;
+	public void setLname(String lname) {
+		this.lname = lname;
 	}
 	/**
-	 * @return the symptoms
+	 * @return the age
 	 */
-	public String getSymptoms() {
-		return symptoms;
+	public int getAge() {
+		return age;
 	}
 	/**
-	 * @param symptoms the symptoms to set
+	 * @param age the age to set
 	 */
-	public void setSymptoms(String symptoms) {
-		this.symptoms = symptoms;
+	public void setAge(int age) {
+		this.age = age;
 	}
 	/**
-	 * @return the treatment_advised
+	 * @return the sex
 	 */
-	public String getTreatment_advised() {
-		return treatment_advised;
+	public String getSex() {
+		return sex;
 	}
 	/**
-	 * @param treatment_advised the treatment_advised to set
+	 * @param sex the sex to set
 	 */
-	public void setTreatment_advised(String treatment_advised) {
-		this.treatment_advised = treatment_advised;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	/**
-	 * @return the rating
+	 * @return the email
 	 */
-	public String getRating() {
-		return rating;
+	public String getEmail() {
+		return email;
 	}
 	/**
-	 * @param rating the rating to set
+	 * @param email the email to set
 	 */
-	public void setRating(String rating) {
-		this.rating = rating;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+	/**
+	 * @return the phonenumber
+	 */
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+	/**
+	 * @param phonenumber the phonenumber to set
+	 */
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	/**
+	 * @return the persontype
+	 */
+	
 	
 }
