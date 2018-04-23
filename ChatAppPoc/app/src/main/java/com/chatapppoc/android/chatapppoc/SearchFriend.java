@@ -2,13 +2,14 @@ package com.chatapppoc.android.chatapppoc;
 
 import android.app.Activity;
 import android.location.Location;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -17,16 +18,25 @@ import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
 import com.firebase.geofire.GeoQueryEventListener;
-import com.firebase.ui.auth.data.model.User;
+import com.firebase.geofire.LocationCallback;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SearchFriend extends AppCompatActivity {
+public class SearchFriend extends FragmentActivity implements OnMapReadyCallback {
 
     // variables declared
     ListView friendList;
@@ -34,16 +44,21 @@ public class SearchFriend extends AppCompatActivity {
     String name;
     Firebase reference;
     List<String> users;
-    List<String> friends;
+    List<String> friendsList;
     List<String> requestList;
     TextView searchSkillText;
     ImageButton searchBtn;
     String searchTxt;
-    public static final GeoLocation CURRENT_LOCATION = UserDetails.getUserLocation();//new GeoLocation(37.7789, -122.4056973);
+    GeoLocation CURRENT_LOCATION;
     private DatabaseReference database;
     private GeoFire geofire;
     Boolean usersFetchedByDistance = false;
     private List<String> peopleNearby = new ArrayList<>();
+    private Map<String, Marker> markers;
+    private GoogleMap map;
+    private Circle searchCircle;
+    private static final int INITIAL_ZOOM_LEVEL = 14;
+    GeoLocation loc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +71,10 @@ public class SearchFriend extends AppCompatActivity {
         searchSkillText = (TextView) findViewById(R.id.searchTxt);
         searchBtn = (ImageButton) findViewById(R.id.searchBtn);
         reference = new Firebase(getString(R.string.firebase_database));
+        CURRENT_LOCATION = UserDetails.getUserLocation();
 
-        setupFirebase();
+        setUpMap();
 
-        fetchUsers();
-
-        // Search button click event
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,12 +88,28 @@ public class SearchFriend extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to add map to the page
+     */
+    private void setUpMap() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        this.markers = new HashMap<String, Marker>();
+    }
+
+    /**
+     * Method to set firebase and geofire reference
+     */
     private void setupFirebase() {
         database = FirebaseDatabase.getInstance().getReference();
         geofire = new GeoFire(database.child(getString(R.string.geolocation)));
     }
 
-    private void fetchUsers() {
+    /**
+     * Method to get all the users within certain miles
+     */
+    private void fetchUsersByMiles() {
         GeoQuery geoQuery = geofire.queryAtLocation(CURRENT_LOCATION, 0.4);
 
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
@@ -120,10 +149,16 @@ public class SearchFriend extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to get all the people with certain skill and within certain miles
+     */
     private void searchPeopleWithSkill() {
         getFriendsInRequestList();
     }
 
+    /**
+     * Method to get all the people which are in the logged in user's request list
+     */
     private void getFriendsInRequestList() {
         requestList = new ArrayList<>();
         reference.child(getString(R.string.users)).child(UserDetails.username).child(getString(R.string.request_list)).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -137,7 +172,7 @@ public class SearchFriend extends AppCompatActivity {
                         }
                     }
                 }
-                getFriends();
+                getFriendsList();
             }
 
             @Override
@@ -147,8 +182,11 @@ public class SearchFriend extends AppCompatActivity {
         });
     }
 
-    private void getFriends() {
-        friends = new ArrayList<>();
+    /**
+     * Method to get all the people in the logged in user's friend list
+     */
+    private void getFriendsList() {
+        friendsList = new ArrayList<>();
 
         reference.child(getString(R.string.users)).child(UserDetails.username).child(getString(R.string.friends_list)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -156,7 +194,7 @@ public class SearchFriend extends AppCompatActivity {
                 Map<String, Boolean> map = (Map<String, Boolean>) dataSnapshot.getValue();
                 if (dataSnapshot.getValue() != null) {
                     for (Map.Entry<String, Boolean> entry : map.entrySet()) {
-                        friends.add(entry.getKey());
+                        friendsList.add(entry.getKey());
                     }
                 }
                 getPeopleWithSkill();
@@ -169,14 +207,18 @@ public class SearchFriend extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method to get all the users with a certain skill
+     */
     private void getPeopleWithSkill() {
         users = new ArrayList<>();
         reference.child(getString(R.string.users)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     try {
-                        if (!ds.getKey().equals(UserDetails.username) && !friends.contains(ds.getKey()) && !requestList.contains(ds.getKey())
+                        if (!ds.getKey().equals(UserDetails.username) && !friendsList.contains(ds.getKey()) && !requestList.contains(ds.getKey())
                                 && peopleNearby.contains(ds.getKey())) {
                             name = ds.getKey();
                             users.add(name);
@@ -202,6 +244,36 @@ public class SearchFriend extends AppCompatActivity {
 
     }
 
+    /**
+     * Add marker to the map
+     *
+     * @param key user name whose location is to be marked onto map
+     */
+    private void addMarker(String key) {
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.geolocation));
+        GeoFire geofire = new GeoFire(reference);
+        geofire.getLocation(key, new LocationCallback() {
+            @Override
+            public void onLocationResult(String key, GeoLocation location) {
+                loc = location;
+                Marker marker = map.addMarker(new MarkerOptions().position(new LatLng(loc.latitude, loc.longitude)).title(name));
+                markers.put(name, marker);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    /**
+     * Method to filter people with certain skill
+     *
+     * @param skill the skill on which people need to be filtered
+     * @throws InterruptedException
+     */
     private void filterUserHavingSkill(final String skill) throws InterruptedException {
         final List<String> filteredUser = new ArrayList<>();
         final AddFriendList[] addFriendCustomAdapter = new AddFriendList[1];
@@ -209,8 +281,10 @@ public class SearchFriend extends AppCompatActivity {
             reference.child(getString(R.string.users)).child(user).child(getString(R.string.skills)).orderByChild(getString(R.string.skill_name)).equalTo(skill).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists())
+                    if (dataSnapshot.exists()) {
                         filteredUser.add(user);
+                        addMarker(name);
+                    }
                     addFriendCustomAdapter[0] = new AddFriendList(activity, filteredUser, reference, getString(R.string.users), getString(R.string.request_list));
                     friendList.setAdapter(addFriendCustomAdapter[0]);
                 }
@@ -224,5 +298,21 @@ public class SearchFriend extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        LatLng latLngCenter = new LatLng(CURRENT_LOCATION.latitude, CURRENT_LOCATION.longitude);
+        map = googleMap;
+        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        map.setTrafficEnabled(true);
+        map.setIndoorEnabled(true);
+        map.setBuildingsEnabled(true);
+        map.getUiSettings().setZoomControlsEnabled(true);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngCenter, INITIAL_ZOOM_LEVEL));
+
+        setupFirebase();
+
+        fetchUsersByMiles();
     }
 }

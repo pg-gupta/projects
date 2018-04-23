@@ -24,6 +24,7 @@ import java.util.Map;
 
 
 public class Chat extends AppCompatActivity {
+    // variables decalred
     LinearLayout layout;
     RelativeLayout layout_2;
     ImageView sendButton;
@@ -36,6 +37,7 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        // get reference of the view elements
         layout = (LinearLayout) findViewById(R.id.layout1);
         layout_2 = (RelativeLayout)findViewById(R.id.layout2);
         sendButton = (ImageView)findViewById(R.id.sendButton);
@@ -100,6 +102,11 @@ public class Chat extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method to add message in the chat window of the user
+     * @param message Message which is to be added
+     * @param type if the message is send or receive message
+     */
     public void addMessageBox(String message, int type){
         TextView textView = new TextView(Chat.this);
         textView.setText(message);

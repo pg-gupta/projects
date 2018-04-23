@@ -22,7 +22,6 @@ import java.util.Map;
 public class AcceptFriendRequestCustomList extends ArrayAdapter {
 
     // variables
-
     Activity context;
     List<String> users;
     Firebase reference;
@@ -53,6 +52,7 @@ public class AcceptFriendRequestCustomList extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
+        // Inflate view with the list of the user's request along with an Accept and Reject request
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.activity_accept_friend_request_custom_list, null, true);
         TextView requestFrom = (TextView) rowView.findViewById(R.id.requestFromtext);

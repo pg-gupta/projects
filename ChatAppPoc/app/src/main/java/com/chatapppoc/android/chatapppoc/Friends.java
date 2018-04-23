@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Friends extends AppCompatActivity {
+    // variables declared
     ListView usersList;
     TextView noUsersText;
     ArrayList<String> al = new ArrayList<>();
@@ -33,13 +34,14 @@ public class Friends extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
 
+        // variables defined
         usersList = (ListView) findViewById(R.id.usersList);
         noUsersText = (TextView) findViewById(R.id.noUsersText);
         pd = new ProgressDialog(Friends.this);
         pd.setMessage("Loading...");
         pd.show();
 
-
+        // get firebase reference
         reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users) + "/" + UserDetails.username + "/" + getString(R.string.friends_list));
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {

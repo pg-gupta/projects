@@ -36,6 +36,7 @@ import org.json.JSONObject;
 import jp.wasabeef.blurry.Blurry;
 
 public class Login extends AppCompatActivity {
+    // variables declared
     TextView registerUser;
     EditText username, password;
     Button loginButton;
@@ -44,10 +45,10 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
-        Firebase.setAndroidContext(this)
-        ;
+
+        // variables defined
+        Firebase.setAndroidContext(this);
         registerUser = (TextView) findViewById(R.id.register);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
@@ -60,6 +61,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        // check if the user is authenticated for the app on click of login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +93,6 @@ public class Login extends AppCompatActivity {
                                         UserDetails.username = user;
                                         UserDetails.password = pass;
                                         getUserLocation();
-                                        //startActivity(new Intent(Login.this, Users.class));
                                         startActivity(new Intent(Login.this, Profile.class));
                                     } else {
                                         Toast.makeText(Login.this, "incorrect password", Toast.LENGTH_LONG).show();
@@ -119,6 +120,9 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method to get the users geolocation of the logged in user
+     */
     private void getUserLocation() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.geolocation));
         GeoFire geofire = new GeoFire(reference);
@@ -133,19 +137,5 @@ public class Login extends AppCompatActivity {
 
             }
         });
-//Firebase reference=new Firebase(getString(R.string.firebase_database)+"/"+getString(R.string.geolocation)+"/"+UserDetails.username);
-/*reference.addListenerForSingleValueEvent(new ValueEventListener() {
-    @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
-
-        GeoLocation loc=dataSnapshot.getValue(GeoLocation.class);
-        UserDetails.setUserLocation(loc);
-    }
-
-    @Override
-    public void onCancelled(FirebaseError firebaseError) {
-
-    }
-});*/
     }
 }

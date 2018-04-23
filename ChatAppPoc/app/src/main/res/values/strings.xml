@@ -9,4 +9,12 @@
     <string name="skill_proficiency">proficiency</string>
     <string name="geolocation">geolocation</string>
     <string name="messages">messages</string>
+    <string name="type_skill">Type skill</string>
+    <string name="search_button">search button</string>
+    <string name="registration_success">registration successful</string>
+    <string name="password">password</string>
+    <string name="user_exists">username already exists</string>
+    <string name="no_text">can\'t be blank</string>
+    <string name="alpha_numeric">only alphabet or number allowed</string>
+    <string name="atleast_five_char">at least 5 characters long</string>
 </resources>

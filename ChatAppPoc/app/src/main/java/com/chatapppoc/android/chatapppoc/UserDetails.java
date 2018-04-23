@@ -30,6 +30,7 @@ public class UserDetails {
     }
 
     static Map<String,String>[] skills;
+    
     public static String getUsername() {
         return username;
     }
