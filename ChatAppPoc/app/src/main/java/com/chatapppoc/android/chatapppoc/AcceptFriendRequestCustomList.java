@@ -14,6 +14,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.firebase.ui.auth.data.model.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -86,10 +87,11 @@ public class AcceptFriendRequestCustomList extends ArrayAdapter {
     /**
      * deletes entry from the list
      *
-     * @param name person name which needs to be deleted
+     * @param requesterName person name which needs to be deleted
      */
-    private void deleteRequest(String name) {
-        users.remove(name);
+    private void deleteRequest(String requesterName) {
+        reference.child(usersDBKey).child(UserDetails.username).child(requestListDBKey).child(requesterName).setValue(true);
+        users.remove(requesterName);
         notifyDataSetChanged();
     }
 
