@@ -69,8 +69,9 @@ public class FXViewSymptomController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		idCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("symptom_id"));
-		descriptionCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("description"));
 		diseaseidCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("disease_id"));
+		descriptionCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("description"));
+
 
 
 		// add delete button on row
@@ -108,11 +109,11 @@ public class FXViewSymptomController implements Initializable {
 
 		symptomTable.toFront();
 		
-		Label lid = new Label();
+		Label lid = new Label("Id");
 		lid.setPrefWidth(50);
-		Label ldescription = new Label();
+		Label ldescription = new Label("Description");
 		ldescription.setPrefWidth(50);
-		Label ldiseaseid = new Label();
+		Label ldiseaseid = new Label("Disease Id");
 		ldiseaseid.setPrefWidth(100);
 
 

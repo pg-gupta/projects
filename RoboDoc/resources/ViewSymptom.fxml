@@ -19,10 +19,11 @@
    <children>
      <TableView fx:id="symptomTable" layoutX="-14.0" prefHeight="560.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn fx:id="idCol" prefWidth="144.00000286102295" text="Id" />
-          <TableColumn fx:id="descriptionCol" prefWidth="347.99998474121094" text="Description" />
-          <TableColumn fx:id="diseaseidCol" prefWidth="118.39996337890625" text="Disease Id" />
+          <TableColumn fx:id="idCol" prefWidth="47.99997025728226" text="Id" />
+          <TableColumn fx:id="descriptionCol" prefWidth="137.5999755859375" text="Description" />
+          <TableColumn fx:id="diseaseidCol" prefWidth="104.79999542236328" text="DiseaseId" />
           
+         
                
         </columns>
       </TableView>

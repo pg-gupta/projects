@@ -142,27 +142,27 @@ public class FXViewDoctorController implements Initializable {
 	private void editRow() {
 
 		doctorTable.toFront();
-		Label lid = new Label();
+		Label lid = new Label("Id");
 		lid.setPrefWidth(100);
-		Label lfname = new Label();
+		Label lfname = new Label("Fname");
 		lfname.setPrefWidth(100);
-		Label llname = new Label();
+		Label llname = new Label("Lname");
 		llname.setPrefWidth(100);
-		Label lage = new Label();
+		Label lage = new Label("Age");
 		lage.setPrefWidth(100);
-		Label lsex = new  Label();
+		Label lsex = new  Label("Sex");
 		lsex.setPrefWidth(100);
-		Label lemail = new Label();
+		Label lemail = new Label("Email");
 		lemail.setPrefWidth(100);
-		Label lphoneno = new Label();
+		Label lphoneno = new Label("Phone");
 		lphoneno.setPrefWidth(100);
-		Label ladd = new Label();
+		Label ladd = new Label("Address");
 		ladd.setPrefWidth(100);
-		Label lspecialization = new Label();
+		Label lspecialization = new Label("Specialization");
 		lspecialization.setPrefWidth(100);
-		Label lvisithours= new Label();
+		Label lvisithours= new Label("Visiting Hours");
 		lvisithours.setPrefWidth(100);
-		Label ldegree = new Label();
+		Label ldegree = new Label("Degree");
 		ldegree.setPrefWidth(100);
 
 		

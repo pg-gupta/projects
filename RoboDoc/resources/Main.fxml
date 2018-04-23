@@ -15,8 +15,7 @@
 					<menus>
 					    <Menu fx:id="personTab" mnemonicParsing="false" text="Person">
 							<items>
-								<MenuItem fx:id="addPerson" mnemonicParsing="false" onAction="#handleAddPersonAction" text="Add" />
-								<MenuItem fx:id="viewPerson" mnemonicParsing="false" onAction="#handleViewPersonAction" text="View" />
+								<MenuItem fx:id="ViewPerson" mnemonicParsing="false" onAction="#handleViewPersonAction" text="View" />
 
 							</items>
 						</Menu>

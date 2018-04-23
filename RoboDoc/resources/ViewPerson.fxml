@@ -31,11 +31,6 @@
           
         </columns>
       </TableView>
-       <VBox fx:id="vbox1" alignment="CENTER" layoutX="8.0" layoutY="193.0" opacity="0.74" prefHeight="186.0" prefWidth="702.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
-         <children>
-            <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="718.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" />
-            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" />
-         </children>
-      </VBox>
+      
    </children>
 </AnchorPane>

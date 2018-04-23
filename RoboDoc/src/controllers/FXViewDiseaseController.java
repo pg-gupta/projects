@@ -137,7 +137,7 @@ public class FXViewDiseaseController implements Initializable {
 		lcontagious.setPrefWidth(100);
 		Label ldiet= new Label("Diet");
 		ldiet.setPrefWidth(100);
-		Label ltest= new Label("Diet");
+		Label ltest= new Label("Test Suggested");
 		ltest.setPrefWidth(100);
 		Label laction1= new Label("Action");
 		laction1.setPrefWidth(100);

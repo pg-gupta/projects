@@ -7,8 +7,9 @@ import javax.persistence.Id;
 public class Symptom {
 	@Id
 	int symptom_id;
-	String description;
 	int disease_id;
+	String description;
+
 	/**
 	 * @return the symptom_id
 	 */
