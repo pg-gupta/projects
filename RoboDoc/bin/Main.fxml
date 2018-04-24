@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="anchorPane" prefHeight="587.0" prefWidth="583.0" style="root" stylesheets="@bootstrap3.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMainAppController">
+	<children>
+		<AnchorPane prefHeight="107.0" prefWidth="596.0">
+			<children>
+				<MenuBar layoutX="93.0" layoutY="24.0" prefHeight="32.0" prefWidth="447.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="24.0">
+					<menus>
+						<Menu fx:id="medicineTab" mnemonicParsing="false" styleClass="primary" text="Medicine">
+							<items>
+								<MenuItem fx:id="addMedicine" mnemonicParsing="false" onAction="#handleAddMedicineAction" text="Add" />
+
+								<MenuItem fx:id="ViewMedicine" mnemonicParsing="false" onAction="#handleViewMedicineAction" text="View" />
+							</items>
+						</Menu>
+						<Menu fx:id="doctorTab" mnemonicParsing="false" styleClass="danger" text="Doctor">
+							<items>
+								<MenuItem fx:id="addDoctor" mnemonicParsing="false" onAction="#handleAddDoctorAction" text="Add" />
+								<MenuItem fx:id="viewDoctor" mnemonicParsing="false" onAction="#handleViewDoctorAction" text="View" />
+
+							</items>
+						</Menu>
+						<Menu fx:id="patientTab" mnemonicParsing="false" text="Patient">
+							<items>
+								<MenuItem fx:id="addPatient" mnemonicParsing="false" onAction="#handleAddPatientAction" text="Add" />
+								<MenuItem fx:id="viewPatient" mnemonicParsing="false" onAction="#handleViewPatientAction" text="View" />
+
+							</items>
+						</Menu>
+						<Menu fx:id="symptomTab" mnemonicParsing="false" text="Symptoms">
+							<items>
+								<MenuItem fx:id="addSymptom" mnemonicParsing="false" onAction="#handleAddSymptomAction" text="Add" />
+								<MenuItem fx:id="viewSymptom" mnemonicParsing="false" onAction="#handleViewSymptomAction" text="View" />
+
+							</items>
+						</Menu>
+						<Menu fx:id="diseaseaTab" mnemonicParsing="false" text="Diseases">
+							<items>
+								<MenuItem fx:id="addDisease" mnemonicParsing="false" onAction="#handleAddDiseaseAction" text="Add" />
+								<MenuItem fx:id="viewDisease" mnemonicParsing="false" onAction="#handleViewDiseaseAction" text="View" />
+
+							</items>
+						</Menu>
+					</menus>
+					<opaqueInsets>
+						<Insets />
+					</opaqueInsets>
+					<effect>
+						<Glow />
+					</effect>
+				</MenuBar>
+			</children>
+		</AnchorPane>
+		<AnchorPane fx:id="dynamicPane" layoutX="13.0" layoutY="68.0" prefHeight="544.0" prefWidth="583.0">
+			<children>
+
+			</children>
+		</AnchorPane>
+	</children>
+</AnchorPane>
