@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/hobbies"
     tools:context=".Register"
     android:orientation="vertical"
     android:gravity="center">
@@ -11,19 +11,25 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="30dp"
+
+        android:layout_marginTop="-80dp"
         android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:text="Register"
+        android:textColor="#003300"
+        android:textSize="30dp"
+        android:textStyle="bold"
+         />
 
     <EditText
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
-        android:inputType="text"
-        android:maxLines="1"
+        android:textSize="20dp"
+        android:textColorHint="@color/black"
+        android:layout_marginTop="5dp"
         android:hint="enter username"
-        android:layout_marginBottom="10dp"/>
+        android:inputType="text"
+        android:maxLines="1" />
 
     <EditText
         android:layout_width="match_parent"
@@ -32,21 +38,33 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:hint="enter password"
+        android:textSize="20dp"
+        android:textColorHint="@color/black"
         android:layout_marginBottom="10dp"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
         android:id="@+id/registerButton"
-        android:layout_marginBottom="20dp"/>
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/buttons"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Click here to login"
+        android:textColor="#003300"
         android:textSize="20dp"
         android:gravity="center"
         android:id="@+id/login"/>
+
+    <Button
+        android:id="@+id/setlocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SET LOCATION" />
 
 </LinearLayout>

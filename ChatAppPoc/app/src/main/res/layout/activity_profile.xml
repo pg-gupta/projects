@@ -7,18 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".Profile"
 
+    android:background="@drawable/hobbybg"
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
+
     <Button
         android:id="@+id/addSkillbtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="47dp"
-        android:layout_marginTop="180dp"
-        android:text="Add Skill" />
+        android:layout_alignStart="@+id/showReqBtn"
+        android:layout_alignTop="@+id/addSkillText"
+        android:background="@drawable/buttons"
+        android:text="Add Skill"
+        android:textColor="#FFFFFF"
+        android:layout_alignLeft="@+id/showReqBtn" />
 
     <TextView
         android:id="@+id/usernameTxtView"
@@ -27,7 +30,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/addSkillText"
         android:layout_marginTop="20dp"
-        android:text="Username" />
+        android:text="Username: "
+        android:textSize="20dp"
+        android:textColor="@color/black"
+
+        android:layout_alignLeft="@+id/addSkillText" />
 
     <TextView
         android:id="@+id/skillTxtView"
@@ -36,15 +43,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/usernameTxtView"
         android:layout_marginTop="73dp"
-        android:text="Skills" />
+        android:text="Skills: "
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_alignLeft="@+id/usernameTxtView" />
 
     <EditText
         android:id="@+id/addSkillText"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
+
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/addSkillbtn"
-        android:layout_marginStart="19dp"
+        android:layout_below="@+id/skillTxtView"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="27dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -54,7 +68,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/skillTxtView"
-        android:layout_marginStart="110dp" />
+        android:layout_marginStart="110dp"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="110dp" />
 
     <TextView
         android:id="@+id/nametxt"
@@ -62,34 +80,60 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/usernameTxtView"
-        android:layout_marginStart="124dp" />
+        android:layout_marginStart="124dp"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginLeft="124dp" />
 
     <Button
         android:id="@+id/searchFriendBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+
         android:layout_alignParentBottom="true"
+
         android:layout_alignStart="@+id/usernameTxtView"
-        android:layout_marginBottom="221dp"
-        android:text="Search Friend" />
+        android:layout_marginBottom="209dp"
+        android:background="@drawable/buttons"
+        android:text="Search Friend"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/showReqBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/usernameTxtView"
-        android:layout_marginBottom="144dp"
-        android:text="Show Requests" />
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignTop="@+id/searchFriendBtn"
+        android:layout_marginEnd="17dp"
+        android:background="@drawable/buttons"
+        android:text="Show Requests"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/showFriendsBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/usernameTxtView"
-        android:layout_marginBottom="73dp"
-        android:text="Friends" />
+
+        android:layout_marginBottom="117dp"
+        android:background="@drawable/buttons"
+        android:text="Friends"
+        android:textColor="#FFFFFF" />
+
+
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/addSkillbtn"
+        android:layout_alignTop="@+id/showFriendsBtn"
+        android:background="@drawable/buttons"
+        android:textColor="#FFFFFF"
+        android:text="Logout" />
     <!-- <fragment
          android:id="@+id/place_autocomplete_fragment"
          android:layout_width="match_parent"
