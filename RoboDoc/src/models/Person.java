@@ -1,8 +1,12 @@
 package models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.InheritanceType;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
@@ -11,11 +15,9 @@ import javax.persistence.Inheritance;
 @Inheritance(strategy = InheritanceType.JOINED)
 
 public class Person {
-	@Id
-	//@GenericGenerator(name="system-uuid" , strategy="increment")
-	@GeneratedValue
-
-  
+    @Id
+   
+  //  @GeneratedValue(generator = "sequence", strategy=GenerationType.SEQUENCE)
 public	int id;
 	private String fname;
 	private String lname;
@@ -24,7 +26,6 @@ public	int id;
 	private String email;
 	private String phonenumber;
 	private String address;
-	
 	
 	
 	

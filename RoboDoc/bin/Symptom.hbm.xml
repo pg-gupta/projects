@@ -8,7 +8,7 @@
             <column name="SYMPTOM_ID" />
             <generator class="assigned" />
         </id>
-        <property name="description" type="java.lang.String" access="field">
+        <property name="desc" type="java.lang.String" access="field">
             <column name="DESCRIPTION" />
         </property>
         <property name="disease_id" type="int">

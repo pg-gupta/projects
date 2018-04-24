@@ -52,6 +52,15 @@
 							<items>
 								<MenuItem fx:id="addDisease" mnemonicParsing="false" onAction="#handleAddDiseaseAction" text="Add" />
 								<MenuItem fx:id="viewDisease" mnemonicParsing="false" onAction="#handleViewDiseaseAction" text="View" />
+														</items>
+													</Menu>
+							
+								
+						<Menu fx:id="specializationTab" mnemonicParsing="false" text="Specialization">
+							<items>
+								<MenuItem fx:id="addSpecialization" mnemonicParsing="false" onAction="#handleAddSpecializationAction" text="Add" />
+								<MenuItem fx:id="viewSpecialization" mnemonicParsing="false" onAction="#handleViewSpecializationAction" text="View" />
+						
 
 							</items>
 						</Menu>

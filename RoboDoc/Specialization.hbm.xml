@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 24, 2018, 11:48:41 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="models.Specialization" table="SPECIALIZATION">
+        <id name="specializationid" type="int">
+            <column name="SPECIALIZATIONID" />
+            <generator class="assigned" />
+        </id>
+        <property name="specialization1" type="java.lang.String">
+            <column name="SPECIALIZATION1" />
+        </property>
+    </class>
+</hibernate-mapping>

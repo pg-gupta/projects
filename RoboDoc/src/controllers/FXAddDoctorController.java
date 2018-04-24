@@ -62,6 +62,10 @@ public class FXAddDoctorController  implements Initializable {
 
 	@FXML
 	private TextArea degree;
+	
+	@FXML
+	private TextArea specializationid;
+
 
 	@FXML
 	private JFXButton addBtn;
@@ -133,6 +137,18 @@ public class FXAddDoctorController  implements Initializable {
 			showAlert(Alert.AlertType.ERROR,"Form Error!", "Please enter degree");
 			return;
 		}
+		
+		if (specializationid.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR,  "Form Error!","Please enter test suggested");
+			return;
+		}
+		
+		if (!validate(specializationid.getText())) 
+		{
+			
+			showAlert(Alert.AlertType.ERROR,  "Form Error!", "Please enter a numeric value for specializationid");
+			return;
+		}
 
 	
 		
@@ -152,6 +168,8 @@ public class FXAddDoctorController  implements Initializable {
         doc.setSpecialization(specialization.getText());
 		doc.setVisithours(visitHours.getText());
 		doc.setDegree(degree.getText());
+		doc.setSpecializationid(Integer.parseInt(specializationid.getText()));
+
 		//personDao.insertData(person);
 		doctorDao.insertData(doc);
 		

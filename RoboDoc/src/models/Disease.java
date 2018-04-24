@@ -13,6 +13,7 @@ public class Disease
     String is_contagious;
 	String preffered_diet;
 	String test_suggested;
+	int specializationid;
 	/**
 	 * @return the disease_id
 	 */
@@ -104,6 +105,17 @@ public class Disease
 		this.test_suggested = test_suggested;
 	}
 	
-	
+	/**
+	 * @return the specializationid
+	 */
+	public int getSpecializationid() {
+		return specializationid;
+	}
+	/**
+	 * @param specializationid the specializationid to set
+	 */
+	public void setSpecializationid(int specializationid) {
+		this.specializationid = specializationid;
+	}
 
 }

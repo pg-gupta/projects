@@ -67,6 +67,16 @@ public class FXMainAppController implements Initializable {
 
 	@FXML
 	private MenuItem viewDisease;
+	
+	@FXML
+	private Menu specializationTab;
+
+	@FXML
+	private MenuItem addSpecialization;
+
+	@FXML
+	private MenuItem viewSpecialization;
+
 
 	@FXML
 	private AnchorPane dynamicPane;
@@ -147,6 +157,24 @@ public class FXMainAppController implements Initializable {
 	@FXML
 	void handleViewPersonAction(ActionEvent event) throws IOException {
 		Node child = (Node) FXMLLoader.load(getClass().getClassLoader().getResource("ViewPerson.fxml"));
+
+		dynamicPane.getChildren().setAll(child);
+
+	}
+
+	
+	@FXML
+	void handleAddSpecializationAction(ActionEvent event) throws IOException {
+		Node child = (Node) FXMLLoader.load(getClass().getClassLoader().getResource("AddSpecialization.fxml"));
+
+		dynamicPane.getChildren().setAll(child);
+
+	}
+
+	
+	@FXML
+	void handleViewSpecializationAction(ActionEvent event) throws IOException {
+		Node child = (Node) FXMLLoader.load(getClass().getClassLoader().getResource("ViewSpecialization.fxml"));
 
 		dynamicPane.getChildren().setAll(child);
 

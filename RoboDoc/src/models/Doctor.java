@@ -11,6 +11,10 @@ public class Doctor extends Person
 	String visithours;
 	String specialization;
 	String degree;
+	int specializationid;
+
+	
+	
 	/**
 	 * @return the visitinghours
 	 */
@@ -48,6 +52,18 @@ public class Doctor extends Person
 		this.degree = degree;
 	}
 	
+	/**
+	 * @return the specializationid
+	 */
+	public int getSpecializationid() {
+		return specializationid;
+	}
+	/**
+	 * @param specializationid the specializationid to set
+	 */
+	public void setSpecializationid(int specializationid) {
+		this.specializationid = specializationid;
+	}
 	
 	
 }

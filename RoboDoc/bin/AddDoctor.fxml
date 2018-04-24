@@ -13,7 +13,7 @@
 				<Font name="System Bold" size="18.0" />
 			</font>
 		</Label>
-		<AnchorPane layoutX="34.0" layoutY="106.0" prefHeight="600.0" prefWidth="401.0">
+		<AnchorPane layoutX="34.0" layoutY="60.0" prefHeight="700.0" prefWidth="401.0">
 			<children>
 				 <TextArea fx:id="id" layoutY="5.0" prefHeight="34.0" prefWidth="380.0" promptText="ID" />
 			    <TextArea fx:id="fName" layoutY="53.0" prefHeight="34.0" prefWidth="380.0" promptText="First Name" />
@@ -26,7 +26,8 @@
 				<TextArea fx:id="specialization" layoutY="451.0" prefHeight="35.0" prefWidth="380.0" promptText="Specialization" />
 				<TextArea fx:id="visitHours" layoutY="350.0" prefHeight="23.0" prefWidth="380.0" promptText="VISITING HOURS" />
 				<TextArea fx:id="degree" layoutY="398.0" prefHeight="35.0" prefWidth="380.0" promptText="DEGREE" />
-				<JFXButton fx:id="addBtn" layoutY="554.0" onAction="#addDoctor" prefWidth="98.0" styleClass="primary" stylesheets="@bootstrap3.css" text="Add" />
+				<TextArea fx:id="specializationid" layoutY="549.0" prefHeight="35.0" prefWidth="380.0" promptText="SPECIALIZATIONID" />
+								<JFXButton fx:id="addBtn" layoutY="612.0" onAction="#addDoctor" prefWidth="98.0" styleClass="primary" stylesheets="@bootstrap3.css" text="Add" />
 
 			</children>
 		</AnchorPane>

@@ -29,7 +29,7 @@ public class MainView extends Application {
 		try {
 
 			//Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
 
 			stage.setScene(new Scene(root));
 			stage.show();

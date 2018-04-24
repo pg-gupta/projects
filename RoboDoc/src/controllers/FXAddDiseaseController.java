@@ -43,6 +43,10 @@ public class FXAddDiseaseController implements Initializable {
 
 	@FXML
 	private TextArea test_suggested;
+	
+	@FXML
+	private TextArea specializationid;
+
 
 	
 	@FXML
@@ -86,6 +90,11 @@ public class FXAddDiseaseController implements Initializable {
 			return;
 		}
 		
+		if (specializationid.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR,  "Form Error!","Please enter test suggested");
+			return;
+		}
+		
 		Disease disease =new Disease();
 		Diseasedao diseasedao=new Diseasedao();
 		
@@ -95,6 +104,8 @@ public class FXAddDiseaseController implements Initializable {
 		disease.setIs_contagious(is_contagious.getText());
 		disease.setPreffered_diet(preffered_diet.getText());
 		disease.setTest_suggested(test_suggested.getText());
+		disease.setSpecializationid(Integer.parseInt(specializationid.getText()));
+
 		diseasedao.insertData(disease);
 	}
 
@@ -105,5 +116,11 @@ public class FXAddDiseaseController implements Initializable {
 		alert.setContentText(message);
 		alert.show();
 	}
+		
+		 private boolean validate(String text)
+		    {
+		        return text.matches("[0-9]*");
+		    }
+
 
 }

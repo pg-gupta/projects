@@ -14,6 +14,8 @@
     <mapping resource="Symptom.hbm.xml"/>
     <mapping resource="Disease.hbm.xml"/>
         <mapping resource="Medicine.hbm.xml"/>
+                <mapping resource="Specialization.hbm.xml"/>
+        
         
     
   

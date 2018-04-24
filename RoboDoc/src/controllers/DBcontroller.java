@@ -18,6 +18,8 @@ import models.Symptom;
 import models.Symptomdao;
 import models.Person;
 import models.Persondao;
+import models.Specialization;
+import models.Specializationdao;
 public class DBcontroller 
 
 {
@@ -27,6 +29,27 @@ public class DBcontroller
 	    org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("org.hibernate");
 	    java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.OFF);
 	    
+	    
+	    Persondao dao =new Persondao();
+	    Person person= new Person();
+		
+	    Doctor doc =new Doctor();
+		Doctordao docdao =new Doctordao();
+		person.setId(42);
+		doc.setId(person.getId());
+		doc.setFname("aish");
+		doc.setLname("srini");
+		doc.setAge(27);
+		doc.setSex("F");
+		doc.setEmail("jdyesh@gmail.com");
+		doc.setSpecialization("genral");
+		doc.setVisithours("9-3");
+		doc.setDegree("M.D");
+		doc.setSpecializationid(1);
+		
+	}
+		
+	    
 	    /*Symptom sym =new Symptom();
 		Symptomdao symdao=new Symptomdao();
 		
@@ -34,14 +57,20 @@ public class DBcontroller
 		sym.setDescription("Shvering and headache");
 		sym.setDisease_id(1);
 		symdao.insertData(sym);*/
+	    
+	   /* Specialization spec= new Specialization();
+	    Specializationdao specdao =new Specializationdao();
+	    //spec.setSpecializationid();
+	    spec.setSpecialization1("DERMATALOGIST");
+	    specdao.insertData(spec);*/
         
-	    Persondao dao =new Persondao();
+	  /* Persondao dao =new Persondao();
 	    Person person= new Person();
 		Patient pt =new Patient();
 		Patientdao ptdao =new Patientdao();
 		Doctor doc =new Doctor();
 		Doctordao docdao =new Doctordao();
-		person.setId(28);
+		person.setId(40);*/
 		/*person.setFname("aish");
 		person.setLname("srini");
 		person.setAge(27);
@@ -56,15 +85,7 @@ public class DBcontroller
 		pt.setHeight(155);
 		pt.setWeight(34);
 		pt.setIsDiabetic("yes");*/
-		doc.setId(person.getId());
-		doc.setFname("aish");
-		doc.setLname("srini");
-		doc.setAge(27);
-		doc.setSex("F");
-		doc.setEmail("jdyesh@gmail.com");
-		doc.setSpecialization("genral");
-		doc.setVisithours("9-3");
-		doc.setDegree("M.D");
+		
 		
 		//dao.insertData(pt);
 		//dao.deleteData(person);
@@ -72,7 +93,7 @@ public class DBcontroller
 		//dao.insertData(person);
 	  //ptdao.updateData(pt);
 	   //ptdao.deleteData(pt);
-		docdao.insertData(doc);
+		/*docdao.insertData(doc);
 		
 		List<?> rec = dao.getRecords(person);
         Iterator it = rec.iterator();
@@ -83,7 +104,7 @@ public class DBcontroller
             Person per = (Person) obj   ;
     		System.out.println(per.getId()+"\t"+per.getFname()+"\t"+per.getLname());
           
-        }
+        }*/
 
 		
 	/*	Doctor doc =new Doctor();
@@ -157,7 +178,7 @@ public class DBcontroller
 		
 		}*/
 		
-	}
+	
 	
 	
 		

@@ -30,26 +30,26 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 import javafx.util.Callback;
-import models.Symptom;
-import models.Symptomdao;
+import models.Specialization;
+import models.Specializationdao;
+import models.Medicinedao;
 
-public class FXViewSymptomController implements Initializable {
+public class FXViewSpecializationController implements Initializable {
 
 	@FXML
 	private AnchorPane main;
 
 	@FXML
-	private TableView<Symptom> symptomTable;
+	private TableView<Specialization> specializationTable;
 
 	@FXML
-	private TableColumn<Symptom, String> idCol;
+	private TableColumn<Specialization, String> idCol;
 
 	@FXML
-	private TableColumn<Symptom, String> descriptionCol;
+	private TableColumn<Specialization, String> specCol;
 	
-	@FXML
-	private TableColumn<Symptom, String> diseaseidCol;
-
+		
+	
 
 	@FXML
 	private VBox vbox1;
@@ -60,39 +60,36 @@ public class FXViewSymptomController implements Initializable {
 	@FXML
 	private HBox hbox2;
 
-	ObservableList<Symptom> symptoms = FXCollections.observableArrayList();
+	ObservableList<Specialization> specializations = FXCollections.observableArrayList();
 
-	public FXViewSymptomController() {
+	public FXViewSpecializationController() {
 
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		idCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("symptom_id"));
-		diseaseidCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("disease_id"));
-		descriptionCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("desc"));
-
-
-
+		idCol.setCellValueFactory(new PropertyValueFactory<Specialization, String>("specializationid"));
+		specCol.setCellValueFactory(new PropertyValueFactory<Specialization, String>("specname"));
+		
 		// add delete button on row
-		TableColumn<Symptom, Boolean> col_action = new TableColumn<Symptom, Boolean>("Action");
+		TableColumn<Specialization, Boolean> col_action = new TableColumn<Specialization, Boolean>("Action");
 
-		symptomTable.getColumns().add(col_action);
+		specializationTable.getColumns().add(col_action);
 
 		col_action.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<Symptom, Boolean>, ObservableValue<Boolean>>() {
+				new Callback<TableColumn.CellDataFeatures<Specialization, Boolean>, ObservableValue<Boolean>>() {
 
 					@Override
-					public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Symptom, Boolean> p) {
+					public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Specialization, Boolean> p) {
 						return new SimpleBooleanProperty(p.getValue() != null);
 					}
 				});
 
 		// Adding the Button to the cell
-		col_action.setCellFactory(new Callback<TableColumn<Symptom, Boolean>, TableCell<Symptom, Boolean>>() {
+		col_action.setCellFactory(new Callback<TableColumn<Specialization, Boolean>, TableCell<Specialization, Boolean>>() {
 
 			@Override
-			public TableCell<Symptom, Boolean> call(TableColumn<Symptom, Boolean> p) {
+			public TableCell<Specialization, Boolean> call(TableColumn<Specialization, Boolean> p) {
 				return new ButtonCell();
 			}
 
@@ -107,64 +104,62 @@ public class FXViewSymptomController implements Initializable {
 	// edit row of the table on double click
 	private void editRow() {
 
-		symptomTable.toFront();
-		
-		Label lid = new Label("Id");
+		specializationTable.toFront();
+		Label lid= new Label("Id");
 		lid.setPrefWidth(100);
-		Label ldescription = new Label("Description");
-		ldescription.setPrefWidth(100);
-		Label ldiseaseid = new Label("Disease Id");
-		ldiseaseid.setPrefWidth(100);
-
-
+		Label lspec= new Label("Specialization");
+		lspec.setPrefWidth(100);
+		
+		
+		
 		TextField id = new TextField();
 		id.setPrefWidth(100);
-		TextField description = new TextField();
-		description.setPrefWidth(100);
-		TextField diseaseid = new TextField();
-		diseaseid.setPrefWidth(100);
+		TextField specialization = new TextField();
+		specialization.setPrefWidth(100);
+		
 
-
-	   symptomTable.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
+	   specializationTable.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
 		   if (nv != null) {
-			id.setText(String.valueOf(nv.getSymptom_id()));
-			description.setText(nv.getDesc());
-			diseaseid.setText(String.valueOf(nv.getDisease_id()));
+			id.setText(String.valueOf(nv.getSpecializationid()));
+			specialization.setText(nv.getSpecname());
+			
 			}
 		});
 
 		// save the content on commit
 		Button commit = new Button("Commit");
+	   commit.setPrefWidth(100);
 		Button cancel = new Button("Cancel");
-
+       cancel.setPrefWidth(100);
 		commit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
-				Symptomdao symdao =new Symptomdao();
-				Symptom item = symptomTable.getSelectionModel().getSelectedItem();
-				item.setSymptom_id((Integer.parseInt(id.getText())));
-				item.setDesc(description.getText());
-				item.setDisease_id((Integer.parseInt(diseaseid.getText())));
-				symdao.update(item);
-				showAlert(Alert.AlertType.INFORMATION,"Record Updated!","Symptom id " + item.getSymptom_id() + " is updated in the database");
+				Specializationdao specdao =new Specializationdao();
+				Specialization item = specializationTable.getSelectionModel().getSelectedItem();
+				item.setSpecializationid(Integer.parseInt(id.getText()));
+				item.setSpecname(specialization.getText());
+				specdao.update(item);
+				showAlert(Alert.AlertType.INFORMATION,"Record Updated!","Specialization id " + item.getSpecializationid() + " is updated in the database");
 
-				symptomTable.toFront();
+				specializationTable.toFront();
 			}
 		});
 		
 		cancel.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
-				symptomTable.toFront();
+				specializationTable.toFront();
 			}
 		});
 
 		
+        
 		
+		hbox1.getChildren().addAll(lid,lspec);
 
-		hbox1.getChildren().addAll(lid,ldescription,ldiseaseid);
+		hbox2.getChildren().addAll(id, specialization, commit,cancel);
+		 
+	    //vbox1.getChildren().addAll(hbox1,hbox2);
 
-		hbox2.getChildren().addAll(id, description,diseaseid ,commit,cancel);
-
-		symptomTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		specializationTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent evt) {
 				if (evt.getClickCount() == 2) {
 					StackPane.setMargin(vbox1, new Insets(evt.getSceneY(), 0, 0, 0));
@@ -176,29 +171,28 @@ public class FXViewSymptomController implements Initializable {
 				}
 			}
 		});
-		// main.getChildren().add(root);
 	}
 
 	private void bindData() {
 
 		// DaoModel model = new DaoModel();
-		Symptomdao Symptomdao = new Symptomdao();
+		Specializationdao specdao = new Specializationdao();
 
-		List<Symptom> resultSet = Symptomdao.getRecords(new Symptom());
-		for (Symptom doc : resultSet) {
-			symptoms.add(doc);
+		List<Specialization> resultSet = specdao.getRecords(new Specialization());
+		for (Specialization doc : resultSet) {
+			specializations.add(doc);
 		}
 
-		symptomTable.setItems(symptoms);
+		specializationTable.setItems(specializations);
 
 		/*
 		 * try { while (resultSet.next()) {
 		 * 
-		 * Symptom doc = new Symptom();
+		 * Specialization doc = new Specialization();
 		 * 
 		 * doc.setDoctor_Id(Integer.parseInt(resultSet.getString(1)));
-		 * doc.setFname(resultSet.getString(2)); symptoms.add(doc); }
-		 * symptomTable.setItems(symptoms); } catch (SQLException e) { // TODO
+		 * doc.setFname(resultSet.getString(2)); specializations.add(doc); }
+		 * specializationTable.setItems(specializations); } catch (SQLException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); }
 		 */
 	}
@@ -206,7 +200,7 @@ public class FXViewSymptomController implements Initializable {
 	
 	
 	// Define the button cell
-	class ButtonCell extends TableCell<Symptom, Boolean> {
+	class ButtonCell extends TableCell<Specialization, Boolean> {
 		final Button cellButton = new Button("Delete");
 
 		ButtonCell() {
@@ -217,15 +211,15 @@ public class FXViewSymptomController implements Initializable {
 				@Override
 				public void handle(ActionEvent t) {
 					// get Selected Item
-					Symptom currentPerson = (Symptom) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+					Specialization currentPerson = (Specialization) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
 					// remove selected item from the table list
-					//symptoms.remove(currentPerson);
-					Symptom sym =new Symptom();
-					Symptomdao symdao= new Symptomdao();
-					//System.out.println("currentPerson is" + currentPerson.id);
-					sym.setSymptom_id(currentPerson.getSymptom_id());
-					symdao.delete(sym);
-					showAlert(Alert.AlertType.INFORMATION,"Record deleted!","Symptom id " + currentPerson.getSymptom_id() + " is deleted from  the database");
+					specializations.remove(currentPerson);
+					Specialization spec =new Specialization();
+					Specializationdao specdao= new Specializationdao();
+					//System.out.println("currentPerson is" + currentPerson.getMedicine_id);
+					spec.setSpecializationid(currentPerson.getSpecializationid());
+				    specdao.delete(spec);
+					showAlert(Alert.AlertType.INFORMATION,"Record deleted!","Specialization id " + currentPerson.getSpecializationid() + " is deleted from  the database");
 					
 				}
 			});

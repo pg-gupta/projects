@@ -70,7 +70,7 @@ public class FXAddSymptomController implements Initializable {
 		Symptomdao symdao=new Symptomdao();
 		
 		
-		sym.setDescription(description.getText());
+		sym.setDesc(description.getText());
 		sym.setDisease_id(Integer.parseInt(disease_id.getText()));
 		
 		symdao.insertData(sym);

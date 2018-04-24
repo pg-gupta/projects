@@ -312,14 +312,14 @@ public class FXViewPatientController implements Initializable {
 					// get Selected Item
 					Patient currentPerson = (Patient) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
 					// remove selected item from the table list
-					//patients.remove(currentPerson);
+					patients.remove(currentPerson);
 					Persondao perdao =new Persondao();
 					Patient pt =new Patient();
 					Patientdao ptdao= new Patientdao();
 					System.out.println("currentPerson is" + currentPerson.id);
 					pt.setId(currentPerson.id);
 					ptdao.delete(pt);
-					perdao.delete(pt);
+					//perdao.delete(pt);
 					showAlert(Alert.AlertType.INFORMATION,"Record deleted!","Patient id " + currentPerson.id + " is deleted from  the database");
 					
 				}

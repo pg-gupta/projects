@@ -26,5 +26,11 @@
         <property name="test_suggested" type="java.lang.String">
             <column name="TEST_SUGGESTED" />
         </property>
+        
+         <property name="specializationid" type="int">
+            <column name="SPECIALIZATIONID" />
+                    </property>
+            
+       
     </class>
 </hibernate-mapping>

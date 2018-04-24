@@ -29,10 +29,11 @@
         <property name="address" type="java.lang.String">
             <column name="ADDRESS" />
         </property>
+        	
         
         <joined-subclass name="models.Patient" table="PATIENT"> 
-                         <key column="Id"/>
-                         
+                                          <key column="Id"/>
+                             
                          <property name="fname" type="java.lang.String">
             <column name="FNAME" />
         </property>
@@ -103,6 +104,11 @@
         <property name="degree" type="java.lang.String">
             <column name="degree" />
         </property>
+        
+        <property name="specializationid" type="int">
+            <column name="SPECIALIZATIONID" />
+                    </property>
+         
         
           </joined-subclass>  
   
