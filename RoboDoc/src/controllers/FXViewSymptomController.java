@@ -171,8 +171,8 @@ public class FXViewSymptomController implements Initializable {
 					StackPane.setMargin(hbox1, new Insets(evt.getSceneY(), 0, 0, 0));
 					StackPane.setMargin(hbox2, new Insets(evt.getSceneY(), 0, 0, 0));
 					vbox1.toFront();
-					hbox1.toFront();
-					hbox2.toFront();
+					//hbox1.toFront();
+					//hbox2.toFront();
 				}
 			}
 		});

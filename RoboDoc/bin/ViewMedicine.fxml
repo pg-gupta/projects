@@ -5,6 +5,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+
+
 
 <!-- <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.layout.FlowPane?>
@@ -31,8 +37,28 @@
       </TableView>
        <VBox fx:id="vbox1" alignment="CENTER" layoutX="8.0" layoutY="193.0" opacity="0.74" prefHeight="186.0" prefWidth="702.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
          <children>
-            <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="718.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" />
-            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" />
+            <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="718.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" >
+            <children>
+                  <Label fx:id="lid" prefWidth="100.0" text="Id" />
+                  <Label fx:id="lname" prefWidth="100.0" text="Name" />
+                  <Label fx:id="ldrugs" prefWidth="80.0" text="Drugs" />
+                  <Label fx:id="ldescription" prefWidth="90.0" text="Description" />
+                  <Label fx:id="ldosage" prefWidth="80.0" text="Dosage" />
+                  <Label fx:id="ldiseaseid" prefWidth="100.0" text="Disease id" />
+               </children></HBox>
+            
+            
+            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" >
+            <children>
+                  <TextField fx:id="id" prefWidth="100.0" />
+                  <TextField fx:id="name" prefWidth="100.0" />
+                  <TextField fx:id="drugs" prefWidth="100.0" />
+                  <TextField fx:id="description" prefWidth="100.0" />
+                  <TextField fx:id="dosage" prefWidth="100.0" />
+                  <TextField fx:id="diseaseid" prefWidth="100.0" />
+                  <Button fx:id="commit" mnemonicParsing="false" prefWidth="100.0" text="Commit" />
+                  <Button fx:id="cancel" mnemonicParsing="false" prefWidth="100.0" text="Cancel" />
+               </children></HBox>
          </children>
       </VBox>
    </children>

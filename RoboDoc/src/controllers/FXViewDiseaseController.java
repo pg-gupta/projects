@@ -63,6 +63,71 @@ public class FXViewDiseaseController implements Initializable {
 	private TableColumn<Disease, String> testsuggested;
 	
 	@FXML
+	private TableColumn<Disease, String> specializationidCol;
+	
+	
+	@FXML
+	private Label lid;
+	
+	@FXML
+	private Label lname;
+	
+	@FXML
+	private Label ltreatment;
+	
+	@FXML
+	private Label lprevention;
+	
+	@FXML
+	private Label lcontagious;
+	
+	@FXML
+	private Label ldiet;
+	
+	@FXML
+	private Label ltest;
+	
+	
+	@FXML
+	private Label lspecializationid;
+	
+	
+	@FXML
+	private TextField id;
+	
+	@FXML
+	private TextField name;
+	
+	@FXML
+	private TextField treatment;
+	
+	@FXML
+	private TextField prevention;
+	
+	@FXML
+	private TextField contagious;
+	
+	@FXML
+	private TextField diet;
+	
+	@FXML
+	private TextField test;
+	
+	@FXML
+	private TextField specializationid;
+	
+	
+	
+	@FXML
+	private Button commit;
+	
+	@FXML
+	private Button cancel;
+	
+	
+	
+	
+	@FXML
 	private VBox vbox1;
 	
 
@@ -87,6 +152,8 @@ public class FXViewDiseaseController implements Initializable {
 		iscontagiousCol.setCellValueFactory(new PropertyValueFactory<Disease, String>("is_contagious"));
 		preffereddietCol.setCellValueFactory(new PropertyValueFactory<Disease, String>("preffered_diet"));
 		testsuggested.setCellValueFactory(new PropertyValueFactory<Disease, String>("test_suggested"));
+		specializationidCol.setCellValueFactory(new PropertyValueFactory<Disease, String>("specializationid"));
+
 
 
 
@@ -125,7 +192,7 @@ public class FXViewDiseaseController implements Initializable {
 	private void editRow() {
 
 		diseaseTable.toFront();
-		Label lid= new Label("Id");
+		/*Label lid= new Label("Id");
 		lid.setPrefWidth(100);
 		Label lname= new Label("Name");
 		lname.setPrefWidth(100);
@@ -143,6 +210,9 @@ public class FXViewDiseaseController implements Initializable {
 		laction1.setPrefWidth(100);
 		Label laction2= new Label("Action");
 		laction2.setPrefWidth(100);
+		Label lspecializationid= new Label("Specializationid");
+		lspecializationid.setPrefWidth(100);
+		
 		
 		TextField id = new TextField();
 		id.setPrefWidth(100);
@@ -158,6 +228,9 @@ public class FXViewDiseaseController implements Initializable {
 		preffereddiet.setPrefWidth(100);
 		TextField testsuggested = new TextField();
 		testsuggested.setPrefWidth(100);
+		TextField specializationid = new TextField();
+		specializationid.setPrefWidth(100);*/
+
 
 
 
@@ -166,18 +239,20 @@ public class FXViewDiseaseController implements Initializable {
 			id.setText(String.valueOf(nv.getDisease_id()));
 			name.setText(nv.getDisease_name());
 			prevention.setText(nv.getPrevention());
-			preffereddiet.setText(nv.getPreffered_diet());
+			diet.setText(nv.getPreffered_diet());
 			treatment.setText(nv.getTreatment());
-			iscontagious.setText(nv.getIs_contagious());
-			testsuggested.setText(nv.getTest_suggested());
+			contagious.setText(nv.getIs_contagious());
+			test.setText(nv.getTest_suggested());
+			specializationid.setText(String.valueOf(nv.getSpecializationid()));
+
 			
 
 			}
 		});
 
 		// save the content on commit
-		Button commit = new Button("Commit");
-		Button cancel = new Button("Commit");
+		//Button commit = new Button("Commit");
+		//Button cancel = new Button("Commit");
 
 		commit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
@@ -186,10 +261,12 @@ public class FXViewDiseaseController implements Initializable {
 				item.setDisease_id(Integer.parseInt(id.getText()));
 				item.setDisease_name(name.getText());
 				item.setPrevention(prevention.getText());
-				item.setPreffered_diet(preffereddiet.getText());
+				item.setPreffered_diet(diet.getText());
 				item.setTreatment(treatment.getText());
-				item.setIs_contagious(iscontagious.getText());
-				item.setTest_suggested(testsuggested.getText());
+				item.setIs_contagious(contagious.getText());
+				item.setTest_suggested(test.getText());
+				item.setSpecializationid(Integer.parseInt(specializationid.getText()));
+
 
 				diseasedao.update(item);
 				showAlert(Alert.AlertType.INFORMATION,"Record Updated!","Disease id " + item.getDisease_id() + " is updated in the database");
@@ -200,9 +277,9 @@ public class FXViewDiseaseController implements Initializable {
 		
 
 
-		hbox1.getChildren().addAll(lid,lname,ltreatment,lprevention,lcontagious,ldiet,ltest);
+		//hbox1.getChildren().addAll(lid,lname,ltreatment,lprevention,lcontagious,ldiet,ltest,lspecializationid);
 
-		hbox2.getChildren().addAll(id, name,prevention,preffereddiet,treatment,iscontagious,testsuggested,cancel);
+		//hbox2.getChildren().addAll(id, name,prevention,preffereddiet,treatment,iscontagious,testsuggested,specializationid,commit,cancel);
 		 
 	    //vbox1.getChildren().addAll(hbox1,hbox2);
 
@@ -213,8 +290,8 @@ public class FXViewDiseaseController implements Initializable {
 					StackPane.setMargin(hbox1, new Insets(evt.getSceneY(), 0, 0, 0));
 					StackPane.setMargin(hbox2, new Insets(evt.getSceneY(), 0, 0, 0));
 					vbox1.toFront();
-					hbox1.toFront();
-					hbox2.toFront();
+					//hbox1.toFront();
+					//hbox2.toFront();
 				}
 			}
 		});

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 
 <!-- <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.layout.FlowPane?>
@@ -37,8 +39,40 @@
       </TableView>
        <VBox fx:id="vbox1" alignment="CENTER" layoutX="8.0" layoutY="193.0" opacity="0.74" prefHeight="186.0" prefWidth="702.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
          <children>
-            <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="718.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" />
-            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" />
+            <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="713.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
+            <children>
+                  <Label fx:id="lid" prefHeight="18.0" prefWidth="54.0" text="Id" />
+                  <Label fx:id="lfname" prefHeight="18.0" prefWidth="60.0" text="FName" />
+                  <Label fx:id="llname" prefWidth="60.0" text="LName" />
+                  <Label fx:id="lage" prefHeight="18.0" prefWidth="40.0" text="Age" />
+                  <Label fx:id="lsex" prefWidth="40.0" text="Sex" />
+                  <Label fx:id="lemail" prefHeight="18.0" prefWidth="60.0" text="Email" />
+                  <Label fx:id="lphoneno" prefWidth="60.0" text="phone" />
+                  <Label fx:id="ladd" prefWidth="50.0" text="Address" />
+                  <Label fx:id="lheight" prefWidth="50.0" text="Height" />
+                  <Label fx:id="lweight" prefHeight="18.0" prefWidth="50.0" text="Weight" />
+                  <Label fx:id="ldiabetic" prefWidth="80.0" text="Diabetic" />
+               </children></HBox>
+           
+             
+            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
+            <children>
+                  <TextField fx:id="id" prefWidth="100.0" />
+                  <TextField fx:id="fname" prefWidth="100.0" />
+                  <TextField fx:id="lname" prefWidth="100.0" />
+                  <TextField fx:id="age" prefWidth="100.0" />
+                  <TextField fx:id="sex" prefWidth="100.0" />
+                  <TextField fx:id="email" prefWidth="100.0" />
+                  <TextField fx:id="phoneno" prefWidth="100.0" />
+                  <TextField fx:id="add" prefWidth="100.0" />
+                  <TextField fx:id="height" prefWidth="100.0" />
+                  <TextField fx:id="weight" prefWidth="100.0" />
+                  <TextField fx:id="diabetic" prefWidth="100.0" />
+                 
+                  
+                  <Button fx:id="commit" mnemonicParsing="false" prefWidth="120.0" text="Commit" />
+                  <Button fx:id="cancel" mnemonicParsing="false" prefWidth="100.0" text="Cancel" />
+               </children></HBox>
          </children>
       </VBox>
    </children>

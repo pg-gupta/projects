@@ -255,7 +255,7 @@ public class DBcontroller
 		Symptomdao symdao=new Symptomdao();
 		
 		sym.setSymptom_id(24);
-		sym.setDescription("Shvering and headache");
+		//sym.setDescription("Shvering and headache");
 		//sym.setDisease_id(1);
 		symdao.insertData(sym);
         //symdao.updateData(sym);

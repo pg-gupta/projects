@@ -75,6 +75,84 @@ public class FXViewPatientController implements Initializable {
 
 	@FXML
 	private TableColumn<Patient, String> diabeticCol;
+	
+	@FXML
+	private Label lid;
+	
+	@FXML
+	private Label llname;
+	
+	@FXML
+	private Label lfname;
+	
+	@FXML
+	private Label lage;
+	
+	@FXML
+	private Label lsex;
+	
+	@FXML
+	private Label lemail;
+	
+	@FXML
+	private Label lphoneno;
+	
+	@FXML
+	private Label ladd;
+	
+	@FXML
+	private Label lheight;
+	
+	@FXML
+	private Label lweight;
+	
+	@FXML
+	private Label ldiabetic;
+	
+	@FXML
+	private TextField id;
+	
+	@FXML
+	private TextField lname;
+	
+	@FXML
+	private TextField fname;
+	
+	@FXML
+	private TextField age;
+	
+	@FXML
+	private TextField sex;
+	
+	@FXML
+	private TextField email;
+	
+	@FXML
+	private TextField phoneno;
+	
+	@FXML
+	private TextField add;
+	
+	@FXML
+	private TextField height;
+	
+	@FXML
+	private TextField weight;
+	
+	@FXML
+	private TextField diabetic;
+	
+	@FXML
+	private Button commit;
+	
+	@FXML
+	private Button cancel;
+
+	
+	
+		
+	
+	
 
 
 
@@ -142,7 +220,7 @@ public class FXViewPatientController implements Initializable {
 	private void editRow() {
 
 		patientTable.toFront();
-		Label lid = new Label("Id");
+		/*Label lid = new Label("Id");
 		lid.setPrefWidth(100);
 		Label lfname = new Label("Fname");
 		lfname.setPrefWidth(100);
@@ -163,11 +241,11 @@ public class FXViewPatientController implements Initializable {
 		Label lweight= new Label("Weight");
 		lweight.setPrefWidth(100);
 		Label ldiabetic = new Label("Diabetic");
-		ldiabetic.setPrefWidth(100);
+		ldiabetic.setPrefWidth(100);*/
 
 		
 
-		TextField id = new TextField();
+		/*TextField id = new TextField();
 		id.setPrefWidth(100);
 		TextField fname = new TextField();
 		fname.setPrefWidth(100);
@@ -188,7 +266,7 @@ public class FXViewPatientController implements Initializable {
 		TextField weight = new TextField();
 		weight.setPrefWidth(100);
 		TextField diabetic = new TextField();
-		diabetic.setPrefWidth(100);
+		diabetic.setPrefWidth(100);*/
 
 
 
@@ -212,8 +290,8 @@ public class FXViewPatientController implements Initializable {
 		});
 
 		// save the content on commit
-		Button commit = new Button("Commit");
-		Button cancel = new Button("Cancel");
+		//Button commit = new Button("Commit");
+		//Button cancel = new Button("Cancel");
 
 		commit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
@@ -253,9 +331,9 @@ public class FXViewPatientController implements Initializable {
 		});
 
         
-		hbox1.getChildren().addAll(lid, lfname,llname,lage,lsex,lemail,lphoneno,ladd,lheight,lweight,ldiabetic);
+		//hbox1.getChildren().addAll(lid, lfname,llname,lage,lsex,lemail,lphoneno,ladd,lheight,lweight,ldiabetic);
 
-		hbox2.getChildren().addAll(id, fname,lname,age,sex,email,phoneno,add,height,weight,diabetic, commit,cancel);
+		//hbox2.getChildren().addAll(id, fname,lname,age,sex,email,phoneno,add,height,weight,diabetic, commit,cancel);
 
 		patientTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent evt) {
@@ -264,8 +342,8 @@ public class FXViewPatientController implements Initializable {
 					StackPane.setMargin(hbox1, new Insets(evt.getSceneY(), 0, 0, 0));
 					StackPane.setMargin(hbox2, new Insets(evt.getSceneY(), 0, 0, 0));
 					vbox1.toFront();
-					hbox1.toFront();
-					hbox2.toFront();
+					//hbox1.toFront();
+					//hbox2.toFront();
 				}
 			}
 		});

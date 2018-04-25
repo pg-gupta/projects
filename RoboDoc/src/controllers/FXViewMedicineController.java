@@ -59,6 +59,55 @@ public class FXViewMedicineController implements Initializable {
 	@FXML
 	private TableColumn<Medicine, String> diseaseidCol;
 	
+	@FXML
+	private Label lid;
+	
+	@FXML
+	private Label lname;
+	
+	@FXML
+	private Label ldrugs;
+	
+	@FXML
+	private Label ldescription;
+	
+	@FXML
+	private Label ldosage;
+	
+	@FXML
+	private Label ldiseaseid;
+	
+	@FXML
+	private TextField id;
+	
+	@FXML
+	private TextField name;
+	
+	@FXML
+	private TextField drugs;
+	
+	@FXML
+	private TextField description;
+	
+	@FXML
+	private TextField dosage;
+	
+	@FXML
+	private TextField diseaseid;
+	
+	
+	@FXML
+	private Button commit;
+	
+	@FXML
+	private Button cancel;
+	
+	
+	
+	
+	
+	
+	
 	
 
 	@FXML
@@ -121,7 +170,7 @@ public class FXViewMedicineController implements Initializable {
 	private void editRow() {
 
 		medicineTable.toFront();
-		Label lid= new Label("Id");
+		/*Label lid= new Label("Id");
 		lid.setPrefWidth(100);
 		Label lname= new Label("Name");
 		lname.setPrefWidth(100);
@@ -136,11 +185,10 @@ public class FXViewMedicineController implements Initializable {
 		Label laction1= new Label("Action");
 		ldiseaseid.setPrefWidth(100);
 		Label laction2= new Label("Action");
-		ldiseaseid.setPrefWidth(100);
+		ldiseaseid.setPrefWidth(100);*/
 		
 		
-		
-		TextField id = new TextField();
+		/*TextField id = new TextField();
 		id.setPrefWidth(100);
 		TextField name = new TextField();
 		name.setPrefWidth(100);
@@ -151,7 +199,7 @@ public class FXViewMedicineController implements Initializable {
 		TextField dosage = new TextField();
 		dosage.setPrefWidth(100);
 		TextField diseaseid = new TextField();
-		diseaseid.setPrefWidth(100);
+		diseaseid.setPrefWidth(100);*/
 
 
 	   medicineTable.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
@@ -168,9 +216,9 @@ public class FXViewMedicineController implements Initializable {
 
 		// save the content on commit
 		Button commit = new Button("Commit");
-	   //commit.setPrefWidth(100);
+	    commit.setPrefWidth(100);
 		Button cancel = new Button("Cancel");
-      //cancel.setPrefWidth(100);
+        cancel.setPrefWidth(100);
 		commit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
 				Medicinedao meddao =new Medicinedao();
@@ -197,11 +245,11 @@ public class FXViewMedicineController implements Initializable {
 		
         
 		
-		hbox1.getChildren().addAll(lid,lname,ldrugs,ldescription,ldosage,ldiseaseid);
+		//hbox1.getChildren().addAll(lid,lname,ldrugs,ldescription,ldosage,ldiseaseid);
 
-		hbox2.getChildren().addAll(id, name,drugs,description,dosage,diseaseid, commit,cancel);
+		//hbox2.getChildren().addAll(id, name,drugs,description,dosage,diseaseid, commit,cancel);
 		 
-	    //vbox1.getChildren().addAll(hbox1,hbox2);
+	   //vbox1.getChildren().addAll(hbox1,hbox2);
 
 		medicineTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent evt) {
@@ -210,8 +258,8 @@ public class FXViewMedicineController implements Initializable {
 					StackPane.setMargin(hbox1, new Insets(evt.getSceneY(), 0, 0, 0));
 					StackPane.setMargin(hbox2, new Insets(evt.getSceneY(), 0, 0, 0));
 					vbox1.toFront();
-					hbox1.toFront();
-					hbox2.toFront();
+					//hbox1.toFront();
+					//hbox2.toFront();
 				}
 			}
 		});

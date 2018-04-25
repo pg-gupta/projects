@@ -30,6 +30,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 import javafx.util.Callback;
+import models.Disease;
 import models.Doctor;
 import models.Doctordao;
 import models.Person;
@@ -75,6 +76,93 @@ public class FXViewDoctorController implements Initializable {
 
 	@FXML
 	private TableColumn<Doctor, String> degreeCol;
+	
+	@FXML
+	private TableColumn<Disease, String> specializationidCol;
+	
+	@FXML
+	private Label lid;
+	
+	@FXML
+	private Label llname;
+	
+	@FXML
+	private Label lfname;
+	
+	@FXML
+	private Label lage;
+	
+	@FXML
+	private Label lsex;
+	
+	@FXML
+	private Label lemail;
+	
+	@FXML
+	private Label lphoneno;
+	
+	@FXML
+	private Label ladd;
+	
+	@FXML
+	private Label lvisithours;
+	
+	@FXML
+	private Label lspecialization;
+	
+	@FXML
+	private Label ldegree;
+	
+	@FXML
+	private Label lspecializationid;
+	
+	
+	@FXML
+	private TextField id;
+	
+	@FXML
+	private TextField lname;
+	
+	@FXML
+	private TextField fname;
+	
+	@FXML
+	private TextField age;
+	
+	@FXML
+	private TextField sex;
+	
+	@FXML
+	private TextField email;
+	
+	@FXML
+	private TextField phoneno;
+	
+	@FXML
+	private TextField add;
+	
+	@FXML
+	private TextField visithours;
+	
+	@FXML
+	private TextField specialization;
+	
+	@FXML
+	private TextField degree;
+	
+	@FXML
+	private TextField specializationid;
+	
+	
+	@FXML
+	private Button commit;
+	
+	@FXML
+	private Button cancel;
+
+	
+
+	
 
 
 
@@ -106,6 +194,8 @@ public class FXViewDoctorController implements Initializable {
 		specializationCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("specialization"));
 		visithoursCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("visithours"));
 		degreeCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("degree"));
+		specializationidCol.setCellValueFactory(new PropertyValueFactory<Disease, String>("specializationid"));
+
 
 
 		// add delete button on row
@@ -142,7 +232,7 @@ public class FXViewDoctorController implements Initializable {
 	private void editRow() {
 
 		doctorTable.toFront();
-		Label lid = new Label("Id");
+		/*Label lid = new Label("Id");
 		lid.setPrefWidth(100);
 		Label lfname = new Label("Fname");
 		lfname.setPrefWidth(100);
@@ -164,6 +254,9 @@ public class FXViewDoctorController implements Initializable {
 		lvisithours.setPrefWidth(100);
 		Label ldegree = new Label("Degree");
 		ldegree.setPrefWidth(100);
+		Label lspecializationid= new Label("Specializationid");
+		lspecializationid.setPrefWidth(100);
+		
 
 		
 
@@ -189,6 +282,9 @@ public class FXViewDoctorController implements Initializable {
 		visithours.setPrefWidth(100);
 		TextField degree = new TextField();
 		degree.setPrefWidth(100);
+		TextField specializationid = new TextField();
+		specializationid.setPrefWidth(100);*/
+
 
 
 
@@ -205,6 +301,8 @@ public class FXViewDoctorController implements Initializable {
 			specialization.setText(nv.getSpecialization());
 			visithours.setText(nv.getVisithours());
 			degree.setText(nv.getDegree());
+			specializationid.setText(String.valueOf(nv.getSpecializationid()));
+
 
 
 
@@ -212,8 +310,8 @@ public class FXViewDoctorController implements Initializable {
 		});
 
 		// save the content on commit
-		Button commit = new Button("Commit");
-		Button cancel = new Button("Cancel");
+		//Button commit = new Button("Commit");
+		//Button cancel = new Button("Cancel");
 
 		commit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
@@ -238,6 +336,7 @@ public class FXViewDoctorController implements Initializable {
 				item.setSpecialization(specialization.getText());
 				item.setVisithours(visithours.getText());
 				item.setDegree(degree.getText());
+				item.setSpecializationid(Integer.parseInt(specializationid.getText()));
 				//perdao.update(person);
 				Doctordao.update(item);
 				showAlert(Alert.AlertType.INFORMATION,"Record Updated!","Doctor id " + item.id + " is updated in the database");
@@ -253,9 +352,9 @@ public class FXViewDoctorController implements Initializable {
 		});
 
         
-		hbox1.getChildren().addAll(lid, lfname,llname,lage,lsex,lemail,lphoneno,ladd,lspecialization,lvisithours,ldegree);
+		//hbox1.getChildren().addAll(lid, lfname,llname,lage,lsex,lemail,lphoneno,ladd,lspecialization,lvisithours,ldegree,lspecializationid);
 
-		hbox2.getChildren().addAll(id, fname,lname,age,sex,email,phoneno,add,specialization,visithours,degree, commit,cancel);
+		//hbox2.getChildren().addAll(id, fname,lname,age,sex,email,phoneno,add,specialization,visithours,degree,specializationid, commit,cancel);
 
 		doctorTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent evt) {
@@ -264,8 +363,8 @@ public class FXViewDoctorController implements Initializable {
 					StackPane.setMargin(hbox1, new Insets(evt.getSceneY(), 0, 0, 0));
 					StackPane.setMargin(hbox2, new Insets(evt.getSceneY(), 0, 0, 0));
 					vbox1.toFront();
-					hbox1.toFront();
-					hbox2.toFront();
+					//hbox1.toFront();
+					//hbox2.toFront();
 				}
 			}
 		});
