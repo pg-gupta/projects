@@ -111,7 +111,7 @@ public class FXViewDiseaseController implements Initializable {
 	private TextField diet;
 	
 	@FXML
-	private TextField test;
+	private TextField testsuggested;
 	
 	@FXML
 	private TextField specializationid;
@@ -233,7 +233,6 @@ public class FXViewDiseaseController implements Initializable {
 
 
 
-
 	   diseaseTable.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
 		   if (nv != null) {
 			id.setText(String.valueOf(nv.getDisease_id()));
@@ -242,7 +241,7 @@ public class FXViewDiseaseController implements Initializable {
 			diet.setText(nv.getPreffered_diet());
 			treatment.setText(nv.getTreatment());
 			contagious.setText(nv.getIs_contagious());
-			test.setText(nv.getTest_suggested());
+			testsuggested.setText(nv.getTest_suggested());
 			specializationid.setText(String.valueOf(nv.getSpecializationid()));
 
 			
@@ -264,7 +263,7 @@ public class FXViewDiseaseController implements Initializable {
 				item.setPreffered_diet(diet.getText());
 				item.setTreatment(treatment.getText());
 				item.setIs_contagious(contagious.getText());
-				item.setTest_suggested(test.getText());
+				item.setTest_suggested(testsuggested.getText());
 				item.setSpecializationid(Integer.parseInt(specializationid.getText()));
 
 
