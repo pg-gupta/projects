@@ -1,167 +1,62 @@
 package models;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 
-@ Entity(name="patient_details")
-public class Patient 
+//import org.hibernate.annotations.ForeignKey;
+
+
+
+//@PrimaryKeyJoinColumn(name = "personid", referencedColumnName = "personid")
+
+@ Entity
+public class Patient  extends Person
 { 
-	@Id
-	int patient_Id;
-	String fname;
-	String lname;
-	String sex;
-	double height;
-	double weight;
-	boolean is_diabetic;
-	String street;
-	String city;
-	String country;
-	String email;
-	String phone_Number;
+	int height;
+	int weight;
+	String isDiabetic;
+
+	
 	/**
-	 * @return the patient_Id
+	 * @return the personid
 	 */
-	public int getPatient_Id() {
-		return patient_Id;
-	}
-	/**
-	 * @param patient_Id the patient_Id to set
-	 */
-	public void setPatient_Id(int patient_Id) {
-		this.patient_Id = patient_Id;
-	}
-	/**
-	 * @return the fname
-	 */
-	public String getFname() {
-		return fname;
-	}
-	/**
-	 * @param fname the fname to set
-	 */
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-	/**
-	 * @return the lname
-	 */
-	public String getLname() {
-		return lname;
-	}
-	/**
-	 * @param lname the lname to set
-	 */
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-	/**
-	 * @return the sex
-	 */
-	public String getSex() {
-		return sex;
-	}
-	/**
-	 * @param sex the sex to set
-	 */
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
 	/**
 	 * @return the height
 	 */
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 	/**
 	 * @param height the height to set
 	 */
-	public void setHeight(double height) {
+	public void setHeight(int height) {
 		this.height = height;
 	}
 	/**
 	 * @return the weight
 	 */
-	public double getWeight() {
+	public int getWeight() {
 		return weight;
 	}
 	/**
 	 * @param weight the weight to set
 	 */
-	public void setWeight(double weight) {
+	public void setWeight(int weight) {
 		this.weight = weight;
 	}
 	/**
-	 * @return the is_diabetic
+	 * @return the isDiabetic
 	 */
-	public boolean isIs_diabetic() {
-		return is_diabetic;
+	public String getIsDiabetic() {
+		return isDiabetic;
 	}
 	/**
-	 * @param is_diabetic the is_diabetic to set
+	 * @param isDiabetic the isDiabetic to set
 	 */
-	public void setIs_diabetic(boolean is_diabetic) {
-		this.is_diabetic = is_diabetic;
+	public void setIsDiabetic(String isDiabetic) {
+		this.isDiabetic = isDiabetic;
 	}
-	/**
-	 * @return the street
-	 */
-	public String getStreet() {
-		return street;
-	}
-	/**
-	 * @param street the street to set
-	 */
-	public void setStreet(String street) {
-		this.street = street;
-	}
-	/**
-	 * @return the city
-	 */
-	public String getCity() {
-		return city;
-	}
-	/**
-	 * @param city the city to set
-	 */
-	public void setCity(String city) {
-		this.city = city;
-	}
-	/**
-	 * @return the country
-	 */
-	public String getCountry() {
-		return country;
-	}
-	/**
-	 * @param country the country to set
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	/**
-	 * @return the phone_Number
-	 */
-	public String getPhone_Number() {
-		return phone_Number;
-	}
-	/**
-	 * @param phone_Number the phone_Number to set
-	 */
-	public void setPhone_Number(String phone_Number) {
-		this.phone_Number = phone_Number;
-	}
+	
+	
 	
 }

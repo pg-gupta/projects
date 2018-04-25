@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 20, 2018, 5:37:51 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="application.LoginController" table="LOGINCONTROLLER">
+        <id name="buttonlogin" type="javafx.scene.control.Button" access="field">
+            <column name="BUTTONLOGIN" />
+            <generator class="assigned" />
+        </id>
+        <property name="lbladmin" type="javafx.scene.control.Label" access="field">
+            <column name="LBLADMIN" />
+        </property>
+        <property name="txtusername" type="javafx.scene.control.TextField" access="field">
+            <column name="TXTUSERNAME" />
+        </property>
+        <property name="txtpassword" type="javafx.scene.control.TextField" access="field">
+            <column name="TXTPASSWORD" />
+        </property>
+    </class>
+</hibernate-mapping>

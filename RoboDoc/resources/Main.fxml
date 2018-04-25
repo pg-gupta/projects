@@ -7,12 +7,19 @@
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="anchorPane" prefHeight="587.0" prefWidth="583.0" style="root" stylesheets="@bootstrap3.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMainAppController">
+<AnchorPane id="anchorPane" prefHeight="900.0" prefWidth="900.0" style="root" stylesheets="@bootstrap3.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMainAppController">
 	<children>
 		<AnchorPane prefHeight="107.0" prefWidth="596.0">
 			<children>
 				<MenuBar layoutX="93.0" layoutY="24.0" prefHeight="32.0" prefWidth="447.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="24.0">
 					<menus>
+					    <Menu fx:id="personTab" mnemonicParsing="false" text="Person">
+							<items>
+								<MenuItem fx:id="ViewPerson" mnemonicParsing="false" onAction="#handleViewPersonAction" text="View" />
+
+							</items>
+						</Menu>
+					    
 						<Menu fx:id="medicineTab" mnemonicParsing="false" styleClass="primary" text="Medicine">
 							<items>
 								<MenuItem fx:id="addMedicine" mnemonicParsing="false" onAction="#handleAddMedicineAction" text="Add" />
@@ -45,6 +52,15 @@
 							<items>
 								<MenuItem fx:id="addDisease" mnemonicParsing="false" onAction="#handleAddDiseaseAction" text="Add" />
 								<MenuItem fx:id="viewDisease" mnemonicParsing="false" onAction="#handleViewDiseaseAction" text="View" />
+														</items>
+													</Menu>
+							
+								
+						<Menu fx:id="specializationTab" mnemonicParsing="false" text="Specialization">
+							<items>
+								<MenuItem fx:id="addSpecialization" mnemonicParsing="false" onAction="#handleAddSpecializationAction" text="Add" />
+								<MenuItem fx:id="viewSpecialization" mnemonicParsing="false" onAction="#handleViewSpecializationAction" text="View" />
+						
 
 							</items>
 						</Menu>

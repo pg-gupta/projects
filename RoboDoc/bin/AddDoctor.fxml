@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane prefHeight="551.0" prefWidth="528.0"
 	style="-fx-background-color: #A1BBC7;"
 	xmlns="http://javafx.com/javafx/9.0.4"
@@ -39,6 +40,23 @@
 					prefWidth="380.0" promptText="Address" />
 				<JFXButton fx:id="addBtn" layoutY="365.0" prefWidth="98.0"
 					styleClass="primary" onAction="#addDoctor" stylesheets="@bootstrap3.css" text="Add" />
+=======
+		<AnchorPane layoutX="34.0" layoutY="60.0" prefHeight="700.0" prefWidth="401.0">
+			<children>
+				 <TextArea fx:id="id" layoutY="5.0" prefHeight="34.0" prefWidth="380.0" promptText="ID" />
+			    <TextArea fx:id="fName" layoutY="53.0" prefHeight="34.0" prefWidth="380.0" promptText="First Name" />
+				<TextArea fx:id="lName" layoutY="102.0" prefHeight="14.0" prefWidth="380.0" promptText="Last Name" />
+				<TextArea fx:id="age" layoutY="154.0" prefHeight="15.0" prefWidth="380.0" promptText="Age" />
+				<TextArea fx:id="sex" layoutY="201.0" prefHeight="15.0" prefWidth="380.0" promptText="Sex" />
+				<TextArea fx:id="email" layoutY="250.0" prefHeight="15.0" prefWidth="380.0" promptText="Email" />
+				<TextArea fx:id="phoneNo" layoutY="300.0" prefHeight="35.0" prefWidth="380.0" promptText="Phone Number" />
+				<TextArea fx:id="add" layoutY="498.0" prefHeight="35.0" prefWidth="380.0" promptText="Address" />
+				<TextArea fx:id="specialization" layoutY="451.0" prefHeight="35.0" prefWidth="380.0" promptText="Specialization" />
+				<TextArea fx:id="visitHours" layoutY="350.0" prefHeight="23.0" prefWidth="380.0" promptText="VISITING HOURS" />
+				<TextArea fx:id="degree" layoutY="398.0" prefHeight="35.0" prefWidth="380.0" promptText="DEGREE" />
+				<TextArea fx:id="specializationid" layoutY="549.0" prefHeight="35.0" prefWidth="380.0" promptText="SPECIALIZATIONID" />
+								<JFXButton fx:id="addBtn" layoutY="612.0" onAction="#addDoctor" prefWidth="98.0" styleClass="primary" stylesheets="@bootstrap3.css" text="Add" />
+>>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
 
 			</children>
 		</AnchorPane>

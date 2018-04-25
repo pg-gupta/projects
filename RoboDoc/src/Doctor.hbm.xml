@@ -1,21 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 18, 2018, 2:48:22 PM by Hibernate Tools 3.5.0.Final -->
+<!-- Generated Apr 20, 2018, 9:18:43 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="models.Doctor" table="DOCTOR_DETAILS">
-        <id name="doctor_Id" type="int">
-            <column name="DOCTOR_ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="fname" type="java.lang.String">
-            <column name="FNAME" />
-        </property>
-        <property name="lname" type="java.lang.String">
-            <column name="LNAME" />
-        </property>
-        <property name="visiting_Hours" type="java.lang.String">
-            <column name="VISITING_HOURS" />
+    <joined-subclass name="models.Doctor" extends="models.Person" table="DOCTOR_DETAILS" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+        <property name="visitinghours" type="java.lang.String">
+            <column name="VISITINGHOURS" />
         </property>
         <property name="Specialization" type="java.lang.String">
             <column name="SPECIALIZATION" />
@@ -23,11 +16,5 @@
         <property name="Degree" type="java.lang.String">
             <column name="DEGREE" />
         </property>
-        <property name="phone_Number" type="java.lang.String">
-            <column name="PHONE_NUMBER" />
-        </property>
-        <property name="Address" type="java.lang.String">
-            <column name="ADDRESS" />
-        </property>
-    </class>
+    </joined-subclass>
 </hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<!-- <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.layout.FlowPane?>
+
+<FlowPane fx:id="main" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPersonController1">
+   <children>
+      <JFXTreeTableView fx:id="personTable" prefHeight="400.0" prefWidth="534.0" stylesheets="@main.css" />
+   </children>
+</FlowPane> -->
+
+<AnchorPane fx:id="main" prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPersonController">
+   <children>
+      <TableView fx:id="personTable" prefHeight="600.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="47.99997025728226" text="Id" />
+          <TableColumn fx:id="fnameCol" prefWidth="115.20000839233398" text="FName" />
+          <TableColumn fx:id="lnameCol" prefWidth="115.20000839233398" text="LName" />
+          <TableColumn fx:id="sexCol" prefWidth="115.20000839233398" text="Sex" />
+          <TableColumn fx:id="ageCol" prefWidth="115.20000839233398" text="Age" />
+          <TableColumn fx:id="phonenoCol" prefWidth="115.20000839233398" text="Phone Number" />
+          <TableColumn fx:id="emailCol" prefWidth="115.20000839233398" text="Email" />
+          <TableColumn fx:id="addCol" prefWidth="115.20000839233398" text="Address" />
+          
+        </columns>
+      </TableView>
+      
+   </children>
+</AnchorPane>

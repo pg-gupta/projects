@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
@@ -31,3 +32,25 @@
         </property>
     </class>
 </hibernate-mapping>
+=======
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 20, 2018, 9:18:43 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <joined-subclass name="models.Doctor" extends="models.Person" table="DOCTOR_DETAILS" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+        <property name="visitinghours" type="java.lang.String">
+            <column name="VISITINGHOURS" />
+        </property>
+        <property name="Specialization" type="java.lang.String">
+            <column name="SPECIALIZATION" />
+        </property>
+        <property name="Degree" type="java.lang.String">
+            <column name="DEGREE" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>
+>>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99

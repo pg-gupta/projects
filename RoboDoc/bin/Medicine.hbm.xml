@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
@@ -25,3 +26,32 @@
         </property>
     </class>
 </hibernate-mapping>
+=======
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 18, 2018, 2:48:22 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="models.Medicine" table="DIM_MEDICINE">
+        <id name="medicine_id" type="int">
+            <column name="MEDICINE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="medicine_name" type="java.lang.String">
+            <column name="MEDICINE_NAME" />
+        </property>
+        <property name="drugs" type="java.lang.String">
+            <column name="DRUGS" />
+        </property>
+        <property name="Description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="Dosage" type="java.lang.String">
+            <column name="DOSAGE" />
+        </property>
+        <property name="disease_id" type="int">
+            <column name="DISEASE_ID" />
+        </property>
+    </class>
+</hibernate-mapping>
+>>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99

@@ -8,26 +8,27 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/jfoenix-9.0.1.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/eclipse-workspace/SQLDB_MVC_Example/libs/mysql-connector-java-5.1.46.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/mysql-connector-java-5.1.46-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/javax.activation-1.2.0.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/jaxb-api-2.3.0.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/jaxb-core-2.3.0.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/jaxb-impl-2.3.0.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/jboss-annotations-api_1.2_spec-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/jboss-jms-api_2.0_spec-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/antlr-2.7.7.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/classmate-1.3.0.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/hibernate-commons-annotations-5.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/hibernate-core-5.2.11.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/javassist-3.20.0-GA.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/jboss-logging-3.3.0.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/lucene-core-5.5.4.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/lucene-queryparser-5.5.4.jar"/>
-	<classpathentry kind="lib" path="/Users/miteshpatekar/Downloads/Test1/lib/xml-apis-1.3.03.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="lib/classmate-1.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-commons-annotations-5.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-core-5.2.11.Final.jar"/>
+	<classpathentry kind="lib" path="lib/javassist-3.20.0-GA.jar"/>
+	<classpathentry kind="lib" path="lib/javax.activation-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-api-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-core-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-annotations-api_1.2_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-jms-api_2.0_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-logging-3.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-core-5.5.4.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-queryparser-5.5.4.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.46-bin.jar"/>
+	<classpathentry kind="lib" path="lib/xml-apis-1.3.03.jar"/>
+	<classpathentry kind="lib" path="lib/c3p0-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/mchange-commons-java-0.2.11.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-impl-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/jfoenix-9.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

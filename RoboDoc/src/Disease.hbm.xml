@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 18, 2018, 2:48:22 PM by Hibernate Tools 3.5.0.Final -->
+<!-- Generated Apr 20, 2018, 12:16:01 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="models.Disease" table="DIM_DISEASE">
         <id name="disease_id" type="int">
@@ -17,8 +17,8 @@
         <property name="prevention" type="java.lang.String">
             <column name="PREVENTION" />
         </property>
-        <property name="is_contagious" type="boolean">
-            <column name="IS_COTNAGIOUS" />
+        <property name="is_contagious" type="java.lang.String" access="field">
+            <column name="IS_CONTAGIOUS" />
         </property>
         <property name="preffered_diet" type="java.lang.String">
             <column name="PREFFERED_DIET" />
@@ -26,5 +26,11 @@
         <property name="test_suggested" type="java.lang.String">
             <column name="TEST_SUGGESTED" />
         </property>
+        
+         <property name="specializationid" type="int">
+            <column name="SPECIALIZATIONID" />
+                    </property>
+            
+       
     </class>
 </hibernate-mapping>

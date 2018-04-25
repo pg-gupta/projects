@@ -1,11 +1,16 @@
 package models;
 import org.hibernate.Transaction;
+
+
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.exception.DataException;
 import org.hibernate.query.Query;
+
 
 public abstract class DBOperations implements DBActions {
     public Session sess;
@@ -20,10 +25,13 @@ public abstract class DBOperations implements DBActions {
         trans.commit();
     	}
     	catch (HibernateException e)
-    	{
-    		
+    	{  
+    		if (trans != null)
+    		trans.rollback();
+            e.printStackTrace();
+
     	}
-              
+    	              
     }
     /**
      * 
@@ -38,7 +46,9 @@ public abstract class DBOperations implements DBActions {
         }
         catch (HibernateException e)
     	{
-    		
+        	if (trans != null)
+        		trans.rollback();
+                e.printStackTrace();
     	}
               
     }
@@ -55,7 +65,9 @@ public abstract class DBOperations implements DBActions {
         }
         catch (HibernateException e)
     	{
-    		
+        	if (trans != null)
+        		trans.rollback();
+                e.printStackTrace();
     	}
     	
     }
@@ -78,7 +90,8 @@ public abstract class DBOperations implements DBActions {
             }
             catch (HibernateException e)
 	        {
-		
+                e.printStackTrace();
+
 	        }   
             return object;
     }
@@ -99,8 +112,9 @@ public abstract class DBOperations implements DBActions {
         }
         catch (HibernateException e)
         {
-        	//RuntimeException rn= new RuntimeException();
-        }
+        	if (trans != null)
+        		trans.rollback();
+                e.printStackTrace();        }
               
         return objects;
     }
@@ -117,8 +131,9 @@ public abstract class DBOperations implements DBActions {
         sess = sf.openSession();
         trans = sess.beginTransaction();
     	}
-    	catch(Exception e) {
-    		System.out.println(e);
+    	catch(HibernateException e) {
+            System.err.println("Initial SessionFactory creation failed." + e);
+            throw new ExceptionInInitializerError(e);
     	}
     }
 }

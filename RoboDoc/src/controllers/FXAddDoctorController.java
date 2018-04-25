@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,15 +13,23 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import models.Doctor;
 import models.Doctordao;
+import models.Person;
+import models.Persondao;
 
-public class FXAddDoctorController implements Initializable {
+public class FXAddDoctorController  implements Initializable {
+	
+	@FXML
+	private TextArea id;
+
 
 	@FXML
 	private TextArea fName;
@@ -30,6 +39,20 @@ public class FXAddDoctorController implements Initializable {
 
 	@FXML
 	private TextArea age;
+	
+	@FXML
+	private TextArea phoneNo;
+	
+	@FXML
+	private TextArea email;
+
+	@FXML
+	private TextArea sex;
+
+
+	@FXML
+	private TextArea add;
+
 
 	@FXML
 	private TextArea specialization;
@@ -39,113 +62,137 @@ public class FXAddDoctorController implements Initializable {
 
 	@FXML
 	private TextArea degree;
-
+	
 	@FXML
-	private TextArea phoneNo;
+	private TextArea specializationid;
 
-	@FXML
-	private TextArea add;
 
 	@FXML
 	private JFXButton addBtn;
 
-	GridPane gridPane;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		gridPane = createRegistrationFormPane();
+		
 
 	}
 
 	@FXML
 	void addDoctor(ActionEvent event) {
 		
+		if (id.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR, "Form Error!","Please enter  id");
+			return;
+		}
+		
+		if (!validate(id.getText())) 
+		{
+			
+			showAlert(Alert.AlertType.ERROR,  "Form Error!", "Please enter a numeric value for id");
+			return;
+		}
 		
 		if (fName.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!",
-					"Please enter your first name");
+			showAlert(Alert.AlertType.ERROR, "Form Error!","Please enter  first name");
 			return;
 		}
 		if (lName.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!",
-					"Please enter your last name");
+			showAlert(Alert.AlertType.ERROR, "Form Error!",	"Please enter last name");
 			return;
 		}
+				
+		if (phoneNo.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR, "Form Error!","Please enter  phone number");
+			return;
+		}
+		if (add.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR, "Form Error!", "Please enter  address");
+			return;
+		}
+		
+		if (age.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR,  "Form Error!", "Please enter age");
+			return;
+		}
+		
+		if (!validate(age.getText())) 
+		{
+			
+			showAlert(Alert.AlertType.ERROR,  "Form Error!", "Please enter a numeric value for age");
+			return;
+		}
+
+		
 		if (specialization.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!",
-					"Please enter a specialization");
+			showAlert(Alert.AlertType.ERROR, "Form Error!",	"Please enter  specialization");
 			return;
 		}
 
 		if (visitHours.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!",
-					"Please enter a visit hours");
+			showAlert(Alert.AlertType.ERROR,"Form Error!","Please enter  visiting hours");
 			return;
 		}
-		if (degree.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter a degree");
-			return;
-		}
-		if (phoneNo.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!",
-					"Please enter a phone number");
-			return;
-		}
-		if (add.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, gridPane.getScene().getWindow(), "Form Error!", "Please enter a address");
+		if (degree.getText().isEmpty()) 
+		{
+			showAlert(Alert.AlertType.ERROR,"Form Error!", "Please enter degree");
 			return;
 		}
 		
+		if (specializationid.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR,  "Form Error!","Please enter test suggested");
+			return;
+		}
+		
+		if (!validate(specializationid.getText())) 
+		{
+			
+			showAlert(Alert.AlertType.ERROR,  "Form Error!", "Please enter a numeric value for specializationid");
+			return;
+		}
+
+	
+		
+		Person person= new Person();
+		Persondao personDao =new Persondao();
 		Doctor doc= new Doctor();
 		Doctordao doctorDao=new Doctordao();
+		person.setId(Integer.parseInt(id.getText()));
+		doc.setId(person.getId());
 		doc.setFname(fName.getText());
 		doc.setLname(lName.getText());
+		doc.setPhonenumber(phoneNo.getText());
+		doc.setAddress(add.getText());
+		doc.setAge(Integer.parseInt(age.getText()));
+		doc.setEmail(email.getText());
+		doc.setSex(sex.getText());
+        doc.setSpecialization(specialization.getText());
+		doc.setVisithours(visitHours.getText());
 		doc.setDegree(degree.getText());
-		doc.setSpecialization(specialization.getText());
-		doc.setVisiting_Hours(visitHours.getText());
-		doc.setPhone_Number(phoneNo.getText());
+		doc.setSpecializationid(Integer.parseInt(specializationid.getText()));
+
+		//personDao.insertData(person);
 		doctorDao.insertData(doc);
+		
+	
+		
 	}
-
-	private GridPane createRegistrationFormPane() {
-		// Instantiate a new Grid Pane
-		GridPane gridPane = new GridPane();
-
-		// Position the pane at the center of the screen, both vertically and
-		// horizontally
-		gridPane.setAlignment(Pos.CENTER);
-
-		// Set a padding of 20px on each side
-		gridPane.setPadding(new Insets(40, 40, 40, 40));
-
-		// Set the horizontal gap between columns
-		gridPane.setHgap(10);
-
-		// Set the vertical gap between rows
-		gridPane.setVgap(10);
-
-		// Add Column Constraints
-
-		// columnOneConstraints will be applied to all the nodes placed in column one.
-		ColumnConstraints columnOneConstraints = new ColumnConstraints(100, 100, Double.MAX_VALUE);
-		columnOneConstraints.setHalignment(HPos.RIGHT);
-
-		// columnTwoConstraints will be applied to all the nodes placed in column two.
-		ColumnConstraints columnTwoConstrains = new ColumnConstraints(200, 200, Double.MAX_VALUE);
-		columnTwoConstrains.setHgrow(Priority.ALWAYS);
-
-		gridPane.getColumnConstraints().addAll(columnOneConstraints, columnTwoConstrains);
-
-		return gridPane;
-	}
-
-	private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+	
+	private void showAlert(Alert.AlertType alertType, String title, String message) 
+	{
 		Alert alert = new Alert(alertType);
 		alert.setTitle(title);
 		alert.setHeaderText(null);
 		alert.setContentText(message);
-		alert.initOwner(owner);
-		alert.show();
+	    alert.show();
+
+			
 	}
+	
+	 private boolean validate(String text)
+	    {
+	        return text.matches("[0-9]*");
+	    }
+
 
 }
+
