@@ -6,13 +6,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="551.0" prefWidth="528.0" style="-fx-background-color: #A1BBC7;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXAddDoctorController">
+<<<<<<< HEAD
+<AnchorPane prefHeight="551.0" prefWidth="528.0"
+	style="-fx-background-color: #A1BBC7;"
+	xmlns="http://javafx.com/javafx/9.0.4"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.FXAddDoctorController">
 	<children>
-		<Label id="addDoctorLabel" layoutX="34.0" layoutY="33.0" text="Add Doctor" textFill="#0a3a61" textOverrun="LEADING_ELLIPSIS">
+		<Label id="addDoctorLabel" layoutX="34.0" layoutY="33.0"
+			text="Add Doctor" textFill="#0a3a61" textOverrun="LEADING_ELLIPSIS">
 			<font>
 				<Font name="System Bold" size="18.0" />
 			</font>
 		</Label>
+		<AnchorPane layoutX="32.0" layoutY="100.0"
+			prefHeight="392.0" prefWidth="401.0">
+			<children>
+				<TextArea fx:id="fName" layoutY="5.0" prefHeight="34.0"
+					prefWidth="380.0" promptText="First Name" />
+				<TextArea fx:id="lName" layoutY="48.0" prefHeight="14.0"
+					prefWidth="380.0" promptText="Last Name" />
+				<TextArea fx:id="age" layoutY="89.0" prefHeight="15.0"
+					prefWidth="380.0" promptText="Age" />
+				<TextArea fx:id="specialization" layoutY="180.0"
+					prefHeight="35.0" prefWidth="380.0" promptText="Specialization" />
+				<TextArea fx:id="visitHours" layoutY="137.0"
+					prefHeight="23.0" prefWidth="380.0" promptText="Visiting Hours" />
+				<TextArea fx:id="degree" layoutY="224.0" prefHeight="35.0"
+					prefWidth="380.0" promptText="Degree" />
+				<TextArea fx:id="phoneNo" layoutY="269.0" prefHeight="35.0"
+					prefWidth="380.0" promptText="Phone Number" />
+				<TextArea fx:id="add" layoutY="315.0" prefHeight="35.0"
+					prefWidth="380.0" promptText="Address" />
+				<JFXButton fx:id="addBtn" layoutY="365.0" prefWidth="98.0"
+					styleClass="primary" onAction="#addDoctor" stylesheets="@bootstrap3.css" text="Add" />
+=======
 		<AnchorPane layoutX="34.0" layoutY="60.0" prefHeight="700.0" prefWidth="401.0">
 			<children>
 				 <TextArea fx:id="id" layoutY="5.0" prefHeight="34.0" prefWidth="380.0" promptText="ID" />
@@ -28,6 +56,7 @@
 				<TextArea fx:id="degree" layoutY="398.0" prefHeight="35.0" prefWidth="380.0" promptText="DEGREE" />
 				<TextArea fx:id="specializationid" layoutY="549.0" prefHeight="35.0" prefWidth="380.0" promptText="SPECIALIZATIONID" />
 								<JFXButton fx:id="addBtn" layoutY="612.0" onAction="#addDoctor" prefWidth="98.0" styleClass="primary" stylesheets="@bootstrap3.css" text="Add" />
+>>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
 
 			</children>
 		</AnchorPane>

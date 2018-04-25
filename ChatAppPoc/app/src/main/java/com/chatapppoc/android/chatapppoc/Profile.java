@@ -37,11 +37,17 @@ public class Profile extends AppCompatActivity {
     Button searchFriendBtn;
     Button showRequestBtn;
     Button showFriendsBtn;
+    Button logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        // set logo
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         // get reference of the views
         addSkill = (Button) findViewById(R.id.addSkillbtn);
@@ -51,6 +57,7 @@ public class Profile extends AppCompatActivity {
         searchFriendBtn = (Button) findViewById(R.id.searchFriendBtn);
         showRequestBtn = (Button) findViewById(R.id.showReqBtn);
         showFriendsBtn = (Button) findViewById(R.id.showFriendsBtn);
+        logoutBtn = (Button) findViewById(R.id.logoutBtn);
         final Activity activity = this;
 
         // get reference of the firebase database
@@ -97,7 +104,7 @@ public class Profile extends AppCompatActivity {
         reference.orderByChild(getString(R.string.skill_name)).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot.exists()) {
+                if (dataSnapshot.exists()) {
                     Map map = dataSnapshot.getValue(Map.class);
                     skills += map.get(getString(R.string.skill_name)).toString() + ",";
                     skillList.setText(skills);
@@ -150,6 +157,16 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
 
 }

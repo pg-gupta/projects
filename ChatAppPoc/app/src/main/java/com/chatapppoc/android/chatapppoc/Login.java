@@ -47,6 +47,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         // variables defined
         Firebase.setAndroidContext(this);
         registerUser = (TextView) findViewById(R.id.register);

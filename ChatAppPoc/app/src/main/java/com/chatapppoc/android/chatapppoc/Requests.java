@@ -32,6 +32,11 @@ public class Requests extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
 
+        // set logo
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         // get reference of the views
         requestsList = (ListView) findViewById(R.id.friendRequestList);
         requestPageTxt = (TextView) findViewById(R.id.requestPageTxt);

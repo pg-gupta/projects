@@ -1,7 +1,9 @@
 package com.chatapppoc.android.chatapppoc;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,16 +33,26 @@ public class Register extends AppCompatActivity {
     Button registerButton;
     String user, pass;
     TextView login;
+    Button setLocation;
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        // set logo
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         // variables defined
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         registerButton = (Button) findViewById(R.id.registerButton);
         login = (TextView) findViewById(R.id.login);
+        setLocation = (Button) findViewById(R.id.setlocation);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         Firebase.setAndroidContext(this);
 
@@ -48,6 +60,14 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Register.this, Login.class));
+            }
+        });
+
+        setLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Register.this, com.chatapppoc.android.chatapppoc.MainLocationTracker.class));
+
             }
         });
 
@@ -80,6 +100,8 @@ public class Register extends AppCompatActivity {
                             Firebase reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users));
 
                             if (s.equals("null")) {
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                sharedpreferences.edit().putString("userid", user).commit();
                                 reference.child(user).child(getString(R.string.password)).setValue(pass);
                                 Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
                             } else {
@@ -92,7 +114,8 @@ public class Register extends AppCompatActivity {
                                     } else {
                                         Toast.makeText(Register.this, R.string.user_exists, Toast.LENGTH_LONG).show();
                                     }
-
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    sharedpreferences.edit().putString("userid", user).commit();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ChatAppPoc</string>
+    <string name="app_name">HobbyLobby</string>
     <string name="firebase_database">https://chatapppoc-b9a57.firebaseio.com</string>
     <string name="friends_list">friendsList</string>
     <string name="request_list">requestList</string>
