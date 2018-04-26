@@ -8,13 +8,15 @@
   <property name="hibernate.connection.url">jdbc:mysql://www.papademas.net/fp510?useSSL=false</property>
   <property name="hibernate.connection.username">fpuser</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-  <property name="show_sql">true</property>
+  <property name="show_sql">false</property>
  
   <mapping resource="Person.hbm.xml"/>
     <mapping resource="Symptom.hbm.xml"/>
     <mapping resource="Disease.hbm.xml"/>
-        <mapping resource="Medicine.hbm.xml"/>
-                <mapping resource="Specialization.hbm.xml"/>
+    <mapping resource="Medicine.hbm.xml"/>
+    <mapping resource="Specialization.hbm.xml"/>
+    <mapping resource="User.hbm.xml"/>
+                
         
         
     
