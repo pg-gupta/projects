@@ -1,8 +1,16 @@
 
 package models;
-
-import java.util.List;
-import java.io.Serializable;
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Interface declaring database operations 
+ *
+ */
 
 public interface DBActions 
 {

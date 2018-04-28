@@ -1,6 +1,5 @@
 package controllers;
 
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -32,7 +31,17 @@ import javafx.stage.Window;
 import javafx.util.Callback;
 import models.Person;
 import models.Persondao;
-
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Controller which manages operations and event on the ViewPerson partial page
+ *
+ */
 public class FXViewPersonController implements Initializable {
 
 	@FXML
@@ -46,7 +55,7 @@ public class FXViewPersonController implements Initializable {
 
 	@FXML
 	private TableColumn<Person, String> fnameCol;
-	
+
 	@FXML
 	private TableColumn<Person, String> lnameCol;
 
@@ -65,16 +74,6 @@ public class FXViewPersonController implements Initializable {
 	@FXML
 	private TableColumn<Person, String> addCol;
 
-
-	@FXML
-	private VBox vbox1;
-	
-
-	@FXML
-	private HBox hbox1;
-	@FXML
-	private HBox hbox2;
-
 	ObservableList<Person> persons = FXCollections.observableArrayList();
 
 	public FXViewPersonController() {
@@ -92,15 +91,10 @@ public class FXViewPersonController implements Initializable {
 		phonenoCol.setCellValueFactory(new PropertyValueFactory<Person, String>("phonenumber"));
 		addCol.setCellValueFactory(new PropertyValueFactory<Person, String>("address"));
 		bindData();
-
-		
 	}
 
-		// add delete button on row
+	private void bindData() {
 
-		private void bindData() {
-
-		// DaoModel model = new DaoModel();
 		Persondao Persondao = new Persondao();
 
 		List<Person> resultSet = Persondao.getRecords(new Person());
@@ -110,19 +104,6 @@ public class FXViewPersonController implements Initializable {
 
 		personTable.setItems(persons);
 
-		/*
-		 * try { while (resultSet.next()) {
-		 * 
-		 * Person per = new Person();
-		 * 
-		 * per.setDoctor_Id(Integer.parseInt(resultSet.getString(1)));
-		 * per.setFname(resultSet.getString(2)); persons.add(per); }
-		 * personTable.setItems(persons); } catch (SQLException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
 	}
-
-	
-	
 
 }

@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<!-- <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.layout.FlowPane?>
-
-<FlowPane fx:id="main" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewDiseaseController">
+<AnchorPane fx:id="main" stylesheets="@main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewDiseaseController">
    <children>
-      <JFXTreeTableView fx:id="medicineTable" prefHeight="400.0" prefWidth="534.0" stylesheets="@main.css" />
-   </children>
-</FlowPane> -->
-
-<AnchorPane fx:id="main" prefHeight="560.0" prefWidth="731.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewDiseaseController">
-   <children>
-     <TableView fx:id="diseaseTable" layoutX="-14.0" prefHeight="560.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
+     <TableView fx:id="diseaseTable" layoutX="-14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="47.99997025728226" text="Id" />
           <TableColumn fx:id="nameCol" prefWidth="104.79999542236328" text="Name" />
@@ -28,39 +20,46 @@
           <TableColumn fx:id="preventionCol" prefWidth="137.5999755859375" text="Prevention" />
          <TableColumn fx:id="iscontagiousCol" prefWidth="107.19992065429688" text="Contagious" />
           <TableColumn fx:id="preffereddietCol" prefWidth="172.800048828125" text="Diet" />
-          <TableColumn fx:id="testsuggested" prefWidth="172.800048828125" text="Test Suggested" />
-          <TableColumn fx:id="specializationidCol" prefWidth="172.800048828125" text="Specialization Id" />
-          
+          <TableColumn fx:id="testsuggestedCol" prefWidth="172.800048828125" text="Test Suggested" />
                
-        </columns>
+                    </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-       <VBox fx:id="vbox1" alignment="CENTER" layoutX="8.0" layoutY="193.0" opacity="0.74" prefHeight="186.0" prefWidth="702.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
-         <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="718.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
-            <children>
-                  <Label fx:id="lid" prefWidth="80.0" text="Id" />
-                  <Label fx:id="lname" prefWidth="80.0" text="Name" />
-                  <Label fx:id="ltreatment" prefWidth="80.0" text="Treatment" />
-                  <Label fx:id="lprevention" prefWidth="80.0" text="Prevention" />
-                  <Label fx:id="lcontagious" prefWidth="80.0" text="Contagious" />
-                  <Label fx:id="ldiet" prefWidth="70.0" text="Diet" />
-                   <Label fx:id="ltest" prefWidth="100.0" text="Test Suggested" />
-                  
-               </children></HBox>
-            
-            
-            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
-            <children>
-                  <TextField fx:id="id" prefWidth="100.0" />
-                  <TextField fx:id="name" prefWidth="100.0" />
-                  <TextField fx:id="treatment" prefWidth="100.0" />
-                  <TextField fx:id="prevention" prefWidth="100.0" />
-                  <TextField fx:id="contagious" prefWidth="100.0" />
-                  <TextField fx:id="diet" prefWidth="100.0" />
-                  <TextField fx:id="test" prefWidth="100.0" />
-                  
-                  <Button fx:id="commit" mnemonicParsing="false" prefWidth="100.0" text="Commit" />
-                  <Button fx:id="cancel" mnemonicParsing="false" prefWidth="100.0" text="Cancel" />
-               </children></HBox>
-      </VBox>
+      <AnchorPane fx:id="editDiseasePane" layoutX="245.0" layoutY="40.0" style="-fx-background-color: #00688B;">
+         <children>
+            <Label layoutX="14.0" layoutY="38.0" prefHeight="17.0" prefWidth="23.0" text="Id" textFill="WHITE" />
+            <Label layoutX="14.0" layoutY="63.0" prefHeight="17.0" prefWidth="49.0" text="Name" textFill="WHITE" />
+            <Label layoutX="14.0" layoutY="92.0" prefHeight="17.0" prefWidth="78.0" text="Treatement" textFill="WHITE" />
+            <Label layoutX="14.0" layoutY="119.0" prefHeight="17.0" prefWidth="78.0" text="Prevention" textFill="WHITE" />
+            <Label layoutX="14.0" layoutY="143.0" prefHeight="17.0" prefWidth="78.0" text="Contagious" textFill="WHITE" />
+            <Label layoutX="14.0" layoutY="168.0" prefHeight="17.0" prefWidth="78.0" text="Diet" textFill="WHITE" />
+            <Label layoutX="16.0" layoutY="193.0" text="TestSuggested" textFill="WHITE" />
+            <TextField fx:id="id" disable="true" layoutX="123.0" layoutY="33.0" />
+            <TextField fx:id="name" layoutX="123.0" layoutY="58.0" />
+            <TextField fx:id="treatement" layoutX="123.0" layoutY="85.0" />
+            <TextField fx:id="prevention" layoutX="123.0" layoutY="112.0" />
+            <TextField fx:id="iscontagious" layoutX="123.0" layoutY="138.0" />
+            <TextField fx:id="preferreddiet" layoutX="123.0" layoutY="163.0" />
+            <TextField fx:id="testsuggested" layoutX="123.0" layoutY="188.0" />
+            <Button fx:id="commit" layoutX="122.0" layoutY="257.0" mnemonicParsing="false" text="UPDATE" />
+            <Button fx:id="cancel" layoutX="229.0" layoutY="257.0" mnemonicParsing="false" text="CANCEL" />
+            <Label contentDisplay="CENTER" layoutX="11.0" layoutY="5.0" prefHeight="17.0" prefWidth="105.0" text="EDIT DISEASE" textFill="WHITE" textOverrun="WORD_ELLIPSIS" underline="true">
+               <font>
+                  <Font name="Bodoni 72 Oldstyle Book" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" />
+         </padding>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
    </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="40.0" />
+   </padding>
 </AnchorPane>

@@ -7,7 +7,17 @@ import org.hibernate.cfg.Configuration;
 import models.Medicine;
 
 
-
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Class defining database methods for the Medicine class
+ *
+ */
 public  class Medicinedao extends DBOperations
 {   
     public void insertData(Medicine med) 

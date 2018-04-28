@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 18, 2018, 7:14:42 PM by Hibernate Tools 3.5.0.Final -->
-<hibernate-mapping>
-    <class name="models.Person" table="PATIENT_TRACKING_DETAILS">
-        <id name="tracking_id" type="int">
-            <column name="TRACKING_ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="patient_id" type="int">
-            <column name="PATIENT_ID" />
-        </property>
-        <property name="doctor_id" type="int">
-            <column name="DOCTOR_ID" />
-        </property>
-        <property name="symptoms" type="java.lang.String">
-            <column name="SYMPTOMS" />
-        </property>
-        <property name="treatment_advised" type="java.lang.String">
-            <column name="TREATMENT_ADVISED" />
-        </property>
-        <property name="rating" type="java.lang.String">
-            <column name="RATING" />
-        </property>
-    </class>
-</hibernate-mapping>
-=======
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
@@ -144,4 +115,3 @@
   
        </class>
 </hibernate-mapping>
->>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99

@@ -7,18 +7,12 @@
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<<<<<<< HEAD
-<AnchorPane id="anchorPane" prefHeight="587.0" prefWidth="583.0" style="root" stylesheets="@bootstrap3.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMainAppController">
-=======
-<AnchorPane id="anchorPane" prefHeight="900.0" prefWidth="900.0" style="root" stylesheets="@bootstrap3.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMainAppController">
->>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
+<AnchorPane id="anchorPane" style="root" stylesheets="@bootstrap3.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMainAppController">
 	<children>
-		<AnchorPane prefHeight="107.0" prefWidth="596.0">
+		<AnchorPane layoutX="59.0" prefHeight="57.0" prefWidth="667.0" stylesheets="@bootstrap3.css" AnchorPane.leftAnchor="60.0">
 			<children>
-				<MenuBar layoutX="93.0" layoutY="24.0" prefHeight="32.0" prefWidth="600.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="24.0">
+				<MenuBar layoutX="18.0" layoutY="24.0" stylesheets="@bootstrap3.css" AnchorPane.topAnchor="15.0">
 					<menus>
-<<<<<<< HEAD
-=======
 					    <Menu fx:id="personTab" mnemonicParsing="false" text="Person">
 							<items>
 								<MenuItem fx:id="ViewPerson" mnemonicParsing="false" onAction="#handleViewPersonAction" text="View" />
@@ -26,7 +20,6 @@
 							</items>
 						</Menu>
 					    
->>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
 						<Menu fx:id="medicineTab" mnemonicParsing="false" styleClass="primary" text="Medicine">
 							<items>
 								<MenuItem fx:id="addMedicine" mnemonicParsing="false" onAction="#handleAddMedicineAction" text="Add" />
@@ -59,8 +52,6 @@
 							<items>
 								<MenuItem fx:id="addDisease" mnemonicParsing="false" onAction="#handleAddDiseaseAction" text="Add" />
 								<MenuItem fx:id="viewDisease" mnemonicParsing="false" onAction="#handleViewDiseaseAction" text="View" />
-<<<<<<< HEAD
-=======
 														</items>
 													</Menu>
 							
@@ -70,7 +61,6 @@
 								<MenuItem fx:id="addSpecialization" mnemonicParsing="false" onAction="#handleAddSpecializationAction" text="Add" />
 								<MenuItem fx:id="viewSpecialization" mnemonicParsing="false" onAction="#handleViewSpecializationAction" text="View" />
 						
->>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
 
 							</items>
 						</Menu>
@@ -84,7 +74,7 @@
 				</MenuBar>
 			</children>
 		</AnchorPane>
-		<AnchorPane fx:id="dynamicPane" layoutX="13.0" layoutY="68.0" prefHeight="544.0" prefWidth="583.0">
+		<AnchorPane fx:id="dynamicPane" layoutX="-66.0" layoutY="68.0" prefHeight="650.0" prefWidth="741.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="68.0">
 			<children>
 
 			</children>

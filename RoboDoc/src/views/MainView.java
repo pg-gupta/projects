@@ -28,8 +28,7 @@ public class MainView extends Application {
 	public void start(Stage stage) throws Exception {
 		try {
 
-			//Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
 
 			stage.setScene(new Scene(root));
 			stage.show();

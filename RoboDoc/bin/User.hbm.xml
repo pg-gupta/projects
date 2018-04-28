@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2018, 11:03:28 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="models.User" table="robodocuser">
+        <id name="uid" type="int">
+            <column name="UID" />
+            <generator class="assigned" />
+        </id>
+        <property name="uname" type="java.lang.String">
+            <column name="UNAME" />
+        </property>
+        <property name="upassword" type="java.lang.String">
+            <column name="UPASSWORD" />
+        </property>
+        <property name="isadmin" type="java.lang.Boolean">
+            <column name="ISADMIN" />
+        </property>
+    </class>
+</hibernate-mapping>

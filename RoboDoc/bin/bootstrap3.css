@@ -928,3 +928,10 @@ VBox > .split-menu-button.last > .arrow-button {
 .slider:vertical .track {
 	-fx-pref-width: 5;
 }
+
+.anchor{
+    -fx-background-image:url("blue3.jpg");
+}
+MenuBar Menu:pressed{
+	-fx-background-color: #dad9da;
+}

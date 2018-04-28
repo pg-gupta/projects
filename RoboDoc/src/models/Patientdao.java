@@ -7,7 +7,17 @@ import org.hibernate.cfg.Configuration;
 import models.Patient;
 
 
-
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Class defining database methods for the Patient class
+ *
+ */
 public  class Patientdao extends DBOperations
 {   
     public void insertData(Patient patient) 

@@ -7,7 +7,17 @@ import org.hibernate.cfg.Configuration;
 import models.Person;
 
 
-
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Class defining database methods for the Person class
+ *
+ */
 public  class Persondao extends DBOperations
 {   
     public void insertData(Person person) 

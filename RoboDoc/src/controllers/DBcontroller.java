@@ -29,12 +29,8 @@ public class DBcontroller
 	    org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("org.hibernate");
 	    java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.OFF);
 	    
-	    
-	    Persondao dao =new Persondao();
 	    Person person= new Person();
-		
 	    Doctor doc =new Doctor();
-		Doctordao docdao =new Doctordao();
 		person.setId(42);
 		doc.setId(person.getId());
 		doc.setFname("aish");

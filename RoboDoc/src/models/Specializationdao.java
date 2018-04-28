@@ -6,7 +6,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import models.Specialization;
 
-
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Class defining database methods for the Specialization class
+ *
+ */
 
 public  class Specializationdao extends DBOperations
 {   
