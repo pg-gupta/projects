@@ -39,7 +39,7 @@ public class Requests extends AppCompatActivity {
 
         // get reference of the views
         requestsList = (ListView) findViewById(R.id.friendRequestList);
-        //requestPageTxt = (TextView) findViewById(R.id.requestPageTxt);
+        requestPageTxt = (TextView) findViewById(R.id.norequestsTxt);
         reference = new Firebase(getString(R.string.firebase_database));
         activity = this;
         getAllRequests();
@@ -67,9 +67,10 @@ public class Requests extends AppCompatActivity {
                     customListAdapter = new AcceptFriendRequestCustomList(activity, requests, reference,
                             getString(R.string.users), getString(R.string.request_list), getString(R.string.friends_list));
                     requestsList.setAdapter(customListAdapter);
-                } else
+                }
+                if (requests.size() == 0) {
                     requestPageTxt.setText("No Pending Requests");
-
+                }
             }
 
             @Override
@@ -77,5 +78,6 @@ public class Requests extends AppCompatActivity {
 
             }
         });
+
     }
 }

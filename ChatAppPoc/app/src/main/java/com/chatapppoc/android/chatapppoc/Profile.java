@@ -73,7 +73,7 @@ public class Profile extends AppCompatActivity {
                 if (skill != null && skill.getText() != "") {
                     map = new HashMap<String, String>();
                     // add skill with its proficiency
-                    map.put(getString(R.string.skill_name), skill.getText().toString());
+                    map.put(getString(R.string.skill_name), skill.getText().toString().toUpperCase());
                     map.put(getString(R.string.skill_proficiency), "1");
 
                     // check if the skill already added

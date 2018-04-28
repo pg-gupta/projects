@@ -48,12 +48,12 @@ public class AddFriendList extends ArrayAdapter {
     }
 
     /**
-     * Method to add person in the friend list of both the sender and accepter of friend request
+     * Method to add person in the request list of both the accepter of friend request
      * @param requestFrom Person from whom request os coming from
      * @param requestTo Person who is accepting the friend request
      */
     private void addFriend(final String requestFrom, final String requestTo) {
-        reference.child(usersDBKey).child(requestFrom).child(requestListDBKey).addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.child(usersDBKey).child(requestTo).child(requestListDBKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // store the values in map structure
@@ -63,7 +63,7 @@ public class AddFriendList extends ArrayAdapter {
                     requestName.put(requestFrom, false);
                     reference.child(usersDBKey).child(requestTo).child(requestListDBKey).setValue(requestName);
                 } else {
-                    requests.put(requestTo, false);
+                    requests.put(requestFrom, false);
                     reference.child(usersDBKey).child(requestTo).child(requestListDBKey).setValue(requests);
                 }
 

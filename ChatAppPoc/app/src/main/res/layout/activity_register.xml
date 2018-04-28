@@ -61,13 +61,4 @@
         android:textColor="#003300"
         android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/setlocation"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttons"
-        android:text="SET LOCATION"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="10dp"/>
-
 </LinearLayout>

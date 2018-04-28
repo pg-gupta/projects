@@ -60,9 +60,10 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
     private List<String> peopleNearby = new ArrayList<>();
     private Map<String, Marker> markers;
     private GoogleMap map;
-    private Circle searchCircle;
+
     private static final int INITIAL_ZOOM_LEVEL = 14;
     GeoLocation loc;
+    TextView noSearchFoundTxt;
 
 
     @Override
@@ -79,13 +80,16 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
         searchBtn = (ImageButton) findViewById(R.id.searchBtn);
         reference = new Firebase(getString(R.string.firebase_database));
         CURRENT_LOCATION = UserDetails.getUserLocation();
-
+        noSearchFoundTxt = (TextView) findViewById(R.id.noSearchResultTxt);
         setUpMap();
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchTxt = searchSkillText.getText().toString();
+                noSearchFoundTxt.setText("");
+
+                map.clear();
                 if (!searchTxt.isEmpty()) {
                     searchPeopleWithSkill();
                 }
@@ -93,24 +97,6 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-    }
-
-    /**
-     * Method to add map to the page
-     */
-    private void setUpMap() {
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-
-        this.markers = new HashMap<String, Marker>();
-    }
-
-    /**
-     * Method to set firebase and geofire reference
-     */
-    private void setupFirebase() {
-        database = FirebaseDatabase.getInstance().getReference();
-        geofire = new GeoFire(database.child(getString(R.string.geolocation)));
     }
 
     /**
@@ -251,6 +237,63 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
+    /**
+     * Method to filter people with certain skill
+     *
+     * @param skill the skill on which people need to be filtered
+     * @throws InterruptedException
+     */
+    private void filterUserHavingSkill(final String skill) throws InterruptedException {
+        final List<String> filteredUser = new ArrayList<>();
+        final AddFriendList[] addFriendCustomAdapter = new AddFriendList[1];
+        for (final String user : users) {
+            reference.child(getString(R.string.users)).child(user).child(getString(R.string.skills)).orderByChild(getString(R.string.skill_name)).equalTo(skill.toUpperCase()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        filteredUser.add(user);
+                        addMarker(name);
+                    }
+
+                    addFriendCustomAdapter[0] = new AddFriendList(activity, filteredUser, reference, getString(R.string.users), getString(R.string.request_list));
+                    friendList.setAdapter(addFriendCustomAdapter[0]);
+                    if (filteredUser.size() == 0) {
+                        noSearchFoundTxt.setText("No Friends Found!");
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+
+        }
+
+
+
+    }
+
+    /**
+     * Method to add map to the page
+     */
+    private void setUpMap() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        this.markers = new HashMap<String, Marker>();
+    }
+
+    /**
+     * Method to set firebase and geofire reference
+     */
+    private void setupFirebase() {
+        database = FirebaseDatabase.getInstance().getReference();
+        geofire = new GeoFire(database.child(getString(R.string.geolocation)));
+    }
+
     /**
      * Add marker to the map
      *
@@ -275,38 +318,6 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    /**
-     * Method to filter people with certain skill
-     *
-     * @param skill the skill on which people need to be filtered
-     * @throws InterruptedException
-     */
-    private void filterUserHavingSkill(final String skill) throws InterruptedException {
-        final List<String> filteredUser = new ArrayList<>();
-        final AddFriendList[] addFriendCustomAdapter = new AddFriendList[1];
-        for (final String user : users) {
-            reference.child(getString(R.string.users)).child(user).child(getString(R.string.skills)).orderByChild(getString(R.string.skill_name)).equalTo(skill).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        filteredUser.add(user);
-                        addMarker(name);
-                    }
-                    addFriendCustomAdapter[0] = new AddFriendList(activity, filteredUser, reference, getString(R.string.users), getString(R.string.request_list));
-                    friendList.setAdapter(addFriendCustomAdapter[0]);
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-
-        }
-
-
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         LatLng latLngCenter = new LatLng(CURRENT_LOCATION.latitude, CURRENT_LOCATION.longitude);
@@ -322,7 +333,6 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
 
         fetchUsersByMiles();
     }
-
 
 
 }

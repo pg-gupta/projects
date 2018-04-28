@@ -26,6 +26,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -59,9 +60,8 @@ public class Register extends AppCompatActivity {
     Button registerButton;
     String user, pass;
     TextView login;
-    Button setLocation;
     SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String MyPREFERENCES = "MyPrefs";
 
     private ArrayList<String> permissionsToRequest;
     private ArrayList<String> permissionsRejected = new ArrayList<>();
@@ -83,7 +83,7 @@ public class Register extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         registerButton = (Button) findViewById(R.id.registerButton);
         login = (TextView) findViewById(R.id.login);
-        setLocation = (Button) findViewById(R.id.setlocation);
+
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         Firebase.setAndroidContext(this);
@@ -110,110 +110,6 @@ public class Register extends AppCompatActivity {
                 startActivity(new Intent(Register.this, Login.class));
             }
         });
-
-
-
-        setLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                user = username.getText().toString();
-                pass = password.getText().toString();
-
-                if (user.equals("")) {
-                    username.setError(getString(R.string.no_text));
-                } else if (pass.equals("")) {
-                    password.setError(getString(R.string.no_text));
-                } else if (!user.matches("[A-Za-z0-9]+")) {
-                    username.setError(getString(R.string.alpha_numeric));
-                } else if (user.length() < 5) {
-                    username.setError(getString(R.string.atleast_five_char));
-                } else if (pass.length() < 5) {
-                    password.setError(getString(R.string.atleast_five_char));
-                } else {
-                    final ProgressDialog pd = new ProgressDialog(Register.this);
-                    pd.setMessage("Loading...");
-                    pd.show();
-
-                    String url = getString(R.string.firebase_database) + "/users.json";
-
-                    StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String s) {
-                            Firebase reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users));
-
-                            if (s.equals("null")) {
-                                SharedPreferences.Editor editor = sharedpreferences.edit();
-                                sharedpreferences.edit().putString("userid", user).commit();
-                                reference.child(user).child(getString(R.string.password)).setValue(pass);
-                                Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
-                            } else {
-                                try {
-                                    JSONObject obj = new JSONObject(s);
-
-                                    if (!obj.has(user)) {
-                                        reference.child(user).child(getString(R.string.password)).setValue(pass);
-                                        Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
-                                    } else {
-                                        Toast.makeText(Register.this, R.string.user_exists, Toast.LENGTH_LONG).show();
-                                    }
-                                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                                    sharedpreferences.edit().putString("userid", user).commit();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                            pd.dismiss();
-                        }
-
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError) {
-                            System.out.println("" + volleyError);
-                            pd.dismiss();
-                        }
-                    });
-
-                    RequestQueue rQueue = Volley.newRequestQueue(Register.this);
-                    rQueue.add(request);
-                }
-
-                locationTrack = new LocationTrack(Register.this);
-
-
-                if (locationTrack.canGetLocation()) {
-
-
-                    final double longitude = locationTrack.getLongitude();
-                    final double latitude = locationTrack.getLatitude();
-
-                    sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-                    String userid = sharedpreferences.getString("userid","");
-
-
-                    System.out.println("userid"+userid);
-
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.geolocation));
-                    final GeoFire geofire = new GeoFire(reference);
-                    geofire.setLocation(userid,new GeoLocation(latitude,longitude));
-
-
-
-                    Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(longitude) + "\nLatitude:" + Double.toString(latitude), Toast.LENGTH_SHORT).show();
-
-                    Toast.makeText(getApplicationContext(), "Current Location Saved Successfully" , Toast.LENGTH_SHORT).show();
-
-
-                } else {
-
-                    locationTrack.showSettingsAlert();
-                }
-
-            }
-        });
-
-
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -244,22 +140,24 @@ public class Register extends AppCompatActivity {
                             Firebase reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users));
 
                             if (s.equals("null")) {
-                                SharedPreferences.Editor editor = sharedpreferences.edit();
                                 sharedpreferences.edit().putString("userid", user).commit();
                                 reference.child(user).child(getString(R.string.password)).setValue(pass);
                                 Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
+                                setCurrentLocationOfUser();
                             } else {
                                 try {
                                     JSONObject obj = new JSONObject(s);
 
                                     if (!obj.has(user)) {
+                                        sharedpreferences.edit().putString("userid", user).commit();
                                         reference.child(user).child(getString(R.string.password)).setValue(pass);
                                         Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
+                                        setCurrentLocationOfUser();
+
                                     } else {
                                         Toast.makeText(Register.this, R.string.user_exists, Toast.LENGTH_LONG).show();
                                     }
-                                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                                    sharedpreferences.edit().putString("userid", user).commit();
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -278,9 +176,36 @@ public class Register extends AppCompatActivity {
 
                     RequestQueue rQueue = Volley.newRequestQueue(Register.this);
                     rQueue.add(request);
+
+
                 }
             }
         });
+    }
+
+    private void setCurrentLocationOfUser() {
+        locationTrack = new LocationTrack(Register.this);
+
+        if (locationTrack.canGetLocation()) {
+
+            final double longitude = locationTrack.getLongitude();
+            final double latitude = locationTrack.getLatitude();
+
+            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            String userid = sharedpreferences.getString("userid", "");
+
+            System.out.println("userid" + userid);
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.geolocation));
+            final GeoFire geofire = new GeoFire(reference);
+            geofire.setLocation(userid, new GeoLocation(latitude, longitude));
+
+            Toast.makeText(getApplicationContext(), "Location for the user set", Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            locationTrack.showSettingsAlert();
+        }
     }
 
     private ArrayList<String> findUnAskedPermissions(ArrayList<String> wanted) {
