@@ -7,10 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<<<<<<< HEAD
-=======
 <?import javafx.scene.layout.VBox?>
->>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
 
 <!-- <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.layout.FlowPane?>
@@ -21,17 +18,6 @@
    </children>
 </FlowPane> -->
 
-<<<<<<< HEAD
-<AnchorPane fx:id="main" prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewDoctorController">
-   <children>
-      <TableView fx:id="doctorTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columns>
-          <TableColumn fx:id="idCol" prefWidth="175.0" text="Id" />
-          <TableColumn fx:id="nameCol" prefWidth="169.0" text="Name" />
-        </columns>
-      </TableView>
-      <HBox fx:id="hbox" alignment="CENTER" layoutX="173.0" layoutY="207.0" prefHeight="144.0" prefWidth="284.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" AnchorPane.topAnchor="207.0" />
-=======
 <AnchorPane fx:id="main" prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewDoctorController">
    <children>
       <TableView fx:id="doctorTable" prefHeight="600.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -92,11 +78,5 @@
                   <Button fx:id="cancel" mnemonicParsing="false" prefWidth="110.0" text="Cancel" />
                </children></HBox>
          </children>
-<<<<<<< HEAD
       </VBox>   </children>
-=======
-      </VBox>
->>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
-   </children>
->>>>>>> 0d380b2ba61a2cf1cce91981474d046f942bf1c1
 </AnchorPane>

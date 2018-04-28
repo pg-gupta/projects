@@ -16,6 +16,8 @@ import models.Medicine;
 import models.Medicinedao;
 import models.Symptom;
 import models.Symptomdao;
+import models.User;
+import models.Userdao;
 import models.Person;
 import models.Persondao;
 import models.Specialization;
@@ -25,17 +27,64 @@ public class DBcontroller
 {
 	public static void main(String[] args)
 	{   
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({"unchecked", "deprecation"})
 	    org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("org.hibernate");
 	    java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.OFF);
 	    
 	    
-	    Persondao dao =new Persondao();
-	    Person person= new Person();
-		
+	   // Userdao dao =new Userdao();
+	    //User user= new User();
+	    //user.setUid(1);
+	    //user.setUname("yesh");
+	    //user.setUpassword("yesh");
+	    //user.setIsadmin(true);
+	   // dao.updateData(user);
+	    //User u= (User) dao.getByName("yesh");
+        //System.out.println(u.getUname());
+
+
 	    Doctor doc =new Doctor();
 		Doctordao docdao =new Doctordao();
-		person.setId(42);
+		Persondao dao =new Persondao();
+	    Person person= new Person();
+		//Patient pt =new Patient();
+		//Patientdao ptdao =new Patientdao();
+	    //Person id =new Person();
+	    dao.findMaxid(person);
+	    int rec = dao.findMaxid(person);
+        //Iterator it = rec.iterator();
+        //while(it.hasNext())
+        //{
+            //Object obj = (Object)it.next();
+            //P per1 =  obj   ;
+
+		System.out.println(rec);
+		
+        //}
+
+	    //System.out.println(id.getId());
+	/*	person.setId(10);
+		doc.setId(person.getId());
+		doc.setFname("Dr.Lee");
+		doc.setLname("Samuel");
+		doc.setAge(35);
+		doc.setSex("M");
+		doc.setPhonenumber("7255423467");
+		doc.setAddress("State Street Chicago");
+		doc.setEmail("lee@gmail.com");
+		doc.setSpecializationid(3);
+		doc.setSpecialization("Eye Specialist");
+		doc.setVisithours("6.00 pm to 9.00 pm");
+		doc.setDegree("M.D");*/
+		//pt.setHeight(143);
+		//pt.setWeight(60);
+		//pt.setIsDiabetic("yes");
+		//docdao.insertData(doc);
+		
+		
+		
+		
+		/*person.setId(43);
 		doc.setId(person.getId());
 		doc.setFname("aish");
 		doc.setLname("srini");
@@ -46,6 +95,7 @@ public class DBcontroller
 		doc.setVisithours("9-3");
 		doc.setDegree("M.D");
 		doc.setSpecializationid(1);
+		docdao.updateData(doc);*/
 		
 	}
 		

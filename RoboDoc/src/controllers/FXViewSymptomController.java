@@ -219,7 +219,9 @@ public class FXViewSymptomController implements Initializable {
 					// get Selected Item
 					Symptom currentPerson = (Symptom) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
 					// remove selected item from the table list
+					//symptoms.remove(currentPerson.cellButton);
 					symptoms.remove(currentPerson);
+					//getChildren().remove(cellButton);
 					Symptom sym =new Symptom();
 					Symptomdao symdao= new Symptomdao();
 					//System.out.println("currentPerson is" + currentPerson.id);

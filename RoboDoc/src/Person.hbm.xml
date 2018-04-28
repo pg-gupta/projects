@@ -33,9 +33,13 @@
         
         <joined-subclass name="models.Patient" table="PATIENT"> 
                                           <key column="Id"/>
+                                          
+         <property name="patientid" type="int">
+            <column name="PATIENTID" />
+        </property>
                              
-                         <property name="fname" type="java.lang.String">
-            <column name="FNAME" />
+       <property name="fname" type="java.lang.String">
+       <column name="FNAME" />
         </property>
         <property name="lname" type="java.lang.String">
             <column name="LNAME" />
@@ -71,7 +75,10 @@
           
   <joined-subclass name="models.Doctor" table="Doctor"> 
                          <key column="Id"/>
-                         
+         <property name="doctorid" type="int">
+            <column name="DOCTORID" />
+        </property>
+        
                          <property name="fname" type="java.lang.String">
             <column name="FNAME" />
         </property>

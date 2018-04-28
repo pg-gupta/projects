@@ -15,6 +15,22 @@ public class Patient  extends Person
 	int height;
 	int weight;
 	String isDiabetic;
+	int patientid;
+
+	
+	
+	/**
+	 * @return the patientid
+	 */
+	public int getPatientid() {
+		return patientid;
+	}
+	/**
+	 * @param patientid the patientid to set
+	 */
+	public void setPatientid(int patientid) {
+		this.patientid = patientid;
+	}
 
 	
 	/**

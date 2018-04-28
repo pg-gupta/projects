@@ -36,6 +36,12 @@ public  class Persondao extends DBOperations
        return  super.findAll(Person.class);
     }
     
+    public int findMaxid(Person person) 
+    {
+       return  super.findMaxid(Person.class);
+    }
+    
+    
     
 
 }

@@ -25,10 +25,16 @@ public  class Userdao extends DBOperations
         super.delete(user);
     }
     
-    public User getById(int Id) 
+  /*  public User getById(int Id) 
     {  
     	int id =Id;
        return (User) super.find(User.class,id);
+    }*/
+    
+    public User getByName(String name) 
+    {  
+    	String uname =name;
+       return (User) super.find(User.class,uname);
     }
     
     public List getRecords(User user) 

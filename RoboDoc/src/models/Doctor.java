@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 
 
 
+@SuppressWarnings({})
+
+
 @ Entity
 public class Doctor extends Person
 
@@ -12,9 +15,22 @@ public class Doctor extends Person
 	String specialization;
 	String degree;
 	int specializationid;
+	int doctorid;
 
 	
 	
+	/**
+	 * @return the doctorid
+	 */
+	public int getDoctorid() {
+		return doctorid;
+	}
+	/**
+	 * @param doctorid the doctorid to set
+	 */
+	public void setDoctorid(int doctorid) {
+		this.doctorid = doctorid;
+	}
 	/**
 	 * @return the visitinghours
 	 */

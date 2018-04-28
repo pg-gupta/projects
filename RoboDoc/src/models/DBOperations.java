@@ -10,9 +10,21 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.DataException;
 import org.hibernate.query.Query;
+import org.hibernate.*;
+import java.util.logging.Logger;
+
+import javax.persistence.PersistenceException;
+
 
 
 public abstract class DBOperations implements DBActions {
+	
+	@SuppressWarnings({"unchecked", "deprecation"})
+	org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("org.hibernate");
+
+    //getLogger("org.hibernate").setLevel(java.util.logging.Level.OFF);
+
+    
     public Session sess;
     public Transaction trans;
     public SessionFactory sf;
@@ -24,18 +36,17 @@ public abstract class DBOperations implements DBActions {
 		sess.save(obj);
         trans.commit();
     	}
-    	catch (HibernateException e)
-    	{  
-    		if (trans != null)
-    		trans.rollback();
+        catch(ConstraintViolationException  e)
+    	{                                                       
+        	if (trans != null)
+            trans.rollback();
             e.printStackTrace();
-
-    	}
-    	              
+     
+        } 
     }
-    /**
-     * 
-     */
+   /**
+    * .
+    */
     public void update(Object obj) 
     {
         try
@@ -95,6 +106,33 @@ public abstract class DBOperations implements DBActions {
 	        }   
             return object;
     }
+    
+    /**
+     * 
+     * @param clazz
+     * @param id
+     * @return
+     */
+    public int findMaxid(Class clazz) 
+    {
+        int objects = 0;
+    
+    	    try 
+            {
+            DBConnect(clazz);
+    	               
+            Query query = sess.createQuery("select max(id) from " + clazz.getName());
+            objects =query.getFirstResult();
+            trans.commit();
+            }
+            catch (HibernateException e)
+	        {
+                e.printStackTrace();
+
+	        }   
+            return objects;
+    }
+
     /**
      * 
      * @param clazz

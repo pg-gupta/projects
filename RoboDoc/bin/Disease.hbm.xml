@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 18, 2018, 2:48:22 PM by Hibernate Tools 3.5.0.Final -->
-<hibernate-mapping>
-    <class name="models.Disease" table="DIM_DISEASE">
-        <id name="disease_id" type="int">
-            <column name="DISEASE_ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="disease_name" type="java.lang.String">
-            <column name="DISEASE_NAME" />
-        </property>
-        <property name="treatment" type="java.lang.String">
-            <column name="TREATMENT" />
-        </property>
-        <property name="prevention" type="java.lang.String">
-            <column name="PREVENTION" />
-        </property>
-        <property name="is_contagious" type="boolean">
-            <column name="IS_COTNAGIOUS" />
-        </property>
-        <property name="preffered_diet" type="java.lang.String">
-            <column name="PREFFERED_DIET" />
-        </property>
-        <property name="test_suggested" type="java.lang.String">
-            <column name="TEST_SUGGESTED" />
-        </property>
-    </class>
-</hibernate-mapping>
-=======
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
@@ -66,4 +34,3 @@
        
     </class>
 </hibernate-mapping>
->>>>>>> 6ca124bb3147c272e434545e609b436d7d7afe99
