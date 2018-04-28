@@ -39,7 +39,7 @@ public class Requests extends AppCompatActivity {
 
         // get reference of the views
         requestsList = (ListView) findViewById(R.id.friendRequestList);
-        requestPageTxt = (TextView) findViewById(R.id.requestPageTxt);
+        //requestPageTxt = (TextView) findViewById(R.id.requestPageTxt);
         reference = new Firebase(getString(R.string.firebase_database));
         activity = this;
         getAllRequests();
