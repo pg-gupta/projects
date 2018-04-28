@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hobbies1"
+    android:background="@drawable/hobbybg"
 
     android:orientation="vertical">
 
@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="No users found!"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         android:id="@+id/noUsersText"
         android:visibility="gone"/>
 

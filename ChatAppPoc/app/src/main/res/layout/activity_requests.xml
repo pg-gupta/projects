@@ -5,26 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Requests"
-    android:background="@drawable/hobbies1">
+    android:background="@drawable/hobbybg">
 
 
     <ListView
         android:id="@+id/friendRequestList"
         android:layout_width="match_parent"
-        android:layout_height="451dp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:id="@+id/requestPageTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="16dp"
-        android:text="Requests"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="27dp" />
+        android:divider="@null"
+        android:dividerHeight="10.0sp"/>
+
+
 </RelativeLayout>
