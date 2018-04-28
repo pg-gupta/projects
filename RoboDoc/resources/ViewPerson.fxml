@@ -6,17 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<!-- <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.layout.FlowPane?>
-
-<FlowPane fx:id="main" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPersonController1">
-   <children>
-      <JFXTreeTableView fx:id="personTable" prefHeight="400.0" prefWidth="534.0" stylesheets="@main.css" />
-   </children>
-</FlowPane> -->
-
-<AnchorPane fx:id="main" prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPersonController">
+<AnchorPane fx:id="main" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"  prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPersonController">
    <children>
       <TableView fx:id="personTable" prefHeight="600.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>

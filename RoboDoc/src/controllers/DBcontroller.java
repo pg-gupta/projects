@@ -31,36 +31,49 @@ public class DBcontroller
 	    org.jboss.logging.Logger logger = org.jboss.logging.Logger.getLogger("org.hibernate");
 	    java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.OFF);
 	    
-	    
-	   // Userdao dao =new Userdao();
-	    //User user= new User();
-	    //user.setUid(1);
-	    //user.setUname("yesh");
-	    //user.setUpassword("yesh");
-	    //user.setIsadmin(true);
-	   // dao.updateData(user);
-	    //User u= (User) dao.getByName("yesh");
-        //System.out.println(u.getUname());
-
+	   
 
 	    Doctor doc =new Doctor();
 		Doctordao docdao =new Doctordao();
 		Persondao dao =new Persondao();
 	    Person person= new Person();
+	    Userdao userdao = new Userdao();
+		int id = dao.getMaxid();
+	    id =id +1;
+		person.setId(id);
+		doc.setId(person.getId());
+		doc.setFname("Dr.Lee");
+		doc.setLname("Samuel");
+		doc.setAge(35);
+		doc.setSex("M");
+		doc.setPhonenumber("7255423467");
+		doc.setAddress("State Street Chicago");
+		doc.setEmail("lee@gmail.com");
+		doc.setSpecializationid(3);
+		doc.setSpecialization("Eye Specialist");
+		doc.setVisithours("6.00 pm to 9.00 pm");
+		doc.setDegree("M.D");
+		docdao.insertData(doc);
+
+		
+		//System.out.println(person);
+		
 		//Patient pt =new Patient();
 		//Patientdao ptdao =new Patientdao();
 	    //Person id =new Person();
-	    dao.findMaxid(person);
-	    int rec = dao.findMaxid(person);
+	   // dao.findMaxid(person);
+	    //int rec = dao.findMaxid(person);
         //Iterator it = rec.iterator();
         //while(it.hasNext())
         //{
             //Object obj = (Object)it.next();
             //P per1 =  obj   ;
-
-		System.out.println(rec);
+		//List<?> per =dao.getMaxid(person);
 		
-        //}
+		//System.out.println(per);
+		
+        //
+		//}
 
 	    //System.out.println(id.getId());
 	/*	person.setId(10);
@@ -85,6 +98,11 @@ public class DBcontroller
 		
 		
 		/*person.setId(43);
+=======
+	    Person person= new Person();
+	    Doctor doc =new Doctor();
+		person.setId(42);
+>>>>>>> 6278fa393bb5d6574f456a3be420bb5dff2d7fed
 		doc.setId(person.getId());
 		doc.setFname("aish");
 		doc.setLname("srini");

@@ -3,11 +3,17 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-//import org.hibernate.annotations.ForeignKey;
-
-
-
-//@PrimaryKeyJoinColumn(name = "personid", referencedColumnName = "personid")
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Class describing database entity Patient
+ *
+ */
 
 @ Entity
 public class Patient  extends Person

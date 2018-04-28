@@ -6,28 +6,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="551.0" prefWidth="528.0" style="-fx-background-color: #A1BBC7;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXAddDoctorController">
+<AnchorPane style="-fx-background-color: #0E74AF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXAddDoctorController">
 	<children>
-		<Label id="addDoctorLabel" layoutX="34.0" layoutY="33.0" text="Add Doctor" textFill="#0a3a61" textOverrun="LEADING_ELLIPSIS">
+		<Label id="addDoctorLabel" alignment="CENTER" layoutX="73.0" layoutY="14.0" text="ADD DOCTOR" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" underline="true" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="14.0">
 			<font>
-				<Font name="System Bold" size="18.0" />
+				<Font name="Bodoni 72 Oldstyle Book" size="18.0" />
 			</font>
 		</Label>
-		<AnchorPane layoutX="34.0" layoutY="60.0" prefHeight="700.0" prefWidth="401.0">
+		<AnchorPane layoutX="34.0" layoutY="60.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="42.0">
 			<children>
-				 <TextArea fx:id="id" layoutY="5.0" prefHeight="34.0" prefWidth="380.0" promptText="ID" />
-			    <TextArea fx:id="fName" layoutY="53.0" prefHeight="34.0" prefWidth="380.0" promptText="First Name" />
-				<TextArea fx:id="lName" layoutY="102.0" prefHeight="14.0" prefWidth="380.0" promptText="Last Name" />
-				<TextArea fx:id="age" layoutY="154.0" prefHeight="15.0" prefWidth="380.0" promptText="Age" />
-				<TextArea fx:id="sex" layoutY="201.0" prefHeight="15.0" prefWidth="380.0" promptText="Sex" />
-				<TextArea fx:id="email" layoutY="250.0" prefHeight="15.0" prefWidth="380.0" promptText="Email" />
-				<TextArea fx:id="phoneNo" layoutY="300.0" prefHeight="35.0" prefWidth="380.0" promptText="Phone Number" />
-				<TextArea fx:id="add" layoutY="498.0" prefHeight="35.0" prefWidth="380.0" promptText="Address" />
-				<TextArea fx:id="specialization" layoutY="451.0" prefHeight="35.0" prefWidth="380.0" promptText="Specialization" />
-				<TextArea fx:id="visitHours" layoutY="350.0" prefHeight="23.0" prefWidth="380.0" promptText="VISITING HOURS" />
-				<TextArea fx:id="degree" layoutY="398.0" prefHeight="35.0" prefWidth="380.0" promptText="DEGREE" />
-				<TextArea fx:id="specializationid" layoutY="549.0" prefHeight="35.0" prefWidth="380.0" promptText="SPECIALIZATIONID" />
-								<JFXButton fx:id="addBtn" layoutY="612.0" onAction="#addDoctor" prefWidth="98.0" styleClass="primary" stylesheets="@bootstrap3.css" text="Add" />
+			    <TextArea fx:id="fName" layoutY="47.0" prefHeight="14.0" prefWidth="380.0" promptText="First Name" />
+				<TextArea fx:id="lName" layoutY="90.0" prefHeight="17.0" prefWidth="380.0" promptText="Last Name" />
+				<TextArea fx:id="age" layoutY="133.0" prefHeight="15.0" prefWidth="380.0" promptText="Age" />
+				<TextArea fx:id="sex" layoutY="176.0" prefHeight="15.0" prefWidth="380.0" promptText="Sex" />
+				<TextArea fx:id="email" layoutY="219.0" prefHeight="15.0" prefWidth="380.0" promptText="Email" />
+				<TextArea fx:id="phoneNo" layoutY="262.0" prefHeight="35.0" prefWidth="380.0" promptText="Phone Number" />
+				<TextArea fx:id="add" layoutY="434.0" prefHeight="35.0" prefWidth="380.0" promptText="Address" />
+				<TextArea fx:id="specialization" layoutY="391.0" prefHeight="35.0" prefWidth="380.0" promptText="Specialization" />
+				<TextArea fx:id="visitHours" layoutY="305.0" prefHeight="23.0" prefWidth="380.0" promptText="Visit Hours" />
+				<TextArea fx:id="degree" layoutY="348.0" prefHeight="35.0" prefWidth="380.0" promptText="Degree" />
+				<TextArea fx:id="specializationid" layoutY="477.0" prefHeight="35.0" prefWidth="380.0" promptText="Specialization Id" />
+								<JFXButton fx:id="addBtn" layoutX="282.0" layoutY="530.0" onAction="#addDoctor" prefWidth="98.0" stylesheets="@bootstrap3.css" text="ADD" />
 
 			</children>
 		</AnchorPane>

@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-
-
-<!-- <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.layout.FlowPane?>
-
-<FlowPane fx:id="main" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewMedicineController">
-   <children>
-      <JFXTreeTableView fx:id="medicineTable" prefHeight="400.0" prefWidth="534.0" stylesheets="@main.css" />
-   </children>
-</FlowPane> -->
-
-<AnchorPane fx:id="main" prefHeight="560.0" prefWidth="731.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewMedicineController">
+<AnchorPane fx:id="main" stylesheets="@main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewMedicineController">
    <children>
      <TableView fx:id="medicineTable" layoutX="-14.0" prefHeight="560.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
         <columns>
@@ -35,31 +24,34 @@
                
         </columns>
       </TableView>
-       <VBox fx:id="vbox1" alignment="CENTER" layoutX="8.0" layoutY="193.0" opacity="0.74" prefHeight="186.0" prefWidth="702.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
+      <AnchorPane fx:id="editMedicinePane" layoutX="191.0" layoutY="40.0" prefHeight="309.0" prefWidth="322.0" style="-fx-background-color: #00688B;">
          <children>
-            <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="718.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" >
-            <children>
-                  <Label fx:id="lid" prefWidth="100.0" text="Id" />
-                  <Label fx:id="lname" prefWidth="100.0" text="Name" />
-                  <Label fx:id="ldrugs" prefWidth="80.0" text="Drugs" />
-                  <Label fx:id="ldescription" prefWidth="90.0" text="Description" />
-                  <Label fx:id="ldosage" prefWidth="80.0" text="Dosage" />
-                  <Label fx:id="ldiseaseid" prefWidth="100.0" text="Disease id" />
-               </children></HBox>
-            
-            
-            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;" >
-            <children>
-                  <TextField fx:id="id" prefWidth="100.0" />
-                  <TextField fx:id="name" prefWidth="100.0" />
-                  <TextField fx:id="drugs" prefWidth="100.0" />
-                  <TextField fx:id="description" prefWidth="100.0" />
-                  <TextField fx:id="dosage" prefWidth="100.0" />
-                  <TextField fx:id="diseaseid" prefWidth="100.0" />
-                  <Button fx:id="commit" mnemonicParsing="false" prefWidth="100.0" text="Commit" />
-                  <Button fx:id="cancel" mnemonicParsing="false" prefWidth="100.0" text="Cancel" />
-               </children></HBox>
+            <Label layoutX="24.0" layoutY="22.0" text="EDIT MEDICINE" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Bodoni 72 Oldstyle Book" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="63.0" prefHeight="17.0" prefWidth="27.0" text="Id" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="90.0" prefHeight="17.0" prefWidth="43.0" text="Name" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="116.0" prefHeight="17.0" prefWidth="43.0" text="Drugs" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="140.0" prefHeight="17.0" prefWidth="79.0" text="Description" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="168.0" prefHeight="17.0" prefWidth="69.0" text="Dosage" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="197.0" prefHeight="17.0" prefWidth="69.0" text="Disease Id" textFill="WHITE" />
+            <TextField fx:id="id" layoutX="122.0" layoutY="58.0" />
+            <TextField fx:id="name" layoutX="122.0" layoutY="85.0" />
+            <TextField fx:id="drugs" layoutX="122.0" layoutY="111.0" />
+            <TextField fx:id="description" layoutX="122.0" layoutY="135.0" />
+            <TextField fx:id="dosage" layoutX="122.0" layoutY="162.0" />
+            <TextField fx:id="diseaseid" layoutX="122.0" layoutY="189.0" />
+            <Button fx:id="commit" layoutX="122.0" layoutY="228.0" mnemonicParsing="false" text="UPDATE" />
+            <Button fx:id="cancel" layoutX="218.0" layoutY="228.0" mnemonicParsing="false" text="CANCEL" />
          </children>
-      </VBox>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
    </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" />
+   </padding>
 </AnchorPane>

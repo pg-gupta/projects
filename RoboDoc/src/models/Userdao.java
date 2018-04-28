@@ -1,48 +1,43 @@
 package models;
 
 import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import models.User;
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Class defining database methods for the User class
+ *
+ */
+public class Userdao extends DBOperations {
+	public void insertData(User user) {
+		super.insert(user);
+	}
 
+	public void updateData(User user) {
+		super.update(user);
+	}
 
+	public void deleteData(User user) {
+		super.delete(user);
+	}
 
-public  class Userdao extends DBOperations
-{   
-    public void insertData(User user) 
-    {
-        super.insert(user);       
-    }
- 
-    public void updateData(User user) 
-    {
-        super.update(user);       
-    }
-    
-    public void deleteData(User user) 
-    {
-        super.delete(user);
-    }
-    
-  /*  public User getById(int Id) 
-    {  
-    	int id =Id;
-       return (User) super.find(User.class,id);
-    }*/
-    
-    public User getByName(String name) 
-    {  
-    	String uname =name;
-       return (User) super.find(User.class,uname);
-    }
-    
-    public List getRecords(User user) 
-    {
-       return  super.findAll(User.class);
-    }
-    
-    
+	public User getById(int Id) {
+		int id = Id;
+		return (User) super.find(User.class, id);
+	}
+
+	public User getByName(String name) {
+
+		return (User) super.findByName(User.class, name);
+	}
+
+	public List getRecords(User user) {
+		return super.findAll(User.class);
+	}
 
 }
-	

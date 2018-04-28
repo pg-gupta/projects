@@ -6,25 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="551.0" prefWidth="528.0"
-	style="-fx-background-color: #A1BBC7;"
-	xmlns="http://javafx.com/javafx/9.0.4"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controllers.FXAddSpecializationController">
+<AnchorPane prefHeight="551.0" prefWidth="528.0" style="-fx-background-color: #0E74AF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXAddSpecializationController">
 	<children>
-		<Label id="addSpecilaizationLabel" layoutX="34.0" layoutY="33.0"
-			text="Add Specialization" textFill="#0a3a61" textOverrun="LEADING_ELLIPSIS">
+		<Label id="addSpecilaizationLabel" layoutX="34.0" layoutY="33.0" text="ADD SPECIALIZATION" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" underline="true">
 			<font>
-				<Font name="System Bold" size="18.0" />
+				<Font name="Bodoni 72 Oldstyle Book" size="18.0" />
 			</font>
 		</Label>
-		<AnchorPane layoutX="32.0" layoutY="100.0"
-			prefHeight="392.0" prefWidth="401.0">
+		<AnchorPane layoutX="32.0" layoutY="100.0" prefHeight="392.0" prefWidth="401.0">
 			<children>
-				<TextArea fx:id="Specialization" layoutY="5.0" prefHeight="34.0"
-					prefWidth="380.0" promptText="SPECIALIZATION NAME" />
-				<JFXButton fx:id="addBtn" layoutY="365.0" prefWidth="98.0"
-					styleClass="primary" onAction="#addSpecialization" stylesheets="@bootstrap3.css" text="Add" />
+				<TextArea fx:id="Specialization" layoutY="5.0" prefHeight="34.0" prefWidth="380.0" promptText="SPECIALIZATION NAME" />
+				<JFXButton fx:id="addBtn" layoutX="282.0" layoutY="84.0" onAction="#addSpecialization" prefWidth="98.0" stylesheets="@bootstrap3.css" text="ADD" />
 
 			</children>
 		</AnchorPane>

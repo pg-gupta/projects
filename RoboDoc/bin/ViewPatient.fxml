@@ -5,20 +5,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<!-- <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.layout.FlowPane?>
-
-<FlowPane fx:id="main" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPatientController1">
-   <children>
-      <JFXTreeTableView fx:id="personTable" prefHeight="400.0" prefWidth="534.0" stylesheets="@main.css" />
-   </children>
-</FlowPane> -->
-
-<AnchorPane fx:id="main" prefHeight="587.0" prefWidth="583.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPatientController">
+<AnchorPane fx:id="main" stylesheets="@main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXViewPatientController">
    <children>
       <TableView fx:id="patientTable" prefHeight="600.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
@@ -37,43 +28,41 @@
           
         </columns>
       </TableView>
-       <VBox fx:id="vbox1" alignment="CENTER" layoutX="8.0" layoutY="193.0" opacity="0.74" prefHeight="186.0" prefWidth="702.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
+      <AnchorPane fx:id="editPatientPane" layoutX="137.0" layoutY="16.0" prefHeight="406.0" prefWidth="362.0" style="-fx-background-color: #00688B;">
          <children>
-            <HBox fx:id="hbox1" opacity="0.83" prefHeight="54.0" prefWidth="713.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
-            <children>
-                  <Label fx:id="lid" prefHeight="18.0" prefWidth="54.0" text="Id" />
-                  <Label fx:id="lfname" prefHeight="18.0" prefWidth="60.0" text="FName" />
-                  <Label fx:id="llname" prefWidth="60.0" text="LName" />
-                  <Label fx:id="lage" prefHeight="18.0" prefWidth="40.0" text="Age" />
-                  <Label fx:id="lsex" prefWidth="40.0" text="Sex" />
-                  <Label fx:id="lemail" prefHeight="18.0" prefWidth="60.0" text="Email" />
-                  <Label fx:id="lphoneno" prefWidth="60.0" text="phone" />
-                  <Label fx:id="ladd" prefWidth="50.0" text="Address" />
-                  <Label fx:id="lheight" prefWidth="50.0" text="Height" />
-                  <Label fx:id="lweight" prefHeight="18.0" prefWidth="50.0" text="Weight" />
-                  <Label fx:id="ldiabetic" prefWidth="80.0" text="Diabetic" />
-               </children></HBox>
-           
-             
-            <HBox fx:id="hbox2" prefHeight="55.0" prefWidth="696.0" style="-fx-background-color: #80bfff#80bfff#80bfff#80bfff;">
-            <children>
-                  <TextField fx:id="id" prefWidth="100.0" />
-                  <TextField fx:id="fname" prefWidth="100.0" />
-                  <TextField fx:id="lname" prefWidth="100.0" />
-                  <TextField fx:id="age" prefWidth="100.0" />
-                  <TextField fx:id="sex" prefWidth="100.0" />
-                  <TextField fx:id="email" prefWidth="100.0" />
-                  <TextField fx:id="phoneno" prefWidth="100.0" />
-                  <TextField fx:id="add" prefWidth="100.0" />
-                  <TextField fx:id="height" prefWidth="100.0" />
-                  <TextField fx:id="weight" prefWidth="100.0" />
-                  <TextField fx:id="diabetic" prefWidth="100.0" />
-                 
-                  
-                  <Button fx:id="commit" mnemonicParsing="false" prefWidth="120.0" text="Commit" />
-                  <Button fx:id="cancel" mnemonicParsing="false" prefWidth="100.0" text="Cancel" />
-               </children></HBox>
+            <Label layoutX="23.0" layoutY="9.0" text="EDIT PATIENT" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Bodoni 72 Oldstyle Book" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="38.0" text="Id" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="63.0" text="FName" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="87.0" text="LName" textFill="WHITE" />
+            <Label layoutX="22.0" layoutY="110.0" text="Age" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="138.0" text="Sex" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="163.0" text="Email" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="191.0" text="Phone" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="215.0" text="Address" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="240.0" text="Height" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="270.0" text="Weight" textFill="WHITE" />
+            <Label layoutX="23.0" layoutY="300.0" text="Diabetic" textFill="WHITE" />
+            <TextField fx:id="id" disable="true" layoutX="137.0" layoutY="33.0" />
+            <TextField fx:id="fname" layoutX="137.0" layoutY="58.0" />
+            <TextField fx:id="lname" layoutX="137.0" layoutY="82.0" />
+            <TextField fx:id="age" layoutX="137.0" layoutY="107.0" />
+            <TextField fx:id="sex" layoutX="137.0" layoutY="133.0" />
+            <TextField fx:id="email" layoutX="137.0" layoutY="159.0" />
+            <TextField fx:id="phoneno" layoutX="137.0" layoutY="185.0" />
+            <TextField fx:id="add" layoutX="137.0" layoutY="210.0" />
+            <TextField fx:id="height" layoutX="137.0" layoutY="235.0" />
+            <TextField fx:id="weight" layoutX="137.0" layoutY="262.0" />
+            <TextField fx:id="diabetic" layoutX="137.0" layoutY="289.0" />
+            <Button fx:id="commit" layoutX="137.0" layoutY="338.0" mnemonicParsing="false" text="UPDATE" />
+            <Button fx:id="cancel" layoutX="233.0" layoutY="338.0" mnemonicParsing="false" text="CANCEL" />
          </children>
-      </VBox>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>

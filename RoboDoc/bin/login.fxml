@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXLoginController">
-   <left>
-      <AnchorPane prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+<AnchorPane fx:id="rootAnchor" prefHeight="650.0" prefWidth="800.0" styleClass="anchor" stylesheets="@bootstrap3.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXLoginController">
+   <children>
+      <AnchorPane layoutX="168.0" layoutY="168.0" prefHeight="301.0" prefWidth="381.0" AnchorPane.bottomAnchor="181.0" AnchorPane.leftAnchor="168.0" AnchorPane.rightAnchor="172.0" AnchorPane.topAnchor="168.0">
          <children>
-            <Button fx:id="buttonlogin" layoutX="174.0" layoutY="294.0" mnemonicParsing="false" onAction="#login" text="Login" />
-            <TextField fx:id="txtusername" layoutX="117.0" layoutY="113.0" promptText="UserName" />
-            <PasswordField fx:id="txtpassword" layoutX="117.0" layoutY="174.0" promptText="Password" />
-            <Label fx:id="lbladmin" layoutX="167.0" layoutY="49.0" text="Status" />
+            <Button fx:id="buttonlogin" layoutX="181.0" layoutY="216.0" mnemonicParsing="false" onAction="#login" stylesheets="@bootstrap3.css" text="LOGIN" />
+            <TextField fx:id="txtusername" layoutX="69.0" layoutY="111.0" promptText="UserName" />
+            <PasswordField fx:id="txtpassword" layoutX="69.0" layoutY="158.0" promptText="Password" />
+            <Label fx:id="lbladmin" layoutX="69.0" layoutY="58.0" prefHeight="28.0" prefWidth="97.0" text="LOGIN" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Lucida Grande" size="24.0" />
+               </font>
+            </Label>
          </children>
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" />
+         </padding>
       </AnchorPane>
-   </left>
-</BorderPane>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="20.0" right="20.0" />
+   </padding>
+</AnchorPane>

@@ -1,6 +1,5 @@
 package controllers;
 
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
@@ -32,6 +32,17 @@ import javafx.stage.Window;
 import javafx.util.Callback;
 import models.Symptom;
 import models.Symptomdao;
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Controller which manages operations and event on the ViewSymptom partial page
+ *
+ */
 
 public class FXViewSymptomController implements Initializable {
 
@@ -46,19 +57,28 @@ public class FXViewSymptomController implements Initializable {
 
 	@FXML
 	private TableColumn<Symptom, String> descriptionCol;
-	
+
 	@FXML
 	private TableColumn<Symptom, String> diseaseidCol;
 
+	@FXML
+	private AnchorPane editSymptomPane;
 
 	@FXML
-	private VBox vbox1;
-	
+	private TextField id;
 
 	@FXML
-	private HBox hbox1;
+	private TextField description;
+
 	@FXML
-	private HBox hbox2;
+	private TextField diseaseid;
+
+	@FXML
+	private Button commit;
+
+	@FXML
+	private Button cancel;
+	//
 
 	ObservableList<Symptom> symptoms = FXCollections.observableArrayList();
 
@@ -71,8 +91,6 @@ public class FXViewSymptomController implements Initializable {
 		idCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("symptom_id"));
 		diseaseidCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("disease_id"));
 		descriptionCol.setCellValueFactory(new PropertyValueFactory<Symptom, String>("desc"));
-
-
 
 		// add delete button on row
 		TableColumn<Symptom, Boolean> col_action = new TableColumn<Symptom, Boolean>("Action");
@@ -108,80 +126,52 @@ public class FXViewSymptomController implements Initializable {
 	private void editRow() {
 
 		symptomTable.toFront();
-		
-		Label lid = new Label("Id");
-		lid.setPrefWidth(100);
-		Label ldescription = new Label("Description");
-		ldescription.setPrefWidth(100);
-		Label ldiseaseid = new Label("Disease Id");
-		ldiseaseid.setPrefWidth(100);
 
-
-		TextField id = new TextField();
-		id.setPrefWidth(100);
-		TextField description = new TextField();
-		description.setPrefWidth(100);
-		TextField diseaseid = new TextField();
-		diseaseid.setPrefWidth(100);
-
-
-	   symptomTable.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
-		   if (nv != null) {
-			id.setText(String.valueOf(nv.getSymptom_id()));
-			description.setText(nv.getDesc());
-			diseaseid.setText(String.valueOf(nv.getDisease_id()));
+		symptomTable.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
+			if (nv != null) {
+				id.setText(String.valueOf(nv.getSymptom_id()));
+				description.setText(nv.getDesc());
+				diseaseid.setText(String.valueOf(nv.getDisease_id()));
 			}
 		});
 
-		// save the content on commit
-		Button commit = new Button("Commit");
-		Button cancel = new Button("Cancel");
-
 		commit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
-				Symptomdao symdao =new Symptomdao();
+				Symptomdao symdao = new Symptomdao();
 				Symptom item = symptomTable.getSelectionModel().getSelectedItem();
 				item.setSymptom_id((Integer.parseInt(id.getText())));
 				item.setDesc(description.getText());
 				item.setDisease_id((Integer.parseInt(diseaseid.getText())));
-				symdao.update(item);
-				showAlert(Alert.AlertType.INFORMATION,"Record Updated!","Symptom id " + item.getSymptom_id() + " is updated in the database");
-
+				try {
+					symdao.update(item);
+					showAlert(Alert.AlertType.INFORMATION, "Record Updated!",
+							"Symptom id " + item.getSymptom_id() + " is updated in the database");
+					symptomTable.refresh();
+				} catch (Exception e) {
+					showAlert(AlertType.ERROR, "Symptom", "Error occurred in updated entry, message:" + e.getMessage());
+				}
 				symptomTable.toFront();
 			}
 		});
-		
+
 		cancel.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent evt) {
 				symptomTable.toFront();
 			}
 		});
 
-		
-		
-
-		hbox1.getChildren().addAll(lid,ldescription,ldiseaseid);
-
-		hbox2.getChildren().addAll(id, description,diseaseid ,commit,cancel);
-
 		symptomTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent evt) {
 				if (evt.getClickCount() == 2) {
-					StackPane.setMargin(vbox1, new Insets(evt.getSceneY(), 0, 0, 0));
-					StackPane.setMargin(hbox1, new Insets(evt.getSceneY(), 0, 0, 0));
-					StackPane.setMargin(hbox2, new Insets(evt.getSceneY(), 0, 0, 0));
-					vbox1.toFront();
-					//hbox1.toFront();
-					//hbox2.toFront();
+					editSymptomPane.toFront();
 				}
 			}
 		});
-		// main.getChildren().add(root);
+
 	}
 
 	private void bindData() {
 
-		// DaoModel model = new DaoModel();
 		Symptomdao Symptomdao = new Symptomdao();
 
 		List<Symptom> resultSet = Symptomdao.getRecords(new Symptom());
@@ -191,20 +181,8 @@ public class FXViewSymptomController implements Initializable {
 
 		symptomTable.setItems(symptoms);
 
-		/*
-		 * try { while (resultSet.next()) {
-		 * 
-		 * Symptom doc = new Symptom();
-		 * 
-		 * doc.setDoctor_Id(Integer.parseInt(resultSet.getString(1)));
-		 * doc.setFname(resultSet.getString(2)); symptoms.add(doc); }
-		 * symptomTable.setItems(symptoms); } catch (SQLException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
 	}
 
-	
-	
 	// Define the button cell
 	class ButtonCell extends TableCell<Symptom, Boolean> {
 		final Button cellButton = new Button("Delete");
@@ -217,18 +195,21 @@ public class FXViewSymptomController implements Initializable {
 				@Override
 				public void handle(ActionEvent t) {
 					// get Selected Item
-					Symptom currentPerson = (Symptom) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
-					// remove selected item from the table list
-					//symptoms.remove(currentPerson.cellButton);
-					symptoms.remove(currentPerson);
-					//getChildren().remove(cellButton);
-					Symptom sym =new Symptom();
-					Symptomdao symdao= new Symptomdao();
-					//System.out.println("currentPerson is" + currentPerson.id);
+					Symptom currentPerson = (Symptom) ButtonCell.this.getTableView().getItems()
+							.get(ButtonCell.this.getIndex());
+					Symptom sym = new Symptom();
+					Symptomdao symdao = new Symptomdao();
 					sym.setSymptom_id(currentPerson.getSymptom_id());
-					symdao.delete(sym);
-					showAlert(Alert.AlertType.INFORMATION,"Record deleted!","Symptom id " + currentPerson.getSymptom_id() + " is deleted from  the database");
-					
+					try {
+						symdao.delete(sym);
+						symptomTable.refresh();
+						showAlert(Alert.AlertType.INFORMATION, "Record deleted!",
+								"Symptom id " + currentPerson.getSymptom_id() + " is deleted from  the database");
+					} catch (Exception e) {
+						showAlert(AlertType.ERROR, "Symptom",
+								"Error occurred while deleting entry, message:" + e.getMessage());
+					}
+
 				}
 			});
 
@@ -237,25 +218,21 @@ public class FXViewSymptomController implements Initializable {
 
 		// Display button if the row is not empty
 		@Override
-	      protected void updateItem(Boolean t, boolean empty) {
+		protected void updateItem(Boolean t, boolean empty) {
 			super.updateItem(t, empty);
-		    if (!empty) {
+			if (!empty) {
 				setGraphic(cellButton);
-			  }
+			}
 		}
-		
+
 	}
-	public void showAlert(Alert.AlertType alertType, String title, String message) 
-	{
+
+	public void showAlert(Alert.AlertType alertType, String title, String message) {
 		Alert alert = new Alert(alertType);
 		alert.setTitle(title);
 		alert.setHeaderText(null);
 		alert.setContentText(message);
-	    //alert.getDialogPane().setContent(gridPane);
-	    alert.show();
-       // alert.initOwner(Window);
-
-			
+		alert.show();
 	}
 
 }

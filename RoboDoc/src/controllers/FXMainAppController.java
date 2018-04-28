@@ -12,7 +12,17 @@ import javafx.scene.Node;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
-
+/**
+ * 
+ * @author Yeshwanthi & Pooja 
+ * Date: 04/27/2018
+ * Lab: Final project
+ */
+/**
+ * 
+ * Controller which manages operations and event on the Main Page
+ *
+ */
 public class FXMainAppController implements Initializable {
 	@FXML
 	private Menu personTab;
