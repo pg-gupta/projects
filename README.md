@@ -99,7 +99,7 @@ GeoFire is designed as a lightweight add-on to Firebase. To keep things simple, 
 #### User accepts request 
 ![alt text](Images/afteraccept.png "People found with similar skill" )
 
-#### User William accepts request to send messages,user William can send messages to Alexa
+#### User William accepts request to send messages and can send messages to user Alexa
 ![alt text](Images/williummessagetoalexa.png "Request sent to communicate " )
 
 #### User Alexa replies back
