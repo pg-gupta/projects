@@ -5,11 +5,11 @@
 
 1. The application is used to connect people with similar interest ranging from AngularJS, Machine learning,Guitar etc within nearby location.
 2. The application has authentication functionality.
-The real time current location of the user is saved through GPS tracking.
-After registration and login,user can add their interests and the data is stored in Firebase.
-The user can search friends based on their similar interest within nearby location of the user logged in.
-After successful search of people in nearby location based on skills,the user can add the person to the list of his friends.
-After accepting the request,users can send messages and use the chat functionality to connect.
+3. The real time current location of the user is saved through GPS tracking.
+4. After registration and login,user can add their interests and the data is stored in Firebase.
+5. The user can search friends based on their similar interest within nearby location of the user logged in.
+6. After successful search of people in nearby location based on skills,the user can add the person to the list of his friends.
+7. After accepting the request,users can send messages and use the chat functionality to connect.
 
 
 ### Setup
