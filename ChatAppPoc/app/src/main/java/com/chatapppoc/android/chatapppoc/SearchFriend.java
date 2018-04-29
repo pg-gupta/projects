@@ -1,18 +1,15 @@
 package com.chatapppoc.android.chatapppoc;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
 import android.location.Location;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ContentFrameLayout;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -27,7 +24,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -39,7 +35,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
 
+/**
+ * Class which handles the event on the search people by skill page
+ */
 public class SearchFriend extends FragmentActivity implements OnMapReadyCallback {
 
     // variables declared
@@ -81,21 +85,25 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
         reference = new Firebase(getString(R.string.firebase_database));
         CURRENT_LOCATION = UserDetails.getUserLocation();
         noSearchFoundTxt = (TextView) findViewById(R.id.noSearchResultTxt);
-        setUpMap();
 
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchTxt = searchSkillText.getText().toString();
-                noSearchFoundTxt.setText("");
+        try {
+            setUpMap();
 
-                map.clear();
-                if (!searchTxt.isEmpty()) {
-                    searchPeopleWithSkill();
+            searchBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    searchTxt = searchSkillText.getText().toString();
+                    noSearchFoundTxt.setText("");
+
+                    map.clear();
+                    if (!searchTxt.isEmpty()) {
+                        searchPeopleWithSkill();
+                    }
                 }
-            }
-        });
-
+            });
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), R.string.something_went_wrong, Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -247,6 +255,9 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
     private void filterUserHavingSkill(final String skill) throws InterruptedException {
         final List<String> filteredUser = new ArrayList<>();
         final AddFriendList[] addFriendCustomAdapter = new AddFriendList[1];
+        if (users.size() == 0) {
+            noSearchFoundTxt.setText(R.string.no_friends_found);
+        }
         for (final String user : users) {
             reference.child(getString(R.string.users)).child(user).child(getString(R.string.skills)).orderByChild(getString(R.string.skill_name)).equalTo(skill.toUpperCase()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -259,7 +270,7 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
                     addFriendCustomAdapter[0] = new AddFriendList(activity, filteredUser, reference, getString(R.string.users), getString(R.string.request_list));
                     friendList.setAdapter(addFriendCustomAdapter[0]);
                     if (filteredUser.size() == 0) {
-                        noSearchFoundTxt.setText("No Friends Found!");
+                        noSearchFoundTxt.setText(R.string.no_friends_found);
                     }
 
                 }
@@ -271,7 +282,6 @@ public class SearchFriend extends FragmentActivity implements OnMapReadyCallback
             });
 
         }
-
 
 
     }

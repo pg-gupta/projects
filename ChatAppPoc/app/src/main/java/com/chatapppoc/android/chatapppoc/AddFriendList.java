@@ -19,6 +19,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
+
+/**
+ * Custom list adapter which displays searched people with an Add button to send friend request to the person
+ */
 public class AddFriendList extends ArrayAdapter {
 
     // variables declared

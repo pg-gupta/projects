@@ -1,23 +1,28 @@
 package com.chatapppoc.android.chatapppoc;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.chatapppoc.android.chatapppoc.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
 
+/**
+ * Class which handles friend requests coming for the user and displays the list of the requests came for the user
+ */
 public class Requests extends AppCompatActivity {
 
     // variables

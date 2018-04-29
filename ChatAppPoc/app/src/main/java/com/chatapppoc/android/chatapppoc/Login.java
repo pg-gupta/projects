@@ -2,14 +2,11 @@ package com.chatapppoc.android.chatapppoc;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.LocationCallback;
@@ -32,9 +26,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
 
-import jp.wasabeef.blurry.Blurry;
-
+/**
+ * Class which handles login events for the user
+ */
 public class Login extends AppCompatActivity {
     // variables declared
     TextView registerUser;
@@ -73,9 +73,9 @@ public class Login extends AppCompatActivity {
                 pass = password.getText().toString();
 
                 if (user.equals("")) {
-                    username.setError("can't be blank");
+                    username.setError(getString(R.string.no_text));
                 } else if (pass.equals("")) {
-                    password.setError("can't be blank");
+                    password.setError(getString(R.string.no_text));
                 } else {
                     String url = getString(R.string.firebase_database) + "/users.json";
                     final ProgressDialog pd = new ProgressDialog(Login.this);
@@ -86,20 +86,20 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onResponse(String s) {
                             if (s.equals("null")) {
-                                Toast.makeText(Login.this, "user not found", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Login.this, R.string.user_not_found, Toast.LENGTH_LONG).show();
                             } else {
                                 try {
                                     JSONObject obj = new JSONObject(s);
 
                                     if (!obj.has(user)) {
-                                        Toast.makeText(Login.this, "user not found", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Login.this, getString(R.string.user_not_found), Toast.LENGTH_LONG).show();
                                     } else if (obj.getJSONObject(user).getString("password").equals(pass)) {
                                         UserDetails.username = user;
                                         UserDetails.password = pass;
                                         getUserLocation();
                                         startActivity(new Intent(Login.this, Profile.class));
                                     } else {
-                                        Toast.makeText(Login.this, "incorrect password", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Login.this, getString(R.string.incorrect_password), Toast.LENGTH_LONG).show();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -112,6 +112,7 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
                             System.out.println("" + volleyError);
+                            Toast.makeText(getApplicationContext(), getString(R.string.something_went_wrong),Toast.LENGTH_SHORT).show();
                             pd.dismiss();
                         }
                     });
@@ -128,18 +129,22 @@ public class Login extends AppCompatActivity {
      * Method to get the users geolocation of the logged in user
      */
     private void getUserLocation() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.geolocation));
-        GeoFire geofire = new GeoFire(reference);
-        geofire.getLocation(UserDetails.username, new LocationCallback() {
-            @Override
-            public void onLocationResult(String key, GeoLocation location) {
-                UserDetails.setUserLocation(location);
-            }
+        try {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.geolocation));
+            GeoFire geofire = new GeoFire(reference);
+            geofire.getLocation(UserDetails.username, new LocationCallback() {
+                @Override
+                public void onLocationResult(String key, GeoLocation location) {
+                    UserDetails.setUserLocation(location);
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), R.string.error_get_location, Toast.LENGTH_SHORT).show();
+        }
     }
 }

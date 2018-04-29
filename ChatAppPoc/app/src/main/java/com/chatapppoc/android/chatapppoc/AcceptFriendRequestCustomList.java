@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -20,6 +21,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
+
+/**
+ * Custom list adapter which displays Friends requests with Accept and Request button
+ */
 public class AcceptFriendRequestCustomList extends ArrayAdapter {
 
     // variables
@@ -63,6 +73,7 @@ public class AcceptFriendRequestCustomList extends ArrayAdapter {
         final String requesterName = users.get(position);
         requestFrom.setText(requesterName);
 
+        // Action to add a person in the friends list
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +116,7 @@ public class AcceptFriendRequestCustomList extends ArrayAdapter {
         reference.child(usersDBKey).child(username).child(friendsListDBKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+
                 // store the values in map structure
                 Map<String, Boolean> friendList = (Map<String, Boolean>) snapshot.getValue();
                 if (friendList == null) {
@@ -119,6 +131,7 @@ public class AcceptFriendRequestCustomList extends ArrayAdapter {
                 // set status in requestList to true
                 reference.child(usersDBKey).child(username).child(requestListDBKey).child(requesterName).setValue(true);
             }
+
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {

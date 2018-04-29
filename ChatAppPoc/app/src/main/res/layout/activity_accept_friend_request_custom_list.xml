@@ -18,7 +18,7 @@
         android:layout_marginStart="19dp"
         android:layout_marginTop="18dp"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/acceptBtn"
@@ -29,7 +29,7 @@
         android:layout_alignTop="@+id/requestFromtext"
         android:layout_marginEnd="121dp"
         android:background="@drawable/buttons"
-        android:text="Accept"
+        android:text="@string/accept"
         android:textColor="#FFFFFF" />
 
     <Button
@@ -41,7 +41,7 @@
         android:layout_alignTop="@+id/requestFromtext"
         android:layout_marginEnd="18dp"
         android:background="@drawable/buttons"
-        android:text="Reject"
+        android:text="@string/reject"
         android:textColor="#FFFFFF" />
 </RelativeLayout>
 

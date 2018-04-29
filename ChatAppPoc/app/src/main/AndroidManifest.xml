@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
 
     <application
@@ -25,9 +24,6 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCB4BFMEnEUzsCR4EiCUoclNp30AWSpsJE"/>
 
-
-       <!-- <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBf3tEmdR18S-2v0E1i1x0oqcXJ9imntT4"/>-->
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

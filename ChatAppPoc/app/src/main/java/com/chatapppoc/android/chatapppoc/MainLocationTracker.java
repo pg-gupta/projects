@@ -28,7 +28,13 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 
 /**
- * Created by shruti on 4/20/18.
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
+
+/**
+ * Class which manages permissions for getting and setting the geo location
  */
 
 public class MainLocationTracker extends AppCompatActivity {
@@ -42,7 +48,6 @@ public class MainLocationTracker extends AppCompatActivity {
     LocationTrack locationTrack;
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
-    public GeoFire geoFire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +116,6 @@ public class MainLocationTracker extends AppCompatActivity {
         });
 
     }
-
-
-
-
-
 
 
     private ArrayList<String> findUnAskedPermissions(ArrayList<String> wanted) {

@@ -1,33 +1,7 @@
 package com.chatapppoc.android.chatapppoc;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,22 +12,36 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.firebase.client.Firebase;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.ArrayList;
-
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
 
+/**
+ * Class which handles registration of a new user and setting geo location of the person registering
+ */
 public class Register extends AppCompatActivity {
     // variables declared
     EditText username, password;
@@ -84,105 +72,114 @@ public class Register extends AppCompatActivity {
         registerButton = (Button) findViewById(R.id.registerButton);
         login = (TextView) findViewById(R.id.login);
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        try {
+            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
-        Firebase.setAndroidContext(this);
+            Firebase.setAndroidContext(this);
 
-        //variables for location
+            //variables for location
 
-        permissions.add(ACCESS_FINE_LOCATION);
-        permissions.add(ACCESS_COARSE_LOCATION);
-        Firebase.setAndroidContext(this);
+            permissions.add(ACCESS_FINE_LOCATION);
+            permissions.add(ACCESS_COARSE_LOCATION);
+            Firebase.setAndroidContext(this);
 
-        permissionsToRequest = findUnAskedPermissions(permissions);
+            permissionsToRequest = findUnAskedPermissions(permissions);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-
-            if (permissionsToRequest.size() > 0)
-                requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
-        }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Register.this, Login.class));
+                if (permissionsToRequest.size() > 0)
+                    requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
             }
-        });
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                user = username.getText().toString();
-                pass = password.getText().toString();
 
-                if (user.equals("")) {
-                    username.setError(getString(R.string.no_text));
-                } else if (pass.equals("")) {
-                    password.setError(getString(R.string.no_text));
-                } else if (!user.matches("[A-Za-z0-9]+")) {
-                    username.setError(getString(R.string.alpha_numeric));
-                } else if (user.length() < 5) {
-                    username.setError(getString(R.string.atleast_five_char));
-                } else if (pass.length() < 5) {
-                    password.setError(getString(R.string.atleast_five_char));
-                } else {
-                    final ProgressDialog pd = new ProgressDialog(Register.this);
-                    pd.setMessage("Loading...");
-                    pd.show();
+            login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Register.this, Login.class));
+                }
+            });
 
-                    String url = getString(R.string.firebase_database) + "/users.json";
+            // check the credential conditions and register the user
+            registerButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    user = username.getText().toString();
+                    pass = password.getText().toString();
 
-                    StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String s) {
-                            Firebase reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users));
+                    if (user.equals("")) {
+                        username.setError(getString(R.string.no_text));
+                    } else if (pass.equals("")) {
+                        password.setError(getString(R.string.no_text));
+                    } else if (!user.matches("[A-Za-z0-9]+")) {
+                        username.setError(getString(R.string.alpha_numeric));
+                    } else if (user.length() < 5) {
+                        username.setError(getString(R.string.atleast_five_char));
+                    } else if (pass.length() < 5) {
+                        password.setError(getString(R.string.atleast_five_char));
+                    } else {
+                        final ProgressDialog pd = new ProgressDialog(Register.this);
+                        pd.setMessage("Loading...");
+                        pd.show();
 
-                            if (s.equals("null")) {
-                                sharedpreferences.edit().putString("userid", user).commit();
-                                reference.child(user).child(getString(R.string.password)).setValue(pass);
-                                Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
-                                setCurrentLocationOfUser();
-                            } else {
-                                try {
-                                    JSONObject obj = new JSONObject(s);
+                        String url = getString(R.string.firebase_database) + "/users.json";
 
-                                    if (!obj.has(user)) {
-                                        sharedpreferences.edit().putString("userid", user).commit();
-                                        reference.child(user).child(getString(R.string.password)).setValue(pass);
-                                        Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
-                                        setCurrentLocationOfUser();
+                        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String s) {
+                                Firebase reference = new Firebase(getString(R.string.firebase_database) + "/" + getString(R.string.users));
 
-                                    } else {
-                                        Toast.makeText(Register.this, R.string.user_exists, Toast.LENGTH_LONG).show();
+                                // if it is the first user in the database to be registered
+                                if (s.equals("null")) {
+                                    sharedpreferences.edit().putString("userid", user).commit();
+                                    reference.child(user).child(getString(R.string.password)).setValue(pass);
+                                    Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
+                                    // set geo location of the user registered
+                                    setCurrentLocationOfUser();
+                                } else {
+                                    try {
+                                        JSONObject obj = new JSONObject(s);
+
+                                        if (!obj.has(user)) {
+                                            sharedpreferences.edit().putString("userid", user).commit();
+                                            reference.child(user).child(getString(R.string.password)).setValue(pass);
+                                            Toast.makeText(Register.this, R.string.registration_success, Toast.LENGTH_LONG).show();
+                                            // set geo location of the user registered
+                                            setCurrentLocationOfUser();
+
+                                        } else {
+                                            Toast.makeText(Register.this, R.string.user_exists, Toast.LENGTH_LONG).show();
+                                        }
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
                                     }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
                                 }
+
+                                pd.dismiss();
                             }
 
-                            pd.dismiss();
-                        }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError volleyError) {
+                                System.out.println("" + volleyError);
+                                pd.dismiss();
+                            }
+                        });
 
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError) {
-                            System.out.println("" + volleyError);
-                            pd.dismiss();
-                        }
-                    });
-
-                    RequestQueue rQueue = Volley.newRequestQueue(Register.this);
-                    rQueue.add(request);
+                        RequestQueue rQueue = Volley.newRequestQueue(Register.this);
+                        rQueue.add(request);
 
 
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), R.string.something_went_wrong, Toast.LENGTH_SHORT).show();
+        }
     }
 
+    // set geo location in terms of longitude and latitude for the user
     private void setCurrentLocationOfUser() {
         locationTrack = new LocationTrack(Register.this);
 

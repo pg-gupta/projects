@@ -22,7 +22,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
 
+/**
+ * Class which handles chat between two people
+ */
 public class Chat extends AppCompatActivity {
     // variables decalred
     LinearLayout layout;
@@ -53,7 +61,7 @@ public class Chat extends AppCompatActivity {
         reference1 = new Firebase(getString(R.string.firebase_database)+"/"+getString(R.string.messages)+"/" + UserDetails.username + "_" + UserDetails.chatWith);
         reference2 = new Firebase(getString(R.string.firebase_database)+"/"+getString(R.string.messages)+"/"  + UserDetails.chatWith + "_" + UserDetails.username);
 
-
+        // add typed message into the database reference of the sender and receiver
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +78,7 @@ public class Chat extends AppCompatActivity {
             }
         });
 
+        // add typed message in the chat window of the sender and receiver when message is added
         reference1.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

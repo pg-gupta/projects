@@ -1,6 +1,6 @@
 package com.chatapppoc.android.chatapppoc;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -17,9 +18,16 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
 
+/**
+ * Class which handles binding and actions on Friends custom list
+ */
 public class Friends extends AppCompatActivity {
     // variables declared
     ListView usersList;
@@ -52,21 +60,25 @@ public class Friends extends AppCompatActivity {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<String, Boolean> map = (Map<String, Boolean>) dataSnapshot.getValue();
-                if (dataSnapshot.getValue() != null) {
-                    for (Map.Entry<String, Boolean> entry : map.entrySet()) {
-                        al.add(entry.getKey());
-                        totalUsers++;
+                try {
+                    Map<String, Boolean> map = (Map<String, Boolean>) dataSnapshot.getValue();
+                    if (dataSnapshot.getValue() != null) {
+                        for (Map.Entry<String, Boolean> entry : map.entrySet()) {
+                            al.add(entry.getKey());
+                            totalUsers++;
+                        }
                     }
-                }
 
-                if (totalUsers < 1) {
-                    noUsersText.setVisibility(View.VISIBLE);
-                    usersList.setVisibility(View.GONE);
-                } else {
-                    noUsersText.setVisibility(View.GONE);
-                    usersList.setVisibility(View.VISIBLE);
-                    usersList.setAdapter(new ArrayAdapter<String>(Friends.this, android.R.layout.simple_list_item_1, al));
+                    if (totalUsers < 1) {
+                        noUsersText.setVisibility(View.VISIBLE);
+                        usersList.setVisibility(View.GONE);
+                    } else {
+                        noUsersText.setVisibility(View.GONE);
+                        usersList.setVisibility(View.VISIBLE);
+                        usersList.setAdapter(new ArrayAdapter<String>(Friends.this, android.R.layout.simple_list_item_1, al));
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -76,6 +88,7 @@ public class Friends extends AppCompatActivity {
             }
         });
 
+        // open chat windows on click of a friend in the friend list
         usersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

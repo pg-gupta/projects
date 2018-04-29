@@ -2,10 +2,16 @@ package com.chatapppoc.android.chatapppoc;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.firebase.geofire.GeoLocation;
-import com.firebase.ui.auth.data.model.User;
-
 import java.util.Map;
+/**
+ * Authors: Suneha Sanjiv Patil, Shruti Tirpude, Pooja Gupta
+ * Date: 04/28/18
+ * Final Project
+ */
 
+/**
+ * Class which handles the User details of the logged in user.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDetails {
     static String username = "";
