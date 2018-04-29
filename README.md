@@ -29,20 +29,18 @@ You need to obtain an API key and add it to the [AndroidManifest.xml]
 
 The project loads location data from a set maintained by [Firebase](https://firebase.com).
 
-This sample loads its Firebase and GeoFire dependencies from Maven Central.
-If you modify and build GeoFire locally make sure to update to modify the gradle file to load GeoFire
-either directly or from your local maven repo.
+This application loads its Firebase and GeoFire dependencies from Maven Central.
 
 ### GeoFire — Realtime location queries with Firebase
 
-GeoFire is set of open-source libraries for JavaScript, Objective-C, and Java that allow you to store and query a set of keys based on their geographic location. At its heart, GeoFire simply stores locations with string keys. Its main benefit, however, is the possibility of retrieving only those keys within a given geographic area - all in realtime.
+GeoFire is set of open-source libraries for JavaScript, Objective-C, and Java that allow you to store and query a set of keys based on their geographic location. GeoFire stores locations with string keys. Its main benefit, however, is the possibility of retrieving only those keys within a given geographic area - all in realtime.
 
-GeoFire uses the Firebase database for data storage, allowing query results to be updated in realtime as they change. GeoFire selectively loads only the data near certain locations, keeping your applications light and responsive, even with extremely large datasets. 
+GeoFire uses the Firebase database for data storage, allowing query results to be updated in realtime as they change. GeoFire selectively loads only the data near certain locations, keeping the applications light and responsive, even with extremely large datasets. 
 
 
-### Integrating GeoFire with your data
+### Integrating GeoFire with the data
 
-GeoFire is designed as a lightweight add-on to Firebase. To keep things simple, GeoFire stores data in its own format and its own location within your Firebase database. This allows your existing data format and security rules to remain unchanged while still providing you with an easy solution for geo queries.
+GeoFire is designed as a lightweight add-on to Firebase. To keep things simple, GeoFire stores data in its own format and its own location within Firebase database. This allows the existing data format and security rules to remain unchanged while still providing  with an easy solution for geo queries.
 
 
 ## Screenshots of the application
