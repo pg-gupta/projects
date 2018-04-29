@@ -6,7 +6,7 @@
     android:background="@drawable/hobbybg"
 
     android:orientation="vertical"
-    tools:context=".Chat">
+    tools:context="com.hobbylobby.android.Chat">
 
     <ScrollView
         android:id="@+id/scrollView"

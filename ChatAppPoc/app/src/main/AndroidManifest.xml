@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.chatapppoc.android.chatapppoc">
+    package="com.hobbylobby.android.chatapppoc">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -24,20 +24,20 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCB4BFMEnEUzsCR4EiCUoclNp30AWSpsJE"/>
 
-        <activity android:name=".Login">
+        <activity android:name="com.hobbylobby.android.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
-        <activity android:name=".Chat" />
-        <activity android:name=".Friends" />
-        <activity android:name=".Profile" />
-        <activity android:name=".SearchFriend" />
-        <activity android:name=".Requests" />
-        <activity android:name=".MainLocationTracker" />
+        <activity android:name="com.hobbylobby.android.Register" />
+        <activity android:name="com.hobbylobby.android.Chat" />
+        <activity android:name="com.hobbylobby.android.Friends" />
+        <activity android:name="com.hobbylobby.android.Profile" />
+        <activity android:name="com.hobbylobby.android.SearchFriend" />
+        <activity android:name="com.hobbylobby.android.Requests" />
+        <activity android:name="com.hobbylobby.android.MainLocationTracker" />
     </application>
 
 </manifest>

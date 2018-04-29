@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".AcceptFriendRequestCustomList">
+    tools:context="com.hobbylobby.android.AcceptFriendRequestCustomList">
 
     <TextView
         android:id="@+id/requestFromtext"

@@ -1,4 +1,4 @@
-package com.chatapppoc.android.chatapppoc;
+package com.hobbylobby.android;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.firebase.geofire.GeoLocation;

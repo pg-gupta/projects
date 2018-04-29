@@ -1,4 +1,4 @@
-package com.chatapppoc.android.chatapppoc;
+package com.hobbylobby.android;
 
 import android.Manifest;
 import android.app.Service;

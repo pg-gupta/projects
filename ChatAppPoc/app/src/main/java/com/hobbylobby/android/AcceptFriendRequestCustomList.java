@@ -1,4 +1,4 @@
-package com.chatapppoc.android.chatapppoc;
+package com.hobbylobby.android;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -9,13 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.hobbylobby.android.chatapppoc.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.firebase.ui.auth.data.model.User;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.chatapppoc.android.chatapppoc;
+package com.hobbylobby.android;
 
 import android.app.Activity;
 import android.location.Location;
@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hobbylobby.android.chatapppoc.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

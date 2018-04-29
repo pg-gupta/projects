@@ -1,4 +1,4 @@
-package com.chatapppoc.android.chatapppoc;
+package com.hobbylobby.android;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.hobbylobby.android.chatapppoc.R;
 import com.firebase.client.Firebase;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;

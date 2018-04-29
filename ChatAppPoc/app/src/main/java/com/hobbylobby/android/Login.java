@@ -1,4 +1,4 @@
-package com.chatapppoc.android.chatapppoc;
+package com.hobbylobby.android;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.hobbylobby.android.chatapppoc.R;
 import com.firebase.client.Firebase;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;

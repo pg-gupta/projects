@@ -6,7 +6,7 @@
     android:background="@drawable/hobbies"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context="com.hobbylobby.android.Login">
 
     <TextView
         android:id="@+id/loginTxt"
