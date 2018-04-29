@@ -1,11 +1,16 @@
 # Android Open Source Intelligent Device - 555 Final Project
- 
+
 
 ## Android Final Project HobbyLobby Application Project Description
 
-The application is used to connect people with similar interest ranging from AngularJS, Machine learning,Guitar etc within nearby location.
-The application has the chat functionality and used to send messages after connecting with people with similar interest.
-The real time current location of the user is saved through GPS tracking.
+1. The application is used to connect people with similar interest ranging from AngularJS, Machine learning etc within nearby location.
+2. The application has authentication functionality.
+3. The real time current location of the user is saved through GPS tracking.
+4. After registration and login,user can add their interests and the data is stored in Firebase.
+5. The user can search friends based on their similar interest within nearby location of the user logged in.
+6. After successful search of people in nearby location based on skills,the user can add the person to the list of his friends.
+7. After accepting the request,users can send messages and use the chat functionality to connect.
+
 
 ### Setup
 
@@ -24,30 +29,86 @@ You need to obtain an API key and add it to the [AndroidManifest.xml]
 
 The project loads location data from a set maintained by [Firebase](https://firebase.com).
 
-This sample loads its Firebase and GeoFire dependencies from Maven Central.
-If you modify and build GeoFire locally make sure to update to modify the gradle file to load GeoFire
-either directly or from your local maven repo.
+This application loads its Firebase and GeoFire dependencies from Maven Central.
 
 ### GeoFire — Realtime location queries with Firebase
 
-GeoFire is set of open-source libraries for JavaScript, Objective-C, and Java that allow you to store and query a set of keys based on their geographic location. At its heart, GeoFire simply stores locations with string keys. Its main benefit, however, is the possibility of retrieving only those keys within a given geographic area - all in realtime.
+GeoFire is set of open-source libraries for JavaScript, Objective-C, and Java that allow you to store and query a set of keys based on their geographic location. GeoFire stores locations with string keys. Its main benefit, however, is the possibility of retrieving only those keys within a given geographic area - all in realtime.
 
-GeoFire uses the Firebase database for data storage, allowing query results to be updated in realtime as they change. GeoFire selectively loads only the data near certain locations, keeping your applications light and responsive, even with extremely large datasets. 
+GeoFire uses the Firebase database for data storage, allowing query results to be updated in realtime as they change. GeoFire selectively loads only the data near certain locations, keeping the applications light and responsive, even with extremely large datasets. 
 
 
-### Integrating GeoFire with your data
+### Integrating GeoFire with the data
 
-GeoFire is designed as a lightweight add-on to Firebase. To keep things simple, GeoFire stores data in its own format and its own location within your Firebase database. This allows your existing data format and security rules to remain unchanged while still providing you with an easy solution for geo queries.
+GeoFire is designed as a lightweight add-on to Firebase. To keep things simple, GeoFire stores data in its own format and its own location within Firebase database. This allows the existing data format and security rules to remain unchanged while still providing  with an easy solution for geo queries.
 
 
 ## Screenshots of the application
 
+#### Login Screen
+![alt text](Images/login.png "Login Screenshot" )
 
- ![alt text](Images/login.png "Login Screenshot")
- ![alt text](Images/register.png "Register Screenshot" )
- ![alt text](Images/setlocation.png "Setting Location Screenshot")
- ![alt text](Images/skill.png "Adding Skill Screenshot" )
- ![alt text](Images/skilladded.png " After Adding Skill Screenshot" )
+#### User Registration Error Screenshot
+![alt text](Images/registrationerror.png "Registration error" )
+
+#### User Registration Successful
+
+![alt text](Images/registrationsuccess.png "Register Screenshot" )
+
+#### User Set Location 
+![alt text](Images/register.png "Setting Location Screenshot" )
+
+#### User current location is set after successful registration in Firebase
+![alt text](Images/geofireLocation.png "Request sent to communicate " )
+
+
+#### User Add Skills and interests after login
+![alt text](Images/skill.png "Skill Add" )
+
+#### User Skills Added
+![alt text](Images/skilladded.png "Skill Added" )
+
+#### Search result when user not found in nearby location
+![alt text](Images/peoplenotfound.png "People Not Found" )
+
+#### Search Result when no user found nearby with similar skill
+![alt text](Images/nopeoplefoundmessage.png "No friends found " )
+
+#### Search User with similar interest within nearby location
+
+
+![alt text](Images/searchpeople.png "Serach People " )
+
+
+
+
+
+#### Search result when user is found with similar interest in nearby location
+![alt text](Images/peoplefound.png "People found with similar skill" )
+
+#### Send ADD request to users with similar interest for sending messages
+![alt text](Images/requestsend.png "Request sent to communicate " )
+
+
+
+#### User William accepts request for chat functionality before they can communicate 
+![alt text](Images/acceptrequest.png "Accept request" )
+
+#### User accepts request 
+![alt text](Images/afteraccept.png "People found with similar skill" )
+
+#### User William accepts request and send messages to user Alexa
+![alt text](Images/williummessagetoalexa.png "Request sent to communicate " )
+
+#### User Alexa replies back
+![alt text](Images/Alexareply.png "Request sent to communicate " )
+
+#### Both Users Chat functionality Screenshot
+![alt text](Images/chatmessage.png "Request sent to communicate " )
+
+
+
+
 
 
 
