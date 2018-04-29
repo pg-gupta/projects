@@ -3,7 +3,7 @@
 
 ## Android Final Project HobbyLobby Application Project Description
 
-1. The application is used to connect people with similar interest ranging from AngularJS, Machine learning,Guitar etc within nearby location.
+1. The application is used to connect people with similar interest ranging from AngularJS, Machine learning etc within nearby location.
 2. The application has authentication functionality.
 3. The real time current location of the user is saved through GPS tracking.
 4. After registration and login,user can add their interests and the data is stored in Firebase.
